@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5DD720922F7569A10065BA99 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD720912F7569A10065BA99 /* CryptoSwift */; };
+		5DD720952F756A1E0065BA99 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD720942F756A1E0065BA99 /* Lottie */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		5DA70A362E9EC5C700F2C141 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -30,7 +35,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		5DA70A272E9EC5C600F2C141 /* ToDoListIos */ = {
+		5D7CDB682EBA7A0700FCCC0D /* ToDoListIos */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ToDoListIos;
 			sourceTree = "<group>";
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DD720922F7569A10065BA99 /* CryptoSwift in Frameworks */,
+				5DD720952F756A1E0065BA99 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,10 +82,11 @@
 		5DA70A1C2E9EC5C600F2C141 = {
 			isa = PBXGroup;
 			children = (
-				5DA70A272E9EC5C600F2C141 /* ToDoListIos */,
 				5DA70A382E9EC5C700F2C141 /* ToDoListIosTests */,
 				5DA70A422E9EC5C700F2C141 /* ToDoListIosUITests */,
+				5DB225E52E9ECBB900A9DD09 /* Frameworks */,
 				5DA70A262E9EC5C600F2C141 /* Products */,
+				5D7CDB682EBA7A0700FCCC0D /* ToDoListIos */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +98,13 @@
 				5DA70A3F2E9EC5C700F2C141 /* ToDoListIosUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5DB225E52E9ECBB900A9DD09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,10 +123,12 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				5DA70A272E9EC5C600F2C141 /* ToDoListIos */,
+				5D7CDB682EBA7A0700FCCC0D /* ToDoListIos */,
 			);
 			name = ToDoListIos;
 			packageProductDependencies = (
+				5DD720912F7569A10065BA99 /* CryptoSwift */,
+				5DD720942F756A1E0065BA99 /* Lottie */,
 			);
 			productName = ToDoListIos;
 			productReference = 5DA70A252E9EC5C600F2C141 /* ToDoListIos.app */;
@@ -195,6 +212,10 @@
 			);
 			mainGroup = 5DA70A1C2E9EC5C600F2C141;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5DD720902F7569A10065BA99 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				5DD720932F756A1E0065BA99 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5DA70A262E9EC5C600F2C141 /* Products */;
 			projectDirPath = "";
@@ -558,6 +579,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5DD720902F7569A10065BA99 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
+		5DD720932F756A1E0065BA99 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5DD720912F7569A10065BA99 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DD720902F7569A10065BA99 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
+		5DD720942F756A1E0065BA99 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DD720932F756A1E0065BA99 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5DA70A1D2E9EC5C600F2C141 /* Project object */;
 }
