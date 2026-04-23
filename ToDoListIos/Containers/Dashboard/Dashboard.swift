@@ -14,7 +14,7 @@ struct Dashboard: View {
                 .imageScale(.large)
             Text("You don't have tasks").fontWeight(.bold)
             Text("To create new task click on the plus (+) button").fontWeight(.bold).foregroundStyle(.gray)
-            NavigationLink(destination: Login()) {
+            NavigationLink(value: Route.login) {
                 Image(systemName: "plus")
                     .padding(.vertical, 12)
                     .padding(.horizontal, 8)
