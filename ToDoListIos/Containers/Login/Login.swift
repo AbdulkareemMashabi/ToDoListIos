@@ -40,7 +40,7 @@ struct Login: View {
                     .background(.cyan)
                     .cornerRadius(16).disabled(isButtonDisabled).opacity(isButtonDisabled ? 0.5 : 1)
                 
-                NavigationLink(destination: Register()) {
+                NavigationLink(value: Route.register) {
                     Text("Register").fontWeight(.bold).foregroundColor(.cyan).frame(maxWidth:.infinity, alignment: .center).padding(.top)
                 }
                 
