@@ -36,7 +36,7 @@ struct Register: View {
                             appToken.token = token ?? ""
                             await MainActor.run {
                                 loadingManager.isLoading.toggle()
-//                                navigationManager.path.removeAll()
+                                navigationManager.path.removeAll()
                             }
                         }
                         catch {
@@ -52,7 +52,7 @@ struct Register: View {
                 }.fontWeight(.bold).foregroundColor(.white)        .fontWeight(.bold)
                     .frame(maxWidth: .infinity, maxHeight: 40)
                     .background(.cyan)
-//                    .cornerRadius(16).disabled(isButtonDisabled).opacity(isButtonDisabled ? 0.5 : 1)
+                    .cornerRadius(16).disabled(isButtonDisabled).opacity(isButtonDisabled ? 0.5 : 1)
                 
                 
             }       .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top).padding()
