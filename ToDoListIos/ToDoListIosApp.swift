@@ -31,11 +31,13 @@ struct ToDoListIosApp: App {
                             }.transition(.opacity).background(Color(white: 0.9))
                         }
                         
-                    }.animation(.linear(duration: 0.3), value: isLottieFinished)
-                }.navigationDestination(for: Route.self) { route in
-                    switch route {
-                    case .dashboard:
-                        Dashboard()
+                    }.animation(.linear(duration: 0.3), value: isLottieFinished).navigationDestination(for: Route.self) { route in
+                        switch route {
+                        case .login:
+                            Login()
+                        case .register:
+                            Register()
+                        }
                     }
                 }
                 if loadingManager.isLoading {
