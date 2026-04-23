@@ -12,5 +12,6 @@ class NavigationManager: ObservableObject {
 }
 
 enum Route: Hashable {
-    case dashboard
+    case login
+    case register
 }
