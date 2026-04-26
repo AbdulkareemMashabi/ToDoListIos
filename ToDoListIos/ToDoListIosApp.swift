@@ -48,6 +48,10 @@ struct ToDoListIosApp: App {
                                 .scaleEffect(1.5).tint(.white)
                         )
                 }
+                if loadingManager.isLoadingButton {
+                    Color.black.opacity(0.1)
+                        .ignoresSafeArea()
+                }
             }
             
             
