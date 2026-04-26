@@ -26,16 +26,16 @@ struct Register: View {
                 TextInput(data: $password, placeholder: "Password", isSecureTextEntry: true, error: getPasswordValidation(password: password))
                 TextInput(data: $confirmPassword, placeholder: "Confirm Password", isSecureTextEntry: true, error: getConfirmPasswordValidation(password: password, confirmPassword: confirmPassword))
                 
-                Button {
+                ButtonComponent {
                     Task    {
                         do {
                             await MainActor.run {
-                                loadingManager.isLoading.toggle()
+                                loadingManager.isLoadingButton.toggle()
                             }
-                           let token = try await register(email: email, password: password)
+                            let token = try await register(email: email, password: password)
                             appToken.token = token ?? ""
                             await MainActor.run {
-                                loadingManager.isLoading.toggle()
+                                loadingManager.isLoadingButton.toggle()
                                 navigationManager.path.removeAll()
                             }
                         }
@@ -49,7 +49,7 @@ struct Register: View {
                     }
                 } label: {
                     Text("Submit")
-                }.fontWeight(.bold).foregroundColor(.white)        .fontWeight(.bold)
+                }.fontWeight(.bold).foregroundColor(.white).fontWeight(.bold)
                     .frame(maxWidth: .infinity, maxHeight: 40)
                     .background(.cyan)
                     .cornerRadius(16).disabled(isButtonDisabled).opacity(isButtonDisabled ? 0.5 : 1)
