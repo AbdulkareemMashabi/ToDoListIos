@@ -10,6 +10,9 @@ import SwiftUI
 struct Login: View {
     @State private var email: String = ""
     @State private var password: String = ""
+    @EnvironmentObject private var loadingManager: LoadingManager
+    @EnvironmentObject private var appToken: AppToken
+    @EnvironmentObject private var navigationManager: NavigationManager
     private var isButtonDisabled: Bool {
         return email.isEmpty || password.isEmpty
     }
@@ -25,13 +28,31 @@ struct Login: View {
                 TextInput(data: $password, placeholder: "Password", isSecureTextEntry: true, error: getEmptyErrorMessage(fieldName: "password", fieldValue:password))
                 
                 Button {
-                    
+
                 } label: {
                     Text("Forget Password").fontWeight(.bold).foregroundColor(.cyan)
                 }
                 
-                Button {
-                    
+                ButtonComponent {
+                    Task {
+                        do {
+                           await MainActor.run {
+                               loadingManager.isLoadingButton.toggle()
+                            }
+                            let token = try await login(email: email, password: password)
+                            appToken.token = token ?? ""
+                            await MainActor.run {
+                                loadingManager.isLoadingButton.toggle()
+                                navigationManager.path.removeAll()
+                             }
+                            
+                        } catch {
+                            print("error \(error)")
+                            await MainActor.run {
+                                loadingManager.isLoadingButton.toggle()
+                            }
+                        }
+                    }
                 } label: {
                     Text("Login")
                 }.fontWeight(.bold).fontWeight(.bold)
