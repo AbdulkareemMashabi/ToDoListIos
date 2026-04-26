@@ -31,7 +31,7 @@ func register(email: String, password: String) async throws -> String? {
     let requestBodyEncoded = try JSONEncoder().encode(newUser)
     let urlRequest = getURLRequest(url: "http://127.0.0.1:8080/auth/signUp", httpMethod: "POST", headers: ["Content-Type": "application/json" ], body: requestBodyEncoded)
 
-    let (data, response) = try await URLSession.shared.data(for: urlRequest)
+    let (_, response) = try await URLSession.shared.data(for: urlRequest)
 
     guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
         return nil
