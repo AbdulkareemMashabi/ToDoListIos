@@ -6,13 +6,39 @@
 //
 
 import SwiftUI
+import Lottie
 
-struct ButtonComponent: View {
+struct ButtonComponent<LabelView: View>: View {
+    var action: () -> Void
+    @ViewBuilder var label: () -> LabelView
+    @EnvironmentObject private var loadingManager: LoadingManager
+    let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Lotties/loadingButton.json"
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: action) {
+            if loadingManager.isLoadingButton {
+                LottieView(animation: .filepath(filePath))
+                    .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
+                    .scaleEffect(0.6)
+            }
+            else {
+                label()
+            }
+            
+        }
     }
 }
 
 #Preview {
-    ButtonComponent()
+    ButtonComponent(action: {
+        // Preview action
+        print("Button tapped")
+    }) {
+        Text("Tap me")
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(.blue)
+            .foregroundStyle(.white)
+            .clipShape(Capsule())
+    }
 }
