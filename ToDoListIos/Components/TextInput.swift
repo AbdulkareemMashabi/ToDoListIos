@@ -20,21 +20,48 @@ struct TextInput: View {
     @State private var isShowPassword: Bool = false
     var charsLimits: Int?
     var error: String
+    var isTextArea: Bool = false
     
     var body: some View {
         VStack(alignment:.leading) {
             ZStack(alignment: .leading)  {
-                TextField("", text: $data).keyboardType(keyboardType).focused($isTextFieldFocus).padding(.leading,8).padding(.top, 8).frame(maxHeight: 40).background(.white).cornerRadius(16).shadow(radius: 2).foregroundColor(!isShowPassword && isSecureTextEntry ? .clear : .black).onChange(of:isTextFieldFocus){
-                    if isTextFieldFocus {
-                        hasFocusedBefore = true
-                    }
-                }.onChange(of:data) {
-                    if let charsLimits, data.count > charsLimits {
-                        data = String(data.prefix(charsLimits))
+                if isTextArea {
+                    TextEditor(text: $data)
+                        .focused($isTextFieldFocus)
+                        .padding(.horizontal, 4)
+                        .padding(.top, 4)
+                        .frame(height: 112)
+                        .scrollContentBackground(.hidden)
+                        .background(.white)
+                        .cornerRadius(16)
+                        .shadow(radius: 2)
+                        .onChange(of: isTextFieldFocus) {
+                            if isTextFieldFocus {
+                                hasFocusedBefore = true
+                            }
+                        }
+                        .onChange(of: data) {
+                            if let charsLimits,
+                               data.count > charsLimits {
+                                
+                                data = String(data.prefix(charsLimits))
+                            }
+                        }
+                }
+                else {
+                    TextField("", text: $data).keyboardType(keyboardType).focused($isTextFieldFocus).padding(.leading,8).padding(.top, 8).frame(maxHeight: 40).background(.white).cornerRadius(16).shadow(radius: 2).foregroundColor(!isShowPassword && isSecureTextEntry ? .clear : .black).onChange(of:isTextFieldFocus){
+                        if isTextFieldFocus {
+                            hasFocusedBefore = true
+                        }
+                    }.onChange(of:data) {
+                        if let charsLimits, data.count > charsLimits {
+                            data = String(data.prefix(charsLimits))
+                        }
                     }
                 }
                 
-                Text(placeholder).offset(y: forceToFocused ? -12: 0).padding(.leading, 8).font(forceToFocused ? .caption : .body).foregroundColor(.gray).animation(.spring, value: isTextFieldFocus)
+                
+                Text(placeholder).offset(y: forceToFocused ? isTextArea ? -47 : -13 : 0).padding(.leading, 8).font(forceToFocused ? .caption : .body).foregroundColor(.gray).animation(.spring, value: isTextFieldFocus)
                 
                 if !isShowPassword && isSecureTextEntry {
                     Text(String(repeating: "•", count: data.count))
