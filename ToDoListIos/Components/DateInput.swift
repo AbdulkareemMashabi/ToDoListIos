@@ -37,6 +37,8 @@ struct DateInput: View {
                     .foregroundColor(.gray)
                     .animation(.spring, value: forceToFocused)
                     .allowsHitTesting(false)
+                
+                Image("calendar").frame(maxWidth: .infinity, alignment: .trailing).padding(8)
 
                 // Transparent tap target covering the whole field
                 Color.clear
@@ -45,6 +47,8 @@ struct DateInput: View {
                         hasFocusedBefore = true
                         showDatePicker = true
                     }
+                
+
             }
             .frame(height: 40)
             .padding(.top, 12)
