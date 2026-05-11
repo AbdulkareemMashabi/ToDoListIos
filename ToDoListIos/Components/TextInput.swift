@@ -84,7 +84,7 @@ struct TextInput: View {
                 
             }
             
-            if !error.isEmpty && (forceToFocused || hasFocusedBefore) {
+            if !error.isEmpty && hasFocusedBefore {
                 Text(error).foregroundColor(.red).contentMargins(.top, 8).padding(4)
             }
         }
