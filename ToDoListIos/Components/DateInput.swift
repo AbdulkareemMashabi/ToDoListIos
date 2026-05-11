@@ -51,7 +51,6 @@ struct DateInput: View {
 
             }
             .frame(height: 40)
-            .padding(.top, 12)
             // Sheet with DatePicker
             .sheet(isPresented: $showDatePicker) {
                 VStack {
