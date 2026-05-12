@@ -55,7 +55,7 @@ struct Login: View {
                     }
                 } label: {
                     Text("Login")
-                }.fontWeight(.bold).fontWeight(.bold)
+                }.fontWeight(.bold)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, maxHeight: 40)
                     .background(.cyan)

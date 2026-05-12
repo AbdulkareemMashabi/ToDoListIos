@@ -49,7 +49,7 @@ struct Register: View {
                     }
                 } label: {
                     Text("Submit")
-                }.fontWeight(.bold).foregroundColor(.white).fontWeight(.bold)
+                }.fontWeight(.bold).foregroundColor(.white)
                     .frame(maxWidth: .infinity, maxHeight: 40)
                     .background(.cyan)
                     .cornerRadius(16).disabled(isButtonDisabled).opacity(isButtonDisabled ? 0.5 : 1)
