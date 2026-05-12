@@ -19,12 +19,12 @@ struct TextInput: View {
     var keyboardType: UIKeyboardType = .default
     @State private var isShowPassword: Bool = false
     var charsLimits: Int?
-    var error: String
+    var error: String = ""
     var isTextArea: Bool = false
-    
+
     var body: some View {
-        VStack(alignment:.leading) {
-            ZStack(alignment: .leading)  {
+        VStack(alignment: .leading) {
+            ZStack(alignment: .leading) {
                 if isTextArea {
                     TextEditor(text: $data)
                         .focused($isTextFieldFocus)
@@ -41,59 +41,97 @@ struct TextInput: View {
                             }
                         }
                         .onChange(of: data) {
-                            if let charsLimits,
-                               data.count > charsLimits {
-                                
+                            if let charsLimits, data.count > charsLimits {
+                                data = String(data.prefix(charsLimits))
+                            }
+                        }
+                } else if !isShowPassword && isSecureTextEntry {
+                    SecureField("", text: $data)
+                        .focused($isTextFieldFocus)
+                        .padding(.leading, 8)
+                        .padding(.top, 8)
+                        .frame(maxHeight: 40)
+                        .background(.white)
+                        .cornerRadius(16)
+                        .shadow(radius: 2)
+                        .onChange(of: isTextFieldFocus) {
+                            if isTextFieldFocus {
+                                hasFocusedBefore = true
+                            }
+                        }
+                        .onChange(of: data) {
+                            if let charsLimits, data.count > charsLimits {
+                                data = String(data.prefix(charsLimits))
+                            }
+                        }
+                } else {
+                    TextField("", text: $data)
+                        .keyboardType(keyboardType)
+                        .focused($isTextFieldFocus)
+                        .padding(.leading, 8)
+                        .padding(.top, 8)
+                        .frame(maxHeight: 40)
+                        .background(.white)
+                        .cornerRadius(16)
+                        .shadow(radius: 2)
+                        .foregroundColor(.black)
+                        .onChange(of: isTextFieldFocus) {
+                            if isTextFieldFocus {
+                                hasFocusedBefore = true
+                            }
+                        }
+                        .onChange(of: data) {
+                            if let charsLimits, data.count > charsLimits {
                                 data = String(data.prefix(charsLimits))
                             }
                         }
                 }
-                else {
-                    TextField("", text: $data).keyboardType(keyboardType).focused($isTextFieldFocus).padding(.leading,8).padding(.top, 8).frame(maxHeight: 40).background(.white).cornerRadius(16).shadow(radius: 2).foregroundColor(!isShowPassword && isSecureTextEntry ? .clear : .black).onChange(of:isTextFieldFocus){
-                        if isTextFieldFocus {
-                            hasFocusedBefore = true
+
+                Text(placeholder)
+                    .offset(y: {
+                        if forceToFocused {
+                            return isTextArea ? -47 : -13
+                        } else {
+                            return 0
                         }
-                    }.onChange(of:data) {
-                        if let charsLimits, data.count > charsLimits {
-                            data = String(data.prefix(charsLimits))
-                        }
-                    }
-                }
-                
-                
-                Text(placeholder).offset(y: forceToFocused ? isTextArea ? -47 : -13 : 0).padding(.leading, 8).font(forceToFocused ? .caption : .body).foregroundColor(.gray).animation(.spring, value: isTextFieldFocus)
-                
-                if !isShowPassword && isSecureTextEntry {
-                    Text(String(repeating: "•", count: data.count))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading,8).padding(.top, 8).font(.headline).kerning(1)
-                }
-                
+                    }())
+                    .padding(.leading, 8)
+                    .font(forceToFocused ? .caption : .body)
+                    .foregroundColor(.gray)
+                    .animation(.spring, value: forceToFocused)
+                    .allowsHitTesting(false)
+
                 if isSecureTextEntry {
                     HStack {
                         Spacer()
                         Button {
-                            isShowPassword = !isShowPassword
+                            isShowPassword.toggle()
                         } label: {
-                            Image(systemName:isShowPassword ? "eye": "eye.slash")
-                        }.frame( alignment: .trailing).padding(.trailing, 8)
+                            Image(systemName: isShowPassword ? "eye" : "eye.slash")
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.trailing, 8)
                     }
-                    
-                    
                 }
-                
             }
-            
+
             if !error.isEmpty && hasFocusedBefore {
-                Text(error).foregroundColor(.red).contentMargins(.top, 8).padding(4)
+                Text(error)
+                    .foregroundColor(.red)
+                    .padding(.top, 8)
+                    .padding(.horizontal, 4)
             }
         }
-        
-        
     }
 }
 
 #Preview {
-    @Previewable @State var data: String = "mdre"
-    TextInput(data: $data, placeholder: "klmne", error: "")
+    @Previewable @State var data: String = ""
+    VStack(spacing: 24) {
+        TextInput(data: $data, placeholder: "Username")
+        TextInput(data: $data, placeholder: "Password", isSecureTextEntry: true)
+        TextInput(data: $data, placeholder: "Bio", isTextArea: true)
+        TextInput(data: $data, placeholder: "With error", error: "This field is required")
+    }
+    .padding()
 }
