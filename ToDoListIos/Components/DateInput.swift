@@ -85,5 +85,4 @@ struct DateInput: View {
 
 #Preview {
     DateInput(placeholder: "Select date", error: "Required")
-        .padding()
 }
