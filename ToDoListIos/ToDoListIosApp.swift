@@ -14,6 +14,7 @@ struct ToDoListIosApp: App {
     @StateObject private var loadingManager = LoadingManager()
     @StateObject private var appToken = AppToken()
     @StateObject var navigationManager = NavigationManager()
+    @StateObject var appColors = AppColors()
     let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Lotties/splash.json"
     var body: some Scene {
         WindowGroup {
@@ -59,7 +60,7 @@ struct ToDoListIosApp: App {
             
             
             
-        }.environmentObject(loadingManager).environmentObject(appToken)                .environmentObject(navigationManager)
+        }.environmentObject(loadingManager).environmentObject(appToken).environmentObject(navigationManager).environmentObject(appColors)
         
     }
 }
