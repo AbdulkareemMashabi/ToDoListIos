@@ -37,6 +37,8 @@ struct ToDoListIosApp: App {
                             Login()
                         case .register:
                             Register()
+                        case .createNewTask:
+                            CreateNewTask()
                         }
                     }
                 }
