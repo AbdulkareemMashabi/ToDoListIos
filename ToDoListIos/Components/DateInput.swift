@@ -5,6 +5,7 @@ struct DateInput: View {
     @State private var dateString = ""
     @State private var hasFocusedBefore = false
     @State private var showDatePicker = false
+    var dateIconColor: Color = .red
 
     var placeholder: String = ""
     var error: String = ""
@@ -38,7 +39,7 @@ struct DateInput: View {
                     .animation(.spring, value: forceToFocused)
                     .allowsHitTesting(false)
                 
-                Image("calendar").frame(maxWidth: .infinity, alignment: .trailing).padding(8)
+                Image("calendar").renderingMode(.template).foregroundStyle(dateIconColor).frame(maxWidth: .infinity, alignment: .trailing).padding(8)
 
                 // Transparent tap target covering the whole field
                 Color.clear
