@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct Dashboard: View {
+    @EnvironmentObject private var navigationManager: NavigationManager
     var body: some View {
         VStack {
             Image("emptyListPic")
                 .imageScale(.large)
             Text("You don't have tasks").fontWeight(.bold)
             Text("To create new task click on the plus (+) button").fontWeight(.bold).foregroundStyle(.gray)
-            NavigationLink(value: Route.login) {
+            NavigationLink(value: Route.createNewTask) {
                 Image(systemName: "plus")
                     .padding(.vertical, 12)
                     .padding(.horizontal, 8)
@@ -28,7 +29,9 @@ struct Dashboard: View {
                                             AnyView(Button { } label: {
                                                 Image(systemName: "globe").foregroundStyle(.blue)
                                             }),
-                                            AnyView(Button { } label: {
+                                            AnyView(Button {
+                                                navigationManager.path.append(.register)
+                                            } label: {
                                                 Image(systemName: "cloud").foregroundStyle(.blue)
                                             })
                                         ]).padding()
