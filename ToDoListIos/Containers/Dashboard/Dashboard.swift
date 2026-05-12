@@ -30,7 +30,7 @@ struct Dashboard: View {
                                                 Image(systemName: "globe").foregroundStyle(.blue)
                                             }),
                                             AnyView(Button {
-                                                navigationManager.path.append(.register)
+                                                navigationManager.path.append(.login)
                                             } label: {
                                                 Image(systemName: "cloud").foregroundStyle(.blue)
                                             })
