@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct Login: View {
     @State private var email: String = ""
@@ -28,7 +29,7 @@ struct Login: View {
                 TextInput(data: $password, placeholder: "Password", isSecureTextEntry: true, error: getEmptyErrorMessage(fieldName: "password", fieldValue:password))
                 
                 Button {
-
+                    
                 } label: {
                     Text("Forget Password").fontWeight(.bold).foregroundColor(.cyan)
                 }
@@ -36,15 +37,15 @@ struct Login: View {
                 ButtonComponent {
                     Task {
                         do {
-                           await MainActor.run {
-                               loadingManager.isLoadingButton.toggle()
+                            await MainActor.run {
+                                loadingManager.isLoadingButton.toggle()
                             }
                             let token = try await login(email: email, password: password)
                             appToken.token = token ?? ""
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
                                 navigationManager.path.removeAll()
-                             }
+                            }
                             
                         } catch {
                             print("error \(error)")
@@ -66,7 +67,24 @@ struct Login: View {
                 }
                 
                 Button {
-                    
+                    Task {
+                        do {
+                            await MainActor.run {
+                                loadingManager.isLoading.toggle()
+                            }
+                            let token = try await signUpAndLoginUsingDeviceId()
+                            appToken.token = token ?? ""
+                            await MainActor.run {
+                                loadingManager.isLoading.toggle()
+                                navigationManager.path.removeAll()
+                            }
+                        }catch {
+                            print("error \(error)")
+                            await MainActor.run {
+                                loadingManager.isLoading.toggle()
+                            }
+                        }
+                    }
                 } label: {
                     Image(systemName: "person").resizable().frame(width: 20, height: 20).foregroundColor(.cyan)
                     Text("Guest Login").foregroundColor(.cyan).fontWeight(.bold)
