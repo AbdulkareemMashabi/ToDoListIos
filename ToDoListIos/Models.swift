@@ -7,8 +7,9 @@
 
 
 struct User: Codable {
-    let email: String
-    let password: String
+    let email: String?
+    let password: String?
+    let deviceId: String?
 }
 
 struct LoginBody: Codable {
