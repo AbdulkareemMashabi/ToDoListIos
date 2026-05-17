@@ -31,9 +31,20 @@ struct Dashboard: View {
                                                 Image(systemName: "globe").foregroundStyle(.blue)
                                             }),
                                             AnyView(Button {
-                                                navigationManager.path.append(.login)
+                                                if(appToken.token.isEmpty)
+                                                {
+                                                    navigationManager.path.append(.login)
+                                                }
+                                                else {
+                                                    appToken.token = ""
+                                                }
                                             } label: {
-                                                Image(systemName: "cloud").foregroundStyle(.blue)
+                                                if(appToken.token.isEmpty) {
+                                                    Image(systemName:"cloud").foregroundStyle(.blue)
+                                                }
+                                                else {
+                                                    Image("logOut")
+                                                }
                                             })
                                         ]).padding()
     }
