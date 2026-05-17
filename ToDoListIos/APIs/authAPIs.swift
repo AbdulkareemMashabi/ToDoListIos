@@ -6,9 +6,11 @@
 //
 //import Combine
 import Foundation
+import UIKit
+
 
 func login(email: String, password: String) async throws -> String?{
-    let newUser = User(email: email, password: try encryptPasswordLikeCryptoJS(password))
+    let newUser = User(email: email, password: try encryptPasswordLikeCryptoJS(password), deviceId: nil)
     let requestBodyEncoded = try JSONEncoder().encode(newUser)
     let urlRequest = getURLRequest(url: "http://127.0.0.1:8080/auth/login", httpMethod: "POST", headers: ["Content-Type": "application/json" ], body: requestBodyEncoded)
 
@@ -27,7 +29,7 @@ func login(email: String, password: String) async throws -> String?{
 }
 
 func register(email: String, password: String) async throws -> String? {
-    let newUser = User(email: email, password: try encryptPasswordLikeCryptoJS(password))
+    let newUser = User(email: email, password: try encryptPasswordLikeCryptoJS(password), deviceId: nil)
     let requestBodyEncoded = try JSONEncoder().encode(newUser)
     let urlRequest = getURLRequest(url: "http://127.0.0.1:8080/auth/signUp", httpMethod: "POST", headers: ["Content-Type": "application/json" ], body: requestBodyEncoded)
 
@@ -38,6 +40,28 @@ func register(email: String, password: String) async throws -> String? {
     }
     
     return try await login(email: email, password: password)
+
+}
+
+func signUpAndLoginUsingDeviceId() async throws -> String? {
+    guard let deviceId = await UIDevice.current.identifierForVendor?.uuidString else {
+        return nil
+    }
+    let newUser = User(email: nil, password: nil, deviceId: try encryptPasswordLikeCryptoJS(deviceId))
+    let requestBodyEncoded = try JSONEncoder().encode(newUser)
+    let urlRequest = getURLRequest(url: "http://127.0.0.1:8080/auth/signup-Id", httpMethod: "POST", headers: ["Content-Type": "application/json" ], body: requestBodyEncoded)
+
+    let (data, response) = try await URLSession.shared.data(for: urlRequest)
+
+    guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+        return nil
+    }
+    
+    guard let result = try? JSONDecoder().decode(LoginBody.self, from: data) else {
+        return nil
+    }
+    
+    return result.token
 
 }
 
