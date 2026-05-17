@@ -9,13 +9,14 @@ import SwiftUI
 
 struct Dashboard: View {
     @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject private var appToken: AppToken
     var body: some View {
         VStack {
             Image("emptyListPic")
                 .imageScale(.large)
             Text("You don't have tasks").fontWeight(.bold)
             Text("To create new task click on the plus (+) button").fontWeight(.bold).foregroundStyle(.gray)
-            NavigationLink(value: Route.createNewTask) {
+            NavigationLink(value: appToken.token.isEmpty ? Route.login : Route.createNewTask ) {
                 Image(systemName: "plus")
                     .padding(.vertical, 12)
                     .padding(.horizontal, 8)
