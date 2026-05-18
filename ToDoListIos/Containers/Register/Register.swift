@@ -15,7 +15,7 @@ struct Register: View {
     @EnvironmentObject var appToken: AppToken
     @EnvironmentObject var navigationManager: NavigationManager
     private var isButtonDisabled: Bool {
-        return email.isEmpty || password.isEmpty || confirmPassword.isEmpty || (password != confirmPassword) || password.count < 6
+        return email.isEmpty || password.isEmpty || confirmPassword.isEmpty || (password != confirmPassword) || password.count < 6 || !isValidEmail(email)
     }
     var body: some View {
         ZStack{

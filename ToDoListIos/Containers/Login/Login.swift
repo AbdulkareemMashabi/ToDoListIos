@@ -15,7 +15,7 @@ struct Login: View {
     @EnvironmentObject private var appToken: AppToken
     @EnvironmentObject private var navigationManager: NavigationManager
     private var isButtonDisabled: Bool {
-        return email.isEmpty || password.isEmpty
+        return email.isEmpty || password.isEmpty ||  !isValidEmail(email)
     }
     var body: some View {
         ZStack{
@@ -29,7 +29,7 @@ struct Login: View {
                 TextInput(data: $password, placeholder: "Password", isSecureTextEntry: true, error: getEmptyErrorMessage(fieldName: "password", fieldValue:password))
                 
                 Button {
-                    
+                    navigationManager.path.append(Route.forgetPassword)
                 } label: {
                     Text("Forget Password").fontWeight(.bold).foregroundColor(.cyan)
                 }
