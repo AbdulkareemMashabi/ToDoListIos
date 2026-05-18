@@ -22,7 +22,7 @@ struct ButtonComponent<LabelView: View>: View {
                     .scaleEffect(0.6)
             }
             else {
-                label()
+                label().frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             
         }
