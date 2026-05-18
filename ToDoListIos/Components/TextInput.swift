@@ -113,7 +113,7 @@ struct TextInput: View {
                         .padding(.trailing, 8)
                     }
                 }
-            }
+            }.frame(maxWidth: .infinity, maxHeight: isTextArea ? 112 : 40)
 
             if !error.isEmpty && hasFocusedBefore {
                 Text(error)
