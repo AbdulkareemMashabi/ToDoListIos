@@ -8,8 +8,53 @@
 import SwiftUI
 
 struct ForgetPassword: View {
+    @State private var email = ""
+    @State private var newPassword = ""
+    private var isButtonDisabled: Bool {
+        return !isValidEmail(email) || email.isEmpty
+    }
+    @EnvironmentObject private var loadingManager: LoadingManager
+    @EnvironmentObject private var navigationManager: NavigationManager
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack (alignment: .top){
+            Image("waves").resizable().ignoresSafeArea()
+            VStack(alignment:.leading) {
+                Text("Please enter email").fontWeight(.bold)
+                Text("You will recieve an email with reset link").foregroundStyle(.gray)
+                TextInput(data: $email, placeholder: "Email", error: getEmailValidation(email: email))
+                TextInput(data: $newPassword, placeholder: "New Password", isSecureTextEntry: true, error: getEmptyErrorMessage(fieldName: "New Password", fieldValue:newPassword))
+                ButtonComponent {
+                    Task {
+                        do {
+                            await MainActor.run {
+                                loadingManager.isLoadingButton.toggle()
+                            }
+                            try await resetPassword(email: email, password: newPassword)
+                            await MainActor.run {
+                                loadingManager.isLoadingButton.toggle()
+                                navigationManager.path.removeLast()
+                            }
+                        }catch {
+                            print("error \(error)")
+                            await MainActor.run {
+                                loadingManager.isLoadingButton.toggle()
+                            }
+                        }
+                    }
+                    
+                } label: {
+                    Text("Submit")
+                }.fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, maxHeight: 40)
+                    .background(.cyan)
+                    .cornerRadius(16).disabled(isButtonDisabled).opacity(isButtonDisabled ? 0.5 : 1)
+                
+            }.padding()
+            
+            
+        }.navigationTitle("Forget Password").navigationBarTitleDisplayMode(.inline)
     }
 }
 

@@ -15,4 +15,5 @@ enum Route: Hashable {
     case login
     case register
     case createNewTask
+    case forgetPassword
 }

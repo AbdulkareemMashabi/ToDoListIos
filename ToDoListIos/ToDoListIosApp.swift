@@ -40,6 +40,8 @@ struct ToDoListIosApp: App {
                             Register()
                         case .createNewTask:
                             CreateNewTask()
+                        case .forgetPassword:
+                            ForgetPassword()
                         }
                     }
                 }
