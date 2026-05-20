@@ -15,6 +15,7 @@ struct ForgetPassword: View {
     }
     @EnvironmentObject private var loadingManager: LoadingManager
     @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject var toastManager: ToastManager
     
     var body: some View {
         ZStack (alignment: .top){
@@ -33,6 +34,7 @@ struct ForgetPassword: View {
                             try await resetPassword(email: email, password: newPassword)
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
+                                toastManager.show("Password Reset Successfully")
                                 navigationManager.path.removeLast()
                             }
                         }catch {

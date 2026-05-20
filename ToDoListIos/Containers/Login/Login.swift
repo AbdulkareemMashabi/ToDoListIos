@@ -14,6 +14,7 @@ struct Login: View {
     @EnvironmentObject private var loadingManager: LoadingManager
     @EnvironmentObject private var appToken: AppToken
     @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject var toastManager: ToastManager
     private var isButtonDisabled: Bool {
         return email.isEmpty || password.isEmpty ||  !isValidEmail(email)
     }
@@ -41,9 +42,10 @@ struct Login: View {
                                 loadingManager.isLoadingButton.toggle()
                             }
                             let token = try await login(email: email, password: password)
-                            appToken.token = token ?? ""
+                            appToken.token = token
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
+                                toastManager.show("Login Successfully")
                                 navigationManager.path.removeAll()
                             }
                             
@@ -73,9 +75,10 @@ struct Login: View {
                                 loadingManager.isLoading.toggle()
                             }
                             let token = try await signUpAndLoginUsingDeviceId()
-                            appToken.token = token ?? ""
+                            appToken.token = token
                             await MainActor.run {
                                 loadingManager.isLoading.toggle()
+                                toastManager.show("Login Successfully")
                                 navigationManager.path.removeAll()
                             }
                         }catch {

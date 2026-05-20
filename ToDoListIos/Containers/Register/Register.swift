@@ -14,6 +14,7 @@ struct Register: View {
     @EnvironmentObject var loadingManager: LoadingManager
     @EnvironmentObject var appToken: AppToken
     @EnvironmentObject var navigationManager: NavigationManager
+    @EnvironmentObject var toastManager: ToastManager
     private var isButtonDisabled: Bool {
         return email.isEmpty || password.isEmpty || confirmPassword.isEmpty || (password != confirmPassword) || password.count < 6 || !isValidEmail(email)
     }
@@ -33,9 +34,10 @@ struct Register: View {
                                 loadingManager.isLoadingButton.toggle()
                             }
                             let token = try await register(email: email, password: password)
-                            appToken.token = token ?? ""
+                            appToken.token = token
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
+                                toastManager.show("Register successfully")
                                 navigationManager.path.removeAll()
                             }
                         }
