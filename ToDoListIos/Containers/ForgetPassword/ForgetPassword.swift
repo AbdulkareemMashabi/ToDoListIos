@@ -16,6 +16,7 @@ struct ForgetPassword: View {
     @EnvironmentObject private var loadingManager: LoadingManager
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject var toastManager: ToastManager
+    @EnvironmentObject var alertManager: AlertManager
     
     var body: some View {
         ZStack (alignment: .top){
@@ -38,7 +39,8 @@ struct ForgetPassword: View {
                                 navigationManager.path.removeLast()
                             }
                         }catch {
-                            print("error \(error)")
+                            let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+                            alertManager.show(message: message)
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
                             }
