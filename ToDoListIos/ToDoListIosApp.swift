@@ -1,5 +1,6 @@
 import SwiftUI
 import Lottie
+import FirebaseCore
 
 @main
 struct ToDoListIosApp: App {
@@ -10,8 +11,13 @@ struct ToDoListIosApp: App {
     @StateObject private var navigationManager = NavigationManager()
     @StateObject private var appColors = AppColors()
     @StateObject private var toastManager = ToastManager()
+    @StateObject private var alertManager = AlertManager()
 
     let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Lotties/splash.json"
+    
+    init() {
+//        FirebaseApp.configure()
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -92,12 +98,20 @@ struct ToDoListIosApp: App {
                         .zIndex(2000)
                 }
             }
+            .alert(alertManager.title, isPresented: $alertManager.isPresented) {
+                Button("OK") {
+                    alertManager.hide()
+                }
+            } message: {
+                Text(alertManager.message)
+            }
             .animation(.easeInOut(duration: 0.3), value: toastManager.isShowing)
             .environmentObject(loadingManager)
             .environmentObject(appToken)
             .environmentObject(navigationManager)
             .environmentObject(appColors)
             .environmentObject(toastManager)
+            .environmentObject(alertManager)
         }
     }
 }
