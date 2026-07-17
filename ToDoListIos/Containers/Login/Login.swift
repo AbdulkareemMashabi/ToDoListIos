@@ -42,7 +42,8 @@ struct Login: View {
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
                             }
-                            let token = try await login(email: email, password: password)
+                            let token = try await loginFireBase(email: email, password: password)
+                            Storage.save(key: "token", value: token)
                             appToken.token = token
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
@@ -77,8 +78,11 @@ struct Login: View {
                             await MainActor.run {
                                 loadingManager.isLoading.toggle()
                             }
-                            let token = try await signUpAndLoginUsingDeviceId()
-                            appToken.token = token
+                            guard let deviceId = UIDevice.current.identifierForVendor?.uuidString else {
+                                throw AuthAPIError.missingDeviceID
+                            }
+                            Storage.save(key: "token", value: deviceId)
+                            appToken.token = deviceId
                             await MainActor.run {
                                 loadingManager.isLoading.toggle()
                                 toastManager.show("Login Successfully")

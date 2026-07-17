@@ -34,7 +34,8 @@ struct Register: View {
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
                             }
-                            let token = try await register(email: email, password: password)
+                            let token = try await signUpFireBase(email: email, password: password)
+                            Storage.save(key: "token", value: token)
                             appToken.token = token
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
