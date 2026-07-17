@@ -10,6 +10,7 @@ import SwiftUI
 struct Dashboard: View {
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject private var appToken: AppToken
+    
     var body: some View {
         VStack {
             Image("emptyListPic")
@@ -24,6 +25,8 @@ struct Dashboard: View {
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top, 40)
+        }.onAppear {
+            appToken.token = Storage.load(key: "token") ?? ""
         }.customToolbar(                title: "My Wishes",
                                         leftButtons: [],
                                         rightButtons: [
@@ -37,6 +40,7 @@ struct Dashboard: View {
                                                 }
                                                 else {
                                                     appToken.token = ""
+                                                    Storage.save(key: "token", value: "")
                                                 }
                                             } label: {
                                                 if(appToken.token.isEmpty) {
