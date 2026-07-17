@@ -7,6 +7,7 @@
 //import Combine
 import Foundation
 import UIKit
+import FirebaseAuth
 
 enum AuthAPIError: Error, LocalizedError {
     case invalidResponseStatus(Int)
@@ -123,3 +124,28 @@ func resetPassword(email: String, password: String) async throws {
         throw error
     }
 }
+
+func signUpFireBase(email: String, password: String) async throws -> String {
+    do {
+       let result = try await Auth.auth().createUser(withEmail: email, password: password)
+        return result.user.uid
+    }catch {
+        throw error
+    }
+
+}
+
+func loginFireBase(email: String, password: String) async throws -> String {
+    do {
+       let result = try await Auth.auth().signIn(
+        withEmail: email,
+        password: password
+    )
+        return result.user.uid
+    }catch {
+        throw error
+    }
+
+}
+
+
