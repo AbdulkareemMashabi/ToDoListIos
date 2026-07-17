@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D384411300101D000FA12D5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5D384410300101D000FA12D5 /* FirebaseAuth */; };
+		5D384413300101D000FA12D5 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D384412300101D000FA12D5 /* FirebaseCore */; };
+		5D384415300101D000FA12D5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D384414300101D000FA12D5 /* FirebaseFirestore */; };
 		5DD720922F7569A10065BA99 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD720912F7569A10065BA99 /* CryptoSwift */; };
 		5DD720952F756A1E0065BA99 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD720942F756A1E0065BA99 /* Lottie */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DD720922F7569A10065BA99 /* CryptoSwift in Frameworks */,
+				5D384411300101D000FA12D5 /* FirebaseAuth in Frameworks */,
+				5D384413300101D000FA12D5 /* FirebaseCore in Frameworks */,
+				5D384415300101D000FA12D5 /* FirebaseFirestore in Frameworks */,
 				5DD720952F756A1E0065BA99 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +135,9 @@
 			packageProductDependencies = (
 				5DD720912F7569A10065BA99 /* CryptoSwift */,
 				5DD720942F756A1E0065BA99 /* Lottie */,
+				5D384410300101D000FA12D5 /* FirebaseAuth */,
+				5D384412300101D000FA12D5 /* FirebaseCore */,
+				5D384414300101D000FA12D5 /* FirebaseFirestore */,
 			);
 			productName = ToDoListIos;
 			productReference = 5DA70A252E9EC5C600F2C141 /* ToDoListIos.app */;
@@ -215,6 +224,7 @@
 			packageReferences = (
 				5DD720902F7569A10065BA99 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				5DD720932F756A1E0065BA99 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				5D38440F300101D000FA12D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5DA70A262E9EC5C600F2C141 /* Products */;
@@ -581,6 +591,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5D38440F300101D000FA12D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.16.0;
+			};
+		};
 		5DD720902F7569A10065BA99 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
@@ -600,6 +618,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5D384410300101D000FA12D5 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D38440F300101D000FA12D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		5D384412300101D000FA12D5 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D38440F300101D000FA12D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		5D384414300101D000FA12D5 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D38440F300101D000FA12D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		5DD720912F7569A10065BA99 /* CryptoSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5DD720902F7569A10065BA99 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
