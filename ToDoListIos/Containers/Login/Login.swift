@@ -62,11 +62,7 @@ struct Login: View {
                     }
                 } label: {
                     Text("Login")
-                }.fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, maxHeight: 40)
-                    .background(.cyan)
-                    .cornerRadius(16).disabled(isButtonDisabled).opacity(isButtonDisabled ? 0.5 : 1)
+                }.formButtonStyle().isButtonDisabled(isButtonDisabled)
                 
                 NavigationLink(value: Route.register) {
                     Text("Register").fontWeight(.bold).foregroundColor(.cyan).frame(maxWidth:.infinity, alignment: .center).padding(.top)
@@ -108,7 +104,7 @@ struct Login: View {
         }.customToolbar(title: "Login", rightButtons: [
             AnyView(
                 Button {
-                    
+                    navigationManager.path.append(.accountDeletion)
                 } label: {
                     Image("accountDeletion")
                 }

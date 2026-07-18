@@ -35,10 +35,7 @@ struct CreateNewTask: View {
                     }
                 } label: {
                     Text("Submit")
-                }.fontWeight(.bold).foregroundColor(.white)
-                    .frame(maxWidth: .infinity, maxHeight: 40)
-                    .background(color.color)
-                    .cornerRadius(16).disabled(isButtonDisabled).opacity(isButtonDisabled ? 0.5 : 1)
+                }.formButtonStyle().isButtonDisabled(isButtonDisabled)
             }.padding(12).frame(width: UIScreen.main.bounds.width).background(    RoundedRectangle(cornerRadius: 20)
                 .fill(.white)
                 .shadow(radius: 6).ignoresSafeArea()).onAppear {

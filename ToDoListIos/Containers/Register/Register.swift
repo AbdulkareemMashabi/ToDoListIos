@@ -54,10 +54,7 @@ struct Register: View {
                     }
                 } label: {
                     Text("Submit")
-                }.fontWeight(.bold).foregroundColor(.white)
-                    .frame(maxWidth: .infinity, maxHeight: 40)
-                    .background(.cyan)
-                    .cornerRadius(16).disabled(isButtonDisabled).opacity(isButtonDisabled ? 0.5 : 1)
+                }.formButtonStyle().isButtonDisabled(isButtonDisabled)
                 
                 
             }       .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top).padding()
