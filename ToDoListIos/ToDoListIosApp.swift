@@ -17,10 +17,6 @@ struct ToDoListIosApp: App {
 
 
     let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Lotties/splash.json"
-    
-    init() {
-//        FirebaseApp.configure()
-    }
 
     var body: some Scene {
         WindowGroup {
