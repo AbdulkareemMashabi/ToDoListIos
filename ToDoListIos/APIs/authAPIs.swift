@@ -167,11 +167,9 @@ func deleteAccountFirebase(email: String, password: String) async throws {
             userId = try await loginFireBase(email: email, password: password)
         }
         
-        let token: String = Storage.load(key: "token")?.isEmpty == true ? userId : Storage.load(key: "token")!
-        
         let db = Firestore.firestore()
         
-        let snapshot = try await db.collection(token).getDocuments()
+        let snapshot = try await db.collection(userId).getDocuments()
 
         let batch = db.batch()
 
