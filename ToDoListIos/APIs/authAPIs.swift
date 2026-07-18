@@ -148,4 +148,12 @@ func loginFireBase(email: String, password: String) async throws -> String {
 
 }
 
+func resetPasswordFirebase(email: String) async throws {
+    do {
+        try await Auth.auth().sendPasswordReset(withEmail: email)
+    }catch {
+        throw error
+    }
+}
+
 
