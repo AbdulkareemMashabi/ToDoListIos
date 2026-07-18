@@ -12,6 +12,9 @@ struct ToDoListIosApp: App {
     @StateObject private var appColors = AppColors()
     @StateObject private var toastManager = ToastManager()
     @StateObject private var alertManager = AlertManager()
+    // register app delegate for Firebase setup
+      @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
 
     let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Lotties/splash.json"
     
@@ -61,6 +64,9 @@ struct ToDoListIosApp: App {
 
                         case .forgetPassword:
                             ForgetPassword()
+                            
+                        case .accountDeletion:
+                            AccountDeletion()
                         }
                     }
                 }
