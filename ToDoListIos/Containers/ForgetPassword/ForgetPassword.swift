@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ForgetPassword: View {
     @State private var email = ""
-    @State private var newPassword = ""
     private var isButtonDisabled: Bool {
         return !isValidEmail(email) || email.isEmpty
     }
@@ -25,17 +24,16 @@ struct ForgetPassword: View {
                 Text("Please enter email").fontWeight(.bold)
                 Text("You will recieve an email with reset link").foregroundStyle(.gray)
                 TextInput(data: $email, placeholder: "Email", error: getEmailValidation(email: email))
-                TextInput(data: $newPassword, placeholder: "New Password", isSecureTextEntry: true, error: getEmptyErrorMessage(fieldName: "New Password", fieldValue:newPassword))
                 ButtonComponent {
                     Task {
                         do {
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
                             }
-                            try await resetPassword(email: email, password: newPassword)
+                            try await resetPasswordFirebase(email: email)
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
-                                toastManager.show("Password Reset Successfully")
+                                toastManager.show("Password reset email sent")
                                 navigationManager.path.removeLast()
                             }
                         }catch {
@@ -49,11 +47,7 @@ struct ForgetPassword: View {
                     
                 } label: {
                     Text("Submit")
-                }.fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, maxHeight: 40)
-                    .background(.cyan)
-                    .cornerRadius(16).disabled(isButtonDisabled).opacity(isButtonDisabled ? 0.5 : 1)
+                }.formButtonStyle().isButtonDisabled(isButtonDisabled)
                 
             }.padding()
             
