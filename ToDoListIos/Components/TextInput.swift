@@ -108,7 +108,7 @@ struct TextInput: View {
                             isShowPassword.toggle()
                         } label: {
                             Image(systemName: isShowPassword ? "eye" : "eye.slash")
-                                .foregroundColor(.gray)
+                                .foregroundColor(.cyan)
                         }
                         .padding(.trailing, 8)
                     }
