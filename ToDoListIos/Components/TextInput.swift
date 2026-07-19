@@ -68,7 +68,7 @@ struct TextInput: View {
                     TextField("", text: $data)
                         .keyboardType(keyboardType)
                         .focused($isTextFieldFocus)
-                        .padding(.leading, 8)
+                        .padding(.horizontal, 8)
                         .padding(.top, 8)
                         .frame(maxHeight: 40)
                         .background(.white)
