@@ -21,9 +21,9 @@ struct ForgetPassword: View {
         ZStack (alignment: .top){
             Image("waves").resizable().ignoresSafeArea()
             VStack(alignment:.leading) {
-                Text("Please enter email").fontWeight(.bold)
-                Text("You will recieve an email with reset link").foregroundStyle(.gray)
-                TextInput(data: $email, placeholder: "Email", error: getEmailValidation(email: email))
+                Text(localized("forgetPassword.title")).fontWeight(.bold)
+                Text(localized("forgetPassword.subtitle")).foregroundStyle(.gray)
+                TextInput(data: $email, placeholder: localized("common.email"), error: getEmailValidation(email: email))
                 ButtonComponent {
                     Task {
                         do {
@@ -33,7 +33,7 @@ struct ForgetPassword: View {
                             try await resetPasswordFirebase(email: email)
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
-                                toastManager.show("Password reset email sent")
+                                toastManager.show(localized("forgetPassword.resetSent"))
                                 navigationManager.path.removeLast()
                             }
                         }catch {
@@ -46,13 +46,13 @@ struct ForgetPassword: View {
                     }
                     
                 } label: {
-                    Text("Submit")
+                    Text(localized("common.submit"))
                 }.formButtonStyle().isButtonDisabled(isButtonDisabled)
                 
             }.padding()
             
             
-        }.navigationTitle("Forget Password").navigationBarTitleDisplayMode(.inline)
+        }.navigationTitle(localized("login.forgetPassword")).navigationBarTitleDisplayMode(.inline)
     }
 }
 

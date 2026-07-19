@@ -12,6 +12,7 @@ struct ToDoListIosApp: App {
     @StateObject private var appColors = AppColors()
     @StateObject private var toastManager = ToastManager()
     @StateObject private var alertManager = AlertManager()
+    @StateObject private var appLanguageManager = AppLanguageManager()
     // register app delegate for Firebase setup
       @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
@@ -101,7 +102,7 @@ struct ToDoListIosApp: App {
                 }
             }
             .alert(alertManager.title, isPresented: $alertManager.isPresented) {
-                Button("OK") {
+                Button(localized("common.ok")) {
                     alertManager.hide()
                 }
             } message: {
@@ -114,6 +115,9 @@ struct ToDoListIosApp: App {
             .environmentObject(appColors)
             .environmentObject(toastManager)
             .environmentObject(alertManager)
+            .environmentObject(appLanguageManager)
+            .environment(\.locale, appLanguageManager.locale)
+            .environment(\.layoutDirection, appLanguageManager.layoutDirection)
         }
     }
 }

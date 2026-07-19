@@ -25,7 +25,7 @@ struct CreateNewTask: View {
         
   
             VStack {
-                TextInput(data: $title, placeholder: "Title" ,error: "Title is required")
+                TextInput(data: $title, placeholder: localized("task.title") ,error: "Title is required")
                 DateInput(dateIconColor: color.color, placeholder: "Date (Optional)")
                 TextInput(data: $description, placeholder: "Description" ,error: "Description is required", isTextArea: true)
                 

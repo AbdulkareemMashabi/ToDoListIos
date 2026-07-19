@@ -22,9 +22,9 @@ struct AccountDeletion: View {
         ZStack{
             Image("waves").resizable().ignoresSafeArea()
             VStack(alignment:.leading) {
-                Text("Enter your Email and Password to Delete your Account").fontWeight(.bold).font(.title)
-                TextInput(data: $email, placeholder: "Email", error: getEmailValidation(email: email))
-                TextInput(data: $password, placeholder: "Password", isSecureTextEntry: true, error: getEmptyErrorMessage(fieldName: "password", fieldValue:password))
+                Text(localized("accountDeletion.title")).fontWeight(.bold).font(.title)
+                TextInput(data: $email, placeholder: localized("common.email"), error: getEmailValidation(email: email))
+                TextInput(data: $password, placeholder: localized("common.password"), isSecureTextEntry: true, error: getEmptyErrorMessage(fieldName: localized("common.password"), fieldValue:password))
                 ButtonComponent {
                     Task {
                         do {
@@ -34,7 +34,7 @@ struct AccountDeletion: View {
                             try await deleteAccountFirebase(email: email, password: password)
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
-                                toastManager.show("App Deleted successfully")
+                                toastManager.show(localized("accountDeletion.success"))
                                 navigationManager.path.removeAll()
                             }
                             
@@ -48,7 +48,7 @@ struct AccountDeletion: View {
                     }
                     
                 } label: {
-                    Text("Delete Account")
+                    Text(localized("accountDeletion.button"))
                 }.formButtonStyle().isButtonDisabled(isButtonDisabled)
             }.frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top).padding()
 

@@ -10,6 +10,7 @@ import SwiftUI
 struct Dashboard: View {
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject private var appToken: AppToken
+    @EnvironmentObject private var appLanguageManager: AppLanguageManager
     
     var body: some View {
         VStack {
@@ -30,7 +31,10 @@ struct Dashboard: View {
         }.customToolbar(                title: "My Wishes",
                                         leftButtons: [],
                                         rightButtons: [
-                                            AnyView(Button { } label: {
+                                            AnyView(Button {
+                                                AppLanguageManager.selectedLanguage.rawValue == "ar" ? appLanguageManager.useEnglish() : appLanguageManager.useArabic()
+                                                
+                                            } label: {
                                                 Image(systemName: "globe").foregroundStyle(.blue)
                                             }),
                                             AnyView(Button {

@@ -8,6 +8,47 @@
 import Foundation
 import CryptoSwift
 
+func localized(_ key: String) -> String {
+    return localized(key, languageCode: AppLanguageManager.resolvedLanguageCode)
+}
+
+func localized(_ key: String, _ arguments: CVarArg...) -> String {
+    let languageCode = AppLanguageManager.resolvedLanguageCode
+    let format = localized(key)
+    return String(format: format, locale: Locale(identifier: languageCode), arguments: arguments)
+}
+
+private func localized(_ key: String, languageCode: String) -> String {
+    if let bundle = localizedBundle(for: languageCode) {
+        return NSLocalizedString(key, bundle: bundle, comment: "")
+    }
+
+    if let value = localizedStringFromCustomFolder(key, languageCode: languageCode) {
+        return value
+    }
+
+    return NSLocalizedString(key, comment: "")
+}
+
+private func localizedBundle(for languageCode: String) -> Bundle? {
+    guard let path = Bundle.main.path(forResource: languageCode, ofType: "lproj") else {
+        return nil
+    }
+
+    return Bundle(path: path)
+}
+
+private func localizedStringFromCustomFolder(_ key: String, languageCode: String) -> String? {
+    guard
+        let path = Bundle.main.path(forResource: languageCode, ofType: nil, inDirectory: "Localizable.strings"),
+        let strings = NSDictionary(contentsOfFile: path) as? [String: String]
+    else {
+        return nil
+    }
+
+    return strings[key]
+}
+
 let PRIVATE_PASSWORD = "ABDULKAREEM MASHABI 1102866710"
 
 private func evpBytesToKey(password: [UInt8], salt: [UInt8], keyLen: Int, ivLen: Int) throws -> (key: [UInt8], iv: [UInt8]) {
@@ -86,10 +127,10 @@ func isValidEmail(_ email: String) -> Bool {
 
 func getEmailValidation(email:String) -> String {
     if(email.isEmpty){
-        return "Email is required"
+        return localized("validation.emailRequired")
     }
     else if (!isValidEmail(email)){
-        return "Invalid email format"
+        return localized("validation.invalidEmail")
     }
     else {
         return ""
@@ -98,24 +139,24 @@ func getEmailValidation(email:String) -> String {
 
 func getPasswordValidation(password:String) -> String {
     if (password.count < 6){
-        return "Password must be at least 6 characters long"
+        return localized("validation.passwordLength")
     }
     else {
-        return getEmptyErrorMessage(fieldName: "Password", fieldValue: password)
+        return getEmptyErrorMessage(fieldName: localized("common.password"), fieldValue: password)
     }
 }
 
 func getConfirmPasswordValidation(password:String, confirmPassword:String) -> String {
     if(password != confirmPassword){
-        return "Passwords do not match"
+        return localized("validation.passwordsMismatch")
     }
     else {
-        return getEmptyErrorMessage(fieldName: "Confirm Password", fieldValue: confirmPassword)
+        return getEmptyErrorMessage(fieldName: localized("common.confirmPassword"), fieldValue: confirmPassword)
     }
 }
 
 func getEmptyErrorMessage(fieldName:String, fieldValue:String) -> String {
-    return fieldValue.isEmpty ? "\(fieldName) is required" : ""
+    return fieldValue.isEmpty ? localized("validation.requiredFormat", fieldName) : ""
 }
 
 func getURLRequest(url: String, httpMethod: String, headers: [String: String]? = nil, body: Data? = nil) -> URLRequest {

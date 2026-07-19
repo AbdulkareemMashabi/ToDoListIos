@@ -1,0 +1,47 @@
+"app.title" = "My Wishes";
+"common.email" = "Email";
+"common.password" = "Password";
+"common.confirmPassword" = "Confirm Password";
+"common.submit" = "Submit";
+"common.login" = "Login";
+"common.register" = "Register";
+"common.error" = "Error";
+"common.ok" = "OK";
+"common.done" = "Done";
+"common.selectDate" = "Select Date";
+
+"dashboard.emptyTitle" = "You don't have tasks";
+"dashboard.emptySubtitle" = "To create new task click on the plus (+) button";
+
+"login.title" = "Don't miss your wishes";
+"login.subtitle" = "Login here to save your wishes to the cloud";
+"login.forgetPassword" = "Forget Password";
+"login.guest" = "Guest Login";
+"login.success" = "Login Successfully";
+
+"register.success" = "Register successfully";
+
+"forgetPassword.title" = "Please enter email";
+"forgetPassword.subtitle" = "You will receive an email with reset link";
+"forgetPassword.resetSent" = "Password reset email sent";
+
+"accountDeletion.title" = "Enter your Email and Password to Delete your Account";
+"accountDeletion.button" = "Delete Account";
+"accountDeletion.success" = "Account deleted successfully";
+
+"task.title" = "Title";
+"task.titleRequired" = "Title is required";
+"task.dateOptional" = "Date (Optional)";
+"task.description" = "Description";
+"task.descriptionRequired" = "Description is required";
+
+"validation.emailRequired" = "Email is required";
+"validation.invalidEmail" = "Invalid email format";
+"validation.passwordLength" = "Password must be at least 6 characters long";
+"validation.passwordsMismatch" = "Passwords do not match";
+"validation.requiredFormat" = "%@ is required";
+
+"api.requestFailedStatus" = "Request failed with status code: %@.";
+"api.decodingFailed" = "Failed to decode the response from the server.";
+"api.missingDeviceID" = "Unable to access a valid device identifier.";
+"api.requestConstructionFailed" = "Failed to construct a valid request.";

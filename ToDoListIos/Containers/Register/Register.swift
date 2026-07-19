@@ -24,9 +24,9 @@ struct Register: View {
             Image("waves").resizable().ignoresSafeArea()
             VStack(alignment:.leading) {
                 
-                TextInput(data: $email, placeholder: "Email", error: getEmailValidation(email: email))
-                TextInput(data: $password, placeholder: "Password", isSecureTextEntry: true, error: getPasswordValidation(password: password))
-                TextInput(data: $confirmPassword, placeholder: "Confirm Password", isSecureTextEntry: true, error: getConfirmPasswordValidation(password: password, confirmPassword: confirmPassword))
+                TextInput(data: $email, placeholder: localized("common.email"), error: getEmailValidation(email: email))
+                TextInput(data: $password, placeholder: localized("common.password"), isSecureTextEntry: true, error: getPasswordValidation(password: password))
+                TextInput(data: $confirmPassword, placeholder: localized("common.confirmPassword"), isSecureTextEntry: true, error: getConfirmPasswordValidation(password: password, confirmPassword: confirmPassword))
                 
                 ButtonComponent {
                     Task    {
@@ -39,7 +39,7 @@ struct Register: View {
                             appToken.token = token
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
-                                toastManager.show("Register successfully")
+                                toastManager.show(localized("register.success"))
                                 navigationManager.path.removeAll()
                             }
                         }
@@ -53,12 +53,12 @@ struct Register: View {
                         
                     }
                 } label: {
-                    Text("Submit")
+                    Text(localized("common.submit"))
                 }.formButtonStyle().isButtonDisabled(isButtonDisabled)
                 
                 
             }       .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top).padding()
-        }                .customToolbar(title: "Login", rightButtons: [
+        }                .customToolbar(title: localized("common.login"), rightButtons: [
             AnyView(
                 Button {
                     

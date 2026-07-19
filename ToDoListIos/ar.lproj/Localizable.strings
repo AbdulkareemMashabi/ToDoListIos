@@ -1,0 +1,47 @@
+"app.title" = "أمنياتي";
+"common.email" = "البريد الإلكتروني";
+"common.password" = "كلمة المرور";
+"common.confirmPassword" = "تأكيد كلمة المرور";
+"common.submit" = "إرسال";
+"common.login" = "تسجيل الدخول";
+"common.register" = "إنشاء حساب";
+"common.error" = "خطأ";
+"common.ok" = "حسناً";
+"common.done" = "تم";
+"common.selectDate" = "اختر التاريخ";
+
+"dashboard.emptyTitle" = "ليس لديك مهام";
+"dashboard.emptySubtitle" = "لإنشاء مهمة جديدة اضغط على زر الإضافة (+)";
+
+"login.title" = "لا تفوّت أمنياتك";
+"login.subtitle" = "سجّل الدخول هنا لحفظ أمنياتك في السحابة";
+"login.forgetPassword" = "نسيت كلمة المرور";
+"login.guest" = "دخول كزائر";
+"login.success" = "تم تسجيل الدخول بنجاح";
+
+"register.success" = "تم إنشاء الحساب بنجاح";
+
+"forgetPassword.title" = "يرجى إدخال البريد الإلكتروني";
+"forgetPassword.subtitle" = "سيصلك بريد إلكتروني يحتوي على رابط إعادة التعيين";
+"forgetPassword.resetSent" = "تم إرسال بريد إعادة تعيين كلمة المرور";
+
+"accountDeletion.title" = "أدخل بريدك الإلكتروني وكلمة المرور لحذف حسابك";
+"accountDeletion.button" = "حذف الحساب";
+"accountDeletion.success" = "تم حذف الحساب بنجاح";
+
+"task.title" = "العنوان";
+"task.titleRequired" = "العنوان مطلوب";
+"task.dateOptional" = "التاريخ (اختياري)";
+"task.description" = "الوصف";
+"task.descriptionRequired" = "الوصف مطلوب";
+
+"validation.emailRequired" = "البريد الإلكتروني مطلوب";
+"validation.invalidEmail" = "صيغة البريد الإلكتروني غير صحيحة";
+"validation.passwordLength" = "يجب أن تكون كلمة المرور 6 أحرف على الأقل";
+"validation.passwordsMismatch" = "كلمتا المرور غير متطابقتين";
+"validation.requiredFormat" = "%@ مطلوب";
+
+"api.requestFailedStatus" = "فشل الطلب برمز الحالة: %@.";
+"api.decodingFailed" = "فشل فك ترميز الاستجابة من الخادم.";
+"api.missingDeviceID" = "تعذر الوصول إلى معرّف جهاز صالح.";
+"api.requestConstructionFailed" = "فشل إنشاء طلب صالح.";

@@ -13,7 +13,7 @@ final class AlertManager: ObservableObject {
     @Published var title = ""
     @Published var message = ""
 
-    func show(title: String = "Error", message: String) {
+    func show(title: String = localized("common.error"), message: String) {
         self.title = title
         self.message = message
         self.isPresented = true

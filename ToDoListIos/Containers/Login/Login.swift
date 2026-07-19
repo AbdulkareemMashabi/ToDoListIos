@@ -25,15 +25,15 @@ struct Login: View {
             VStack(alignment:.leading) {
                 
                 
-                Text("Don't miss your wishes").fontWeight(.bold)
-                Text("Login here to save your wishes to the cloud").fontWeight(.bold).foregroundStyle(.gray)
-                TextInput(data: $email, placeholder: "Email", error: getEmailValidation(email: email))
-                TextInput(data: $password, placeholder: "Password", isSecureTextEntry: true, error: getEmptyErrorMessage(fieldName: "password", fieldValue:password))
+                Text(localized("login.title")).fontWeight(.bold)
+                Text(localized("login.subtitle")).fontWeight(.bold).foregroundStyle(.gray)
+                TextInput(data: $email, placeholder: localized("common.email"), error: getEmailValidation(email: email))
+                TextInput(data: $password, placeholder: localized("common.password"), isSecureTextEntry: true, error: getEmptyErrorMessage(fieldName: localized("common.password"), fieldValue:password))
                 
                 Button {
                     navigationManager.path.append(Route.forgetPassword)
                 } label: {
-                    Text("Forget Password").fontWeight(.bold).foregroundColor(.cyan)
+                    Text(localized("login.forgetPassword")).fontWeight(.bold).foregroundColor(.cyan)
                 }
                 
                 ButtonComponent {
@@ -47,7 +47,7 @@ struct Login: View {
                             appToken.token = token
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
-                                toastManager.show("Login Successfully")
+                                toastManager.show(localized("login.success"))
                                 navigationManager.path.removeAll()
                             }
                             
@@ -60,11 +60,11 @@ struct Login: View {
                         }
                     }
                 } label: {
-                    Text("Login")
+                    Text(localized("common.login"))
                 }.formButtonStyle().isButtonDisabled(isButtonDisabled)
                 
                 NavigationLink(value: Route.register) {
-                    Text("Register").fontWeight(.bold).foregroundColor(.cyan).frame(maxWidth:.infinity, alignment: .center).padding(.top)
+                    Text(localized("common.register")).fontWeight(.bold).foregroundColor(.cyan).frame(maxWidth:.infinity, alignment: .center).padding(.top)
                 }
                 
                 Button {
@@ -80,7 +80,7 @@ struct Login: View {
                             appToken.token = deviceId
                             await MainActor.run {
                                 loadingManager.isLoading.toggle()
-                                toastManager.show("Login Successfully")
+                                toastManager.show(localized("login.success"))
                                 navigationManager.path.removeAll()
                             }
                         }catch {
@@ -93,14 +93,14 @@ struct Login: View {
                     }
                 } label: {
                     Image(systemName: "person").resizable().frame(width: 20, height: 20).foregroundColor(.cyan)
-                    Text("Guest Login").foregroundColor(.cyan).fontWeight(.bold)
+                    Text(localized("login.guest")).foregroundColor(.cyan).fontWeight(.bold)
                 }.frame(maxWidth:.infinity, alignment: .center).padding(.top)
                 
                 
                 
             }       .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top).padding()
             
-        }.customToolbar(title: "Login", rightButtons: [
+        }.customToolbar(title: localized("common.login"), rightButtons: [
             AnyView(
                 Button {
                     navigationManager.path.append(.accountDeletion)

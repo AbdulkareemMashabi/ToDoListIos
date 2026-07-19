@@ -14,9 +14,9 @@
             filePath = "ToDoListIos/helpers.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "encryptForCryptoJS(text:)"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "encryptWithPassphraseForCryptoJS(_:passphrase:)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
