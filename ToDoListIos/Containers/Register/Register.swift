@@ -58,7 +58,7 @@ struct Register: View {
                 
                 
             }       .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top).padding()
-        }                .customToolbar(title: localized("common.login"), rightButtons: [
+        }                .customToolbar(title: localized("common.register"), rightButtons: [
             AnyView(
                 Button {
                     

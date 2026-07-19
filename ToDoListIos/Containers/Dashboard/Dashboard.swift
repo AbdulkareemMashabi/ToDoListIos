@@ -16,8 +16,8 @@ struct Dashboard: View {
         VStack {
             Image("emptyListPic")
                 .imageScale(.large)
-            Text("You don't have tasks").fontWeight(.bold)
-            Text("To create new task click on the plus (+) button").fontWeight(.bold).foregroundStyle(.gray)
+            Text(localized("dashboard.emptyTitle")).fontWeight(.bold)
+            Text(localized("dashboard.emptySubtitle")).fontWeight(.bold).foregroundStyle(.gray)
             NavigationLink(value: appToken.token.isEmpty ? Route.login : Route.createNewTask ) {
                 Image(systemName: "plus")
                     .padding(.vertical, 12)
@@ -28,7 +28,7 @@ struct Dashboard: View {
             .padding(.top, 40)
         }.onAppear {
             appToken.token = Storage.load(key: "token") ?? ""
-        }.customToolbar(                title: "My Wishes",
+        }.customToolbar(                title: localized("app.title"),
                                         leftButtons: [],
                                         rightButtons: [
                                             AnyView(Button {

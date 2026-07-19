@@ -25,16 +25,16 @@ struct CreateNewTask: View {
         
   
             VStack {
-                TextInput(data: $title, placeholder: localized("task.title") ,error: "Title is required")
-                DateInput(dateIconColor: color.color, placeholder: "Date (Optional)")
-                TextInput(data: $description, placeholder: "Description" ,error: "Description is required", isTextArea: true)
+                TextInput(data: $title, placeholder: localized("task.title") ,error: localized("task.titleRequired"))
+                DateInput(dateIconColor: color.color, placeholder: localized("task.dateOptional"))
+                TextInput(data: $description, placeholder: localized("task.description") ,error: localized("task.descriptionRequired"), isTextArea: true)
                 
                 ButtonComponent {
                     Task {
                         
                     }
                 } label: {
-                    Text("Submit")
+                    Text(localized("common.submit"))
                 }.formButtonStyle().isButtonDisabled(isButtonDisabled)
             }.padding(12).frame(width: UIScreen.main.bounds.width).background(    RoundedRectangle(cornerRadius: 20)
                 .fill(.white)

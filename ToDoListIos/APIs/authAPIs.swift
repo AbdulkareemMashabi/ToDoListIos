@@ -18,13 +18,13 @@ enum AuthAPIError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidResponseStatus(let code):
-            return "Request failed with status code: \(code)."
+            return localized("api.requestFailedStatus", "\(code)")
         case .decodingFailed:
-            return "Failed to decode the response from the server."
+            return localized("api.decodingFailed")
         case .missingDeviceID:
-            return "Unable to access a valid device identifier."
+            return localized("api.missingDeviceID")
         case .requestConstructionFailed:
-            return "Failed to construct a valid request."
+            return localized("api.requestConstructionFailed")
         }
     }
 }

@@ -56,14 +56,14 @@ struct DateInput: View {
             .sheet(isPresented: $showDatePicker) {
                 VStack {
                     DatePicker(
-                        "Select Date",
+                        localized("common.selectDate"),
                         selection: $selectedDate,
                         displayedComponents: .date
                     )
                     .datePickerStyle(.graphical)
                     .padding()
 
-                    Button("Done") {
+                    Button(localized("common.done")) {
                         dateString = selectedDate.formatted(date: .numeric, time: .omitted)
                         showDatePicker = false
                     }
