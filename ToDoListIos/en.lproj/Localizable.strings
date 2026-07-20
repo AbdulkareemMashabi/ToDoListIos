@@ -34,6 +34,7 @@
 "task.dateOptional" = "Date (Optional)";
 "task.description" = "Description";
 "task.descriptionRequired" = "Description is required";
+"task.addToCalendar" = "Add The Task To The Calendar";
 
 "validation.emailRequired" = "Email is required";
 "validation.invalidEmail" = "Invalid email format";

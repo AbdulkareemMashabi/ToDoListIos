@@ -34,6 +34,7 @@
 "task.dateOptional" = "التاريخ (اختياري)";
 "task.description" = "الوصف";
 "task.descriptionRequired" = "الوصف مطلوب";
+"task.addToCalendar" = "إضافة المهمة إلى التقويم";
 
 "validation.emailRequired" = "البريد الإلكتروني مطلوب";
 "validation.invalidEmail" = "صيغة البريد الإلكتروني غير صحيحة";
