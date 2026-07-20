@@ -26,7 +26,7 @@ struct DateInput: View {
                 // Date value text
                 if !dateString.isEmpty {
                     Text(dateString)
-                        .padding(.horizontal, 8)
+                        .padding(.horizontal, 8).offset(y:4)
                         .allowsHitTesting(false)
                 }
 
