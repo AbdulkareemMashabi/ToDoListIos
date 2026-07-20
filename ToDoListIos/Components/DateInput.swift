@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct DateInput: View {
-    @State private var selectedDate = Date()
-    @State private var dateString = ""
+    @Binding var selectedDate: String
+    @State private var pickerDate = Date()
     @State private var hasFocusedBefore = false
     @State private var showDatePicker = false
     var dateIconColor: Color = .red
@@ -11,7 +11,7 @@ struct DateInput: View {
     var error: String = ""
 
     var forceToFocused: Bool {
-        showDatePicker || !dateString.isEmpty
+        showDatePicker || !selectedDate.isEmpty
     }
 
     var body: some View {
@@ -24,8 +24,8 @@ struct DateInput: View {
                     .frame(maxWidth: .infinity, maxHeight: 40)
 
                 // Date value text
-                if !dateString.isEmpty {
-                    Text(dateString)
+                if !selectedDate.isEmpty {
+                    Text(selectedDate)
                         .padding(.horizontal, 8).offset(y:4)
                         .allowsHitTesting(false)
                 }
@@ -57,14 +57,14 @@ struct DateInput: View {
                 VStack {
                     DatePicker(
                         localized("common.selectDate"),
-                        selection: $selectedDate,
+                        selection: $pickerDate,
                         displayedComponents: .date
                     )
                     .datePickerStyle(.graphical)
                     .padding()
 
                     Button(localized("common.done")) {
-                        dateString = selectedDate.formatted(date: .numeric, time: .omitted)
+                        selectedDate = pickerDate.formatted(date: .numeric, time: .omitted)
                         showDatePicker = false
                     }
                     .buttonStyle(.borderedProminent)
@@ -85,5 +85,6 @@ struct DateInput: View {
 }
 
 #Preview {
-    DateInput(placeholder: "Select date", error: "Required")
+    @Previewable @State var selectedDate: String = ""
+    DateInput(selectedDate: $selectedDate, placeholder: "Select date", error: "Required")
 }
