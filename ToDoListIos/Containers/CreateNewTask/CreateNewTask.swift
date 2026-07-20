@@ -10,8 +10,8 @@ import SwiftUI
 struct CreateNewTask: View {
     @State private var title: String = ""
     @State private var description: String = ""
-    @State private var isPresented: Bool = true
-    @State private var selectedDate = Date()
+    @State private var isPresented: Bool = false
+    @State private var selectedDate: String = ""
     @EnvironmentObject private var appColors: AppColors
     private var isButtonDisabled: Bool {
         return title.isEmpty
@@ -26,8 +26,14 @@ struct CreateNewTask: View {
   
             VStack {
                 TextInput(data: $title, placeholder: localized("task.title") ,error: localized("task.titleRequired"))
-                DateInput(dateIconColor: color.color, placeholder: localized("task.dateOptional"))
+                DateInput(selectedDate: $selectedDate, dateIconColor: color.color, placeholder: localized("task.dateOptional"))
                 TextInput(data: $description, placeholder: localized("task.description") ,error: localized("task.descriptionRequired"), isTextArea: true)
+                
+                if !selectedDate.isEmpty {
+                        Toggle(isOn: $isPresented) {
+                            Text(localized("task.addToCalendar"))
+                        }.padding(.vertical, 8)
+                }
                 
                 ButtonComponent {
                     Task {
