@@ -49,6 +49,7 @@ struct TextInput: View {
                     SecureField("", text: $data)
                         .focused($isTextFieldFocus)
                         .padding(.leading, 8)
+                        .padding(.trailing, 44)
                         .padding(.top, 8)
                         .frame(maxHeight: 40)
                         .background(.white)
@@ -68,7 +69,8 @@ struct TextInput: View {
                     TextField("", text: $data)
                         .keyboardType(keyboardType)
                         .focused($isTextFieldFocus)
-                        .padding(.horizontal, 8)
+                        .padding(.leading, 8)
+                        .padding(.trailing, isSecureTextEntry ? 44 : 8)
                         .padding(.top, 8)
                         .frame(maxHeight: 40)
                         .background(.white)
@@ -96,22 +98,21 @@ struct TextInput: View {
                         }
                     }())
                     .padding(.leading, 8)
+                    .padding(.trailing, isSecureTextEntry ? 44 : 8)
                     .font(forceToFocused ? .caption : .body)
                     .foregroundColor(.gray)
                     .animation(.spring, value: forceToFocused)
                     .allowsHitTesting(false)
 
                 if isSecureTextEntry {
-                    HStack {
-                        Spacer()
-                        Button {
-                            isShowPassword.toggle()
-                        } label: {
-                            Image(systemName: isShowPassword ? "eye" : "eye.slash")
-                                .foregroundColor(.cyan)
-                        }
-                        .padding(.trailing, 8)
+                    Button {
+                        isShowPassword.toggle()
+                    } label: {
+                        Image(systemName: isShowPassword ? "eye" : "eye.slash")
+                            .foregroundColor(.cyan)
                     }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.trailing, 8)
                 }
             }.frame(maxWidth: .infinity, maxHeight: isTextArea ? 112 : 40)
 
