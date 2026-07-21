@@ -32,21 +32,21 @@ enum ColorsToDo: Hashable, CaseIterable {
         }
     }
 
-    var color: Color {
+    var color: String {
 
         switch self {
 
         case .red:
-            return .red
+            return "#FF3B30"
 
         case .blue:
-            return .blue
+            return "#32ADE6"
 
         case .orange:
-            return .orange
+            return "#FF9500"
 
         case .green:
-            return .green
+            return "#34C759"
         }
     }
 }
@@ -81,5 +81,20 @@ class AppColors: ObservableObject {
     func getImage() -> ColorsToDo {
         addingNewColor()
         return colors.last ?? ColorsToDo.red
+    }
+}
+
+extension Color {
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+
+        let r = Double((int >> 16) & 0xFF) / 255
+        let g = Double((int >> 8) & 0xFF) / 255
+        let b = Double(int & 0xFF) / 255
+
+        self.init(.sRGB, red: r, green: g, blue: b, opacity: 1)
     }
 }
