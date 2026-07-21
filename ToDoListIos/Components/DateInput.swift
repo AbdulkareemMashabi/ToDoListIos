@@ -2,6 +2,7 @@ import SwiftUI
 
 struct DateInput: View {
     @Binding var selectedDate: String
+    var onDateSelected: ((Date) -> Void)?
     @State private var pickerDate = Date()
     @State private var hasFocusedBefore = false
     @State private var showDatePicker = false
@@ -65,6 +66,7 @@ struct DateInput: View {
 
                     Button(localized("common.done")) {
                         selectedDate = pickerDate.formatted(date: .numeric, time: .omitted)
+                        onDateSelected?(pickerDate)
                         showDatePicker = false
                     }
                     .buttonStyle(.borderedProminent)

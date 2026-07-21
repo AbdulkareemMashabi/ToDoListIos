@@ -12,7 +12,10 @@ struct CreateNewTask: View {
     @State private var description: String = ""
     @State private var isPresented: Bool = false
     @State private var selectedDate: String = ""
+    @State private var selectedDateObject: Date = Date()
     @EnvironmentObject private var appColors: AppColors
+    @EnvironmentObject private var toastManager: ToastManager
+    @EnvironmentObject private var alertManager: AlertManager
     private var isButtonDisabled: Bool {
         return title.isEmpty
     }
@@ -23,10 +26,12 @@ struct CreateNewTask: View {
             Image(color.image).resizable()
                 .scaledToFill().ignoresSafeArea()
         
-  
+   
             VStack {
                 TextInput(data: $title, placeholder: localized("task.title") ,error: localized("task.titleRequired"))
-                DateInput(selectedDate: $selectedDate, dateIconColor: color.color, placeholder: localized("task.dateOptional"))
+                DateInput(selectedDate: $selectedDate, onDateSelected: { date in
+                    selectedDateObject = date
+                }, dateIconColor: color.color, placeholder: localized("task.dateOptional"))
                 TextInput(data: $description, placeholder: localized("task.description") ,error: localized("task.descriptionRequired"), isTextArea: true)
                 
                 if !selectedDate.isEmpty {
@@ -37,7 +42,25 @@ struct CreateNewTask: View {
                 
                 ButtonComponent {
                     Task {
-                        
+                        if isPresented {
+                            CalendarManager.shared.requestAccess { granted in
+                                if granted {
+                                    let (added, errorMessage, eventId) = CalendarManager.shared.addEvent(
+                                        title: title,
+                                        description: description,
+                                        startDate: Date(),
+                                        endDate: selectedDateObject
+                                    )
+                                    if added {
+                                        toastManager.show(localized("task.addedToCalendar"))
+                                    } else {
+                                        alertManager.show(message: errorMessage ?? localized("task.failedToAddToCalendar"))
+                                    }
+                                } else {
+                                    alertManager.show(message: localized("task.calendarAccessDenied"))
+                                }
+                            }
+                        }
                     }
                 } label: {
                     Text(localized("common.submit"))

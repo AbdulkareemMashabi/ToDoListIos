@@ -35,6 +35,9 @@
 "task.description" = "الوصف";
 "task.descriptionRequired" = "الوصف مطلوب";
 "task.addToCalendar" = "إضافة المهمة إلى التقويم";
+"task.addedToCalendar" = "تمت إضافة المهمة إلى التقويم";
+"task.failedToAddToCalendar" = "فشلت إضافة المهمة إلى التقويم";
+"task.calendarAccessDenied" = "تم رفض الوصول إلى التقويم. يرجى السماح بالوصول إلى التقويم في الإعدادات.";
 
 "validation.emailRequired" = "البريد الإلكتروني مطلوب";
 "validation.invalidEmail" = "صيغة البريد الإلكتروني غير صحيحة";
