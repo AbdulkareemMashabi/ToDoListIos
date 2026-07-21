@@ -38,6 +38,7 @@
 "task.addedToCalendar" = "تمت إضافة المهمة إلى التقويم";
 "task.failedToAddToCalendar" = "فشلت إضافة المهمة إلى التقويم";
 "task.calendarAccessDenied" = "تم رفض الوصول إلى التقويم. يرجى السماح بالوصول إلى التقويم في الإعدادات.";
+"task.addedSuccesfully" = "تم إضافة المهمة بنجاح";
 
 "validation.emailRequired" = "البريد الإلكتروني مطلوب";
 "validation.invalidEmail" = "صيغة البريد الإلكتروني غير صحيحة";
