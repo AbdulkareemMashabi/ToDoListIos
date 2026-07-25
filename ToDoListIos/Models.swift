@@ -5,6 +5,8 @@
 //  Created by Abdulkareem Mashabi on 09/06/1447 AH.
 //
 
+import Foundation
+import FirebaseFirestore
 
 struct User: Codable {
     let email: String?
@@ -31,7 +33,8 @@ struct SubTasks: Codable {
     let status: Bool
 }
 
-struct ToDoTask:Codable {
+struct ToDoTask: Codable {
+    @DocumentID var documentID: String?
     let mainTask: MainTask
     let subTasks: [SubTasks]
 }
