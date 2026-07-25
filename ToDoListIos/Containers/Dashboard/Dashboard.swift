@@ -11,23 +11,51 @@ struct Dashboard: View {
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject private var appToken: AppToken
     @EnvironmentObject private var appLanguageManager: AppLanguageManager
+    @EnvironmentObject private var loadingmanager: LoadingManager
+    @EnvironmentObject private var alertManager: AlertManager
+    @State private var tasks: [ToDoTask] = []
     
     var body: some View {
         VStack {
-            Image("emptyListPic")
-                .imageScale(.large)
-            Text(localized("dashboard.emptyTitle")).fontWeight(.bold)
-            Text(localized("dashboard.emptySubtitle")).fontWeight(.bold).foregroundStyle(.gray)
-            NavigationLink(value: appToken.token.isEmpty ? Route.login : Route.createNewTask ) {
-                Image(systemName: "plus")
-                    .padding(.vertical, 12)
-                    .padding(.horizontal, 8)
+            if(appToken.token.isEmpty || tasks.isEmpty){
+                Image("emptyListPic")
+                    .imageScale(.large)
+                Text(localized("dashboard.emptyTitle")).fontWeight(.bold)
+                Text(localized("dashboard.emptySubtitle")).fontWeight(.bold).foregroundStyle(.gray)
+                NavigationLink(value: appToken.token.isEmpty ? Route.login : Route.createNewTask ) {
+                    Image(systemName: "plus")
+                        .padding(.vertical, 12)
+                        .padding(.horizontal, 8)
+                }
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 40)
             }
-            .buttonStyle(.borderedProminent)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top, 40)
+            else {
+                TaskListComponent(tasks: $tasks)
+
+            }
+
         }.onAppear {
-            appToken.token = Storage.load(key: "token") ?? ""
+            Task {
+                do {
+                    var token: String = ""
+                    token = Storage.load(key: "token") ?? ""
+                    appToken.token = token
+                    if(!token.isEmpty){
+                        loadingmanager.isLoading.toggle()
+                        let tasks = try await fetchAllTasksAPI()
+                        print(tasks, "tasks")
+                        self.tasks = tasks
+                        loadingmanager.isLoading.toggle()
+                    }
+                } catch {
+                    let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+                    loadingmanager.isLoading.toggle()
+                    alertManager.show(message: message)
+                }
+            }
+
         }.customToolbar(                title: localized("app.title"),
                                         leftButtons: [],
                                         rightButtons: [
