@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D384411300101D000FA12D5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5D384410300101D000FA12D5 /* FirebaseAuth */; };
-		5D384413300101D000FA12D5 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D384412300101D000FA12D5 /* FirebaseCore */; };
-		5D384415300101D000FA12D5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D384414300101D000FA12D5 /* FirebaseFirestore */; };
+		5D9E8F103013F4C8002E88EA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9E8F0F3013F4C8002E88EA /* FirebaseAuth */; };
+		5D9E8F123013F4C8002E88EA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9E8F113013F4C8002E88EA /* FirebaseCore */; };
+		5D9E8F143013F4C8002E88EA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9E8F133013F4C8002E88EA /* FirebaseFirestore */; };
 		5DD720922F7569A10065BA99 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD720912F7569A10065BA99 /* CryptoSwift */; };
 		5DD720952F756A1E0065BA99 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD720942F756A1E0065BA99 /* Lottie */; };
 /* End PBXBuildFile section */
@@ -61,9 +61,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DD720922F7569A10065BA99 /* CryptoSwift in Frameworks */,
-				5D384411300101D000FA12D5 /* FirebaseAuth in Frameworks */,
-				5D384413300101D000FA12D5 /* FirebaseCore in Frameworks */,
-				5D384415300101D000FA12D5 /* FirebaseFirestore in Frameworks */,
+				5D9E8F103013F4C8002E88EA /* FirebaseAuth in Frameworks */,
+				5D9E8F123013F4C8002E88EA /* FirebaseCore in Frameworks */,
+				5D9E8F143013F4C8002E88EA /* FirebaseFirestore in Frameworks */,
 				5DD720952F756A1E0065BA99 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,9 +135,9 @@
 			packageProductDependencies = (
 				5DD720912F7569A10065BA99 /* CryptoSwift */,
 				5DD720942F756A1E0065BA99 /* Lottie */,
-				5D384410300101D000FA12D5 /* FirebaseAuth */,
-				5D384412300101D000FA12D5 /* FirebaseCore */,
-				5D384414300101D000FA12D5 /* FirebaseFirestore */,
+				5D9E8F0F3013F4C8002E88EA /* FirebaseAuth */,
+				5D9E8F113013F4C8002E88EA /* FirebaseCore */,
+				5D9E8F133013F4C8002E88EA /* FirebaseFirestore */,
 			);
 			productName = ToDoListIos;
 			productReference = 5DA70A252E9EC5C600F2C141 /* ToDoListIos.app */;
@@ -225,7 +225,7 @@
 			packageReferences = (
 				5DD720902F7569A10065BA99 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				5DD720932F756A1E0065BA99 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				5D38440F300101D000FA12D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5D9E8F0E3013F4C8002E88EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5DA70A262E9EC5C600F2C141 /* Products */;
@@ -596,7 +596,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5D38440F300101D000FA12D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		5D9E8F0E3013F4C8002E88EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -623,19 +623,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5D384410300101D000FA12D5 /* FirebaseAuth */ = {
+		5D9E8F0F3013F4C8002E88EA /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5D38440F300101D000FA12D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 5D9E8F0E3013F4C8002E88EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		5D384412300101D000FA12D5 /* FirebaseCore */ = {
+		5D9E8F113013F4C8002E88EA /* FirebaseCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5D38440F300101D000FA12D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 5D9E8F0E3013F4C8002E88EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
 		};
-		5D384414300101D000FA12D5 /* FirebaseFirestore */ = {
+		5D9E8F133013F4C8002E88EA /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5D38440F300101D000FA12D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 5D9E8F0E3013F4C8002E88EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
 		5DD720912F7569A10065BA99 /* CryptoSwift */ = {
