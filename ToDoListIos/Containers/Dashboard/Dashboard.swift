@@ -82,7 +82,11 @@ struct Dashboard: View {
                                                     Image("logOut")
                                                 }
                                             })
-                                        ]).padding()
+                                        ]).padding().safeAreaInset(edge: .bottom) {
+                                            NavigationLink(value: Route.createNewTask ) {
+                                                Text(localized("dashboard.addNewTask"))
+                                            }.formButtonStyle().padding().background(.white).shadow(radius: 2).frame(maxWidth: .infinity)
+                                        }
     }
 }
 
