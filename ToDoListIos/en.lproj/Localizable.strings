@@ -12,6 +12,7 @@
 
 "dashboard.emptyTitle" = "You don't have tasks";
 "dashboard.emptySubtitle" = "To create new task click on the plus (+) button";
+"dashboard.addNewTask" = "Add New Task";
 
 "login.title" = "Don't miss your wishes";
 "login.subtitle" = "Login here to save your wishes to the cloud";

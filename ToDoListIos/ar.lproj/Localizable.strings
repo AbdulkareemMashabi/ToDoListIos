@@ -12,6 +12,7 @@
 
 "dashboard.emptyTitle" = "ليس لديك مهام";
 "dashboard.emptySubtitle" = "لإنشاء مهمة جديدة اضغط على زر الإضافة (+)";
+"dashboard.addNewTask" = "أضف مهمة جديدة";
 
 "login.title" = "لا تفوّت أمنياتك";
 "login.subtitle" = "سجّل الدخول هنا لحفظ أمنياتك في السحابة";
