@@ -41,3 +41,16 @@ func fetchAllTasksAPI () async throws -> [ToDoTask] {
         throw error
     }
 }
+
+func updateTaskAPI (task: ToDoTask) throws {
+    do {
+        let db = Firestore.firestore()
+
+        guard let documentID = task.documentID else { return }
+        try db.collection(Storage.load(key: "token")!)
+            .document(documentID)
+            .setData(from: task)
+    }catch {
+        throw error
+    }
+}
