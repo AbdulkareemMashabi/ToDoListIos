@@ -61,7 +61,7 @@ struct TaskListComponent: View {
                     VStack(alignment: .leading) {
                         Text(task.mainTask.title)
 
-                        if let date = task.mainTask.date {
+                        if let date = task.mainTask.date, !date.isEmpty {
                             Text(date)
                         }
 
