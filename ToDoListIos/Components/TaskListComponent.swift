@@ -62,7 +62,7 @@ struct TaskListComponent: View {
                         Text(task.mainTask.title)
 
                         if let date = task.mainTask.date, !date.isEmpty {
-                            Text(date)
+                            Text(date).foregroundColor(.gray)
                         }
 
                         if (!task.subTasks.isEmpty)
