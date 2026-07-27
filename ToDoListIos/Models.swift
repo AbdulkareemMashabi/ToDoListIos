@@ -24,17 +24,17 @@ struct MainTask : Codable {
     let color: String
     let date: String?
     let description: String?
-    let status: Bool
+    var status: Bool
     let title: String
 }
 
 struct SubTasks: Codable {
     let title: String
-    let status: Bool
+    var status: Bool
 }
 
 struct ToDoTask: Codable {
     @DocumentID var documentID: String?
-    let mainTask: MainTask
-    let subTasks: [SubTasks]
+    var mainTask: MainTask
+    var subTasks: [SubTasks]
 }
