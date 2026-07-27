@@ -9,19 +9,55 @@ import SwiftUI
 
 struct TaskListComponent: View {
     @Binding var tasks: [ToDoTask]
+    @EnvironmentObject var alertManager: AlertManager
+    
+    struct StatusIndicator: View {
+        let status: Bool
+        let borderColor: Color
+
+        var body: some View {
+            if status {
+                Image("check")
+            } else {
+                Circle()
+                    .stroke(borderColor, lineWidth: 2)
+                    .frame(width: 20, height: 20)
+            }
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             ForEach(tasks, id:\.documentID) { task in
                 HStack {
-                    Circle()
-                        .stroke(
-                            Color(hex: getBorderColor(date: task.mainTask.date,
-                                                      status: task.mainTask.status)),
-                            lineWidth: 2
-                        )
-                        .frame(width: 20, height: 20)
-
+                    if(task.mainTask.status){
+                        Image("check")
+                    }
+                    else {
+                        
+                        Button {
+                            do {
+                                var updatedTask = task
+                                updatedTask.mainTask.status = true
+                                for index in updatedTask.subTasks.indices {
+                                    updatedTask.subTasks[index].status.toggle()
+                                }
+                               try updateTaskAPI(task: updatedTask)
+                            }
+                            catch {
+                                let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+                                alertManager.show(message: message)
+                            }
+                        } label: {
+                            Circle()
+                                .stroke(
+                                    Color(hex: getBorderColor(date: task.mainTask.date,
+                                                              status: task.mainTask.status)),
+                                    lineWidth: 2
+                                ).frame(width: 20, height: 20).contentShape(Circle())
+                        }
+                           
+                    }
                     VStack(alignment: .leading) {
                         Text(task.mainTask.title)
 
@@ -35,18 +71,43 @@ struct TaskListComponent: View {
                         }
                            
 
-                        ForEach(task.subTasks, id: \.title) { subTask in
+                        ForEach(Array(task.subTasks.enumerated()), id: \.offset) { index, subTask in
                             HStack {
-                                Circle()
-                                    .stroke(
-                                        Color(
-                                            hex: subTask.status
-                                                ? ColorsToDo.green.color
-                                                : ColorsToDo.orange.color
-                                        ),
-                                        lineWidth: 2
-                                    )
-                                    .frame(width: 20, height: 20)
+                                if(subTask.status){
+                                    Image("check")
+                                }
+                                else {
+                                    Button {
+                                        do {
+                                            var updatedTask = task
+
+                                            updatedTask.subTasks[index].status = true
+
+                                            if updatedTask.subTasks.allSatisfy(\.status) {
+                                                updatedTask.mainTask.status = true
+                                            }
+
+                                            try updateTaskAPI(task: updatedTask)
+                                        }
+                                        catch {
+                                            let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+                                            alertManager.show(message: message)
+                                        }
+                                    } label: {
+                                        Circle()
+                                            .stroke(
+                                                Color(
+                                                    hex: subTask.status
+                                                        ? ColorsToDo.green.color
+                                                        : ColorsToDo.orange.color
+                                                ),
+                                                lineWidth: 2
+                                            ).frame(width: 20, height: 20).contentShape(Circle())
+                                    }
+     
+                                        
+                                }
+
 
                                 Text(subTask.title)
                             }
