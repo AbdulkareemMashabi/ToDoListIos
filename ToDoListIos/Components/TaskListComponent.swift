@@ -9,108 +9,11 @@ import SwiftUI
 
 struct TaskListComponent: View {
     @Binding var tasks: [ToDoTask]
-    @EnvironmentObject var alertManager: AlertManager
-    
-    struct StatusButton: View {
-        let status: Bool
-        let borderColor: Color
-        let action: () -> Void
-
-        var body: some View {
-            if status {
-                Image("check")
-            } else {
-                Button(action: action) {
-                    Circle()
-                        .stroke(borderColor, lineWidth: 2)
-                        .frame(width: 20, height: 20)
-                        .contentShape(Circle())
-                }
-                .buttonStyle(.plain)
-            }
-        }
-    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             List(tasks, id:\.documentID) { task in
-                HStack {
-
-                    StatusButton(
-                        status: task.mainTask.status,
-                        borderColor: Color(
-                            hex: getBorderColor(
-                                date: task.mainTask.date,
-                                status: task.mainTask.status
-                            )
-                        )
-                    ) {
-                        do {
-                            var updatedTask = task
-                            updatedTask.mainTask.status = true
-
-                            for index in updatedTask.subTasks.indices {
-                                updatedTask.subTasks[index].status = true
-                            }
-
-                            try updateTaskAPI(task: updatedTask)
-                        } catch {
-                            let message =
-                                (error as? LocalizedError)?.errorDescription ??
-                                error.localizedDescription
-
-                            alertManager.show(message: message)
-                        }
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text(task.mainTask.title)
-
-                        if let date = task.mainTask.date, !date.isEmpty {
-                            Text(date).foregroundColor(.gray)
-                        }
-
-                        if (!task.subTasks.isEmpty)
-                        {
-                            Divider()
-                        }
-                           
-
-                        ForEach(Array(task.subTasks.enumerated()), id: \.offset) { index, subTask in
-                            HStack {
-
-                                StatusButton(
-                                    status: subTask.status,
-                                    borderColor: Color(
-                                        hex: subTask.status
-                                            ? ColorsToDo.green.color
-                                            : ColorsToDo.orange.color
-                                    )
-                                ) {
-                                    do {
-                                        var updatedTask = task
-
-                                        updatedTask.subTasks[index].status = true
-
-                                        if updatedTask.subTasks.allSatisfy(\.status) {
-                                            updatedTask.mainTask.status = true
-                                        }
-
-                                        try updateTaskAPI(task: updatedTask)
-                                    } catch {
-                                        let message =
-                                            (error as? LocalizedError)?.errorDescription ??
-                                            error.localizedDescription
-
-                                        alertManager.show(message: message)
-                                    }
-                                }
-
-                                Text(subTask.title)
-                            }
-                        }
-                    }
-                }.frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
+                TaskRow(task: task).frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
                     .listRowSeparator(.hidden)
                     .listRowInsets(    EdgeInsets(
                         top: 16,
