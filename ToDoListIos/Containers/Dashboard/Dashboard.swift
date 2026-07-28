@@ -45,7 +45,6 @@ struct Dashboard: View {
                     if(!token.isEmpty){
                         loadingmanager.isLoading.toggle()
                         let tasks = try await fetchAllTasksAPI()
-                        print(tasks, "tasks")
                         self.tasks = tasks
                         loadingmanager.isLoading.toggle()
                     }

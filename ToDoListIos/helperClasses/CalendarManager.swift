@@ -36,7 +36,6 @@ class CalendarManager {
             try eventStore.save(event, span: .thisEvent)
             return (true, nil, event.eventIdentifier)
         } catch {
-            print("[CalendarManager] Failed to save event:", error.localizedDescription)
             return (false, error.localizedDescription, nil)
         }
     }
