@@ -106,7 +106,7 @@ struct TaskRow: View {
 
                         Text(subTask.title)
                     }
-                }
+                }.padding(.leading, 24)
             }
         }
     }
