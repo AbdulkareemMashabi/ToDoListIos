@@ -33,7 +33,7 @@ struct TaskListComponent: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            ForEach(tasks, id:\.documentID) { task in
+            List(tasks, id:\.documentID) { task in
                 HStack {
 
                     StatusButton(
@@ -110,8 +110,15 @@ struct TaskListComponent: View {
                             }
                         }
                     }
-                }.frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical, 8)
+                }.frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(    EdgeInsets(
+                        top: 16,
+                        leading: 5,
+                        bottom: 0,
+                        trailing: 5
+                    ))
+                    .listRowBackground(Color.clear)
                 .padding(.leading, 28)        // leave room for the colored bar
                 .background(Color.white)
                 .cornerRadius(16)
@@ -122,8 +129,10 @@ struct TaskListComponent: View {
                         .frame(width: 20)
                 }
 
-            }
-        }.frame(maxHeight: .infinity, alignment: .top)
+            }.listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .background(.white)
+        }.frame(maxHeight: .infinity ,alignment: .top)
     }
 }
 
