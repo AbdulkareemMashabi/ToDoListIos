@@ -62,7 +62,7 @@ struct TaskRow: View {
             }
             
             VStack(alignment: .leading) {
-                Text(task.mainTask.title)
+                Text(task.mainTask.title).bold()
 
                 if let date = task.mainTask.date, !date.isEmpty {
                     Text(date).foregroundColor(.gray)
