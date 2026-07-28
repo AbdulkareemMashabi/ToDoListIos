@@ -11,17 +11,22 @@ struct TaskListComponent: View {
     @Binding var tasks: [ToDoTask]
     @EnvironmentObject var alertManager: AlertManager
     
-    struct StatusIndicator: View {
+    struct StatusButton: View {
         let status: Bool
         let borderColor: Color
+        let action: () -> Void
 
         var body: some View {
             if status {
                 Image("check")
             } else {
-                Circle()
-                    .stroke(borderColor, lineWidth: 2)
-                    .frame(width: 20, height: 20)
+                Button(action: action) {
+                    Circle()
+                        .stroke(borderColor, lineWidth: 2)
+                        .frame(width: 20, height: 20)
+                        .contentShape(Circle())
+                }
+                .buttonStyle(.plain)
             }
         }
     }
@@ -30,34 +35,34 @@ struct TaskListComponent: View {
         VStack(alignment: .leading, spacing: 8) {
             ForEach(tasks, id:\.documentID) { task in
                 HStack {
-                    if(task.mainTask.status){
-                        Image("check")
-                    }
-                    else {
-                        
-                        Button {
-                            do {
-                                var updatedTask = task
-                                updatedTask.mainTask.status = true
-                                for index in updatedTask.subTasks.indices {
-                                    updatedTask.subTasks[index].status.toggle()
-                                }
-                               try updateTaskAPI(task: updatedTask)
+
+                    StatusButton(
+                        status: task.mainTask.status,
+                        borderColor: Color(
+                            hex: getBorderColor(
+                                date: task.mainTask.date,
+                                status: task.mainTask.status
+                            )
+                        )
+                    ) {
+                        do {
+                            var updatedTask = task
+                            updatedTask.mainTask.status = true
+
+                            for index in updatedTask.subTasks.indices {
+                                updatedTask.subTasks[index].status = true
                             }
-                            catch {
-                                let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
-                                alertManager.show(message: message)
-                            }
-                        } label: {
-                            Circle()
-                                .stroke(
-                                    Color(hex: getBorderColor(date: task.mainTask.date,
-                                                              status: task.mainTask.status)),
-                                    lineWidth: 2
-                                ).frame(width: 20, height: 20).contentShape(Circle())
+
+                            try updateTaskAPI(task: updatedTask)
+                        } catch {
+                            let message =
+                                (error as? LocalizedError)?.errorDescription ??
+                                error.localizedDescription
+
+                            alertManager.show(message: message)
                         }
-                           
                     }
+                    
                     VStack(alignment: .leading) {
                         Text(task.mainTask.title)
 
@@ -73,41 +78,33 @@ struct TaskListComponent: View {
 
                         ForEach(Array(task.subTasks.enumerated()), id: \.offset) { index, subTask in
                             HStack {
-                                if(subTask.status){
-                                    Image("check")
-                                }
-                                else {
-                                    Button {
-                                        do {
-                                            var updatedTask = task
 
-                                            updatedTask.subTasks[index].status = true
+                                StatusButton(
+                                    status: subTask.status,
+                                    borderColor: Color(
+                                        hex: subTask.status
+                                            ? ColorsToDo.green.color
+                                            : ColorsToDo.orange.color
+                                    )
+                                ) {
+                                    do {
+                                        var updatedTask = task
 
-                                            if updatedTask.subTasks.allSatisfy(\.status) {
-                                                updatedTask.mainTask.status = true
-                                            }
+                                        updatedTask.subTasks[index].status = true
 
-                                            try updateTaskAPI(task: updatedTask)
+                                        if updatedTask.subTasks.allSatisfy(\.status) {
+                                            updatedTask.mainTask.status = true
                                         }
-                                        catch {
-                                            let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
-                                            alertManager.show(message: message)
-                                        }
-                                    } label: {
-                                        Circle()
-                                            .stroke(
-                                                Color(
-                                                    hex: subTask.status
-                                                        ? ColorsToDo.green.color
-                                                        : ColorsToDo.orange.color
-                                                ),
-                                                lineWidth: 2
-                                            ).frame(width: 20, height: 20).contentShape(Circle())
+
+                                        try updateTaskAPI(task: updatedTask)
+                                    } catch {
+                                        let message =
+                                            (error as? LocalizedError)?.errorDescription ??
+                                            error.localizedDescription
+
+                                        alertManager.show(message: message)
                                     }
-     
-                                        
                                 }
-
 
                                 Text(subTask.title)
                             }
