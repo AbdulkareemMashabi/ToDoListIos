@@ -69,7 +69,7 @@ struct Dashboard: View {
                                                     Image("logOut")
                                                 }
                                             })
-                                        ]).padding().safeAreaInset(edge: .bottom) {
+                                        ]).padding(.horizontal).safeAreaInset(edge: .bottom) {
                                             NavigationLink(value: Route.createNewTask ) {
                                                 Text(localized("dashboard.addNewTask"))
                                             }.formButtonStyle().padding().background(.white).shadow(radius: 2).frame(maxWidth: .infinity)
