@@ -126,3 +126,24 @@ func getDateDifference(date: String) -> Int {
     return components.day ?? 0
 }
 
+// MARK: - Shared Task Loading Helper
+
+@MainActor
+func loadTasksShared(appToken: AppToken, loadingManager: LoadingManager, alertManager: AlertManager) async -> [ToDoTask] {
+    do {
+        let token: String = Storage.load(key: "token") ?? ""
+        appToken.token = token
+        guard !token.isEmpty else { return [] }
+
+        loadingManager.isLoading.toggle()
+        defer { loadingManager.isLoading.toggle() }
+
+        let tasks = try await fetchAllTasksAPI()
+        return tasks
+    } catch {
+        let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+        alertManager.show(message: message)
+        return []
+    }
+}
+
