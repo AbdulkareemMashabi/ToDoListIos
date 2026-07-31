@@ -39,8 +39,7 @@ struct Dashboard: View {
         }.onAppear {
             Task {
                 do {
-                    var token: String = ""
-                    token = Storage.load(key: "token") ?? ""
+                    let token: String = Storage.load(key: "token") ?? ""
                     appToken.token = token
                     if(!token.isEmpty){
                         loadingmanager.isLoading.toggle()
