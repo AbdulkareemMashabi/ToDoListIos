@@ -14,7 +14,7 @@ struct TaskListComponent: View {
     @EnvironmentObject private var loadingmanager: LoadingManager
     @EnvironmentObject private var alertManager: AlertManager
     @Binding var tasks: [ToDoTask]
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             List($tasks, id:\.documentID) { $task in
@@ -38,26 +38,20 @@ struct TaskListComponent: View {
                 }
 
             }.refreshable {
-                Task {
-                    do {
-                        let token: String = Storage.load(key: "token") ?? ""
-                        appToken.token = token
-                        if(!token.isEmpty){
-                            loadingmanager.isLoading.toggle()
-                            let tasks = try await fetchAllTasksAPI()
-                            self.tasks = tasks
-                            loadingmanager.isLoading.toggle()
-                        }
-                    } catch {
-                        let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
-                        loadingmanager.isLoading.toggle()
-                        alertManager.show(message: message)
-                    }
+                let newTasks = await loadTasksShared(appToken: appToken, loadingManager: loadingmanager, alertManager: alertManager)
+                if !newTasks.isEmpty {
+                    self.tasks = newTasks
                 }
             }.listStyle(.plain)
                 .scrollContentBackground(.hidden)
                 .background(.white)
         }.frame(maxHeight: .infinity ,alignment: .top)
+        .task {
+            let newTasks = await loadTasksShared(appToken: appToken, loadingManager: loadingmanager, alertManager: alertManager)
+            if !newTasks.isEmpty {
+                self.tasks = newTasks
+            }
+        }
     }
 }
 
@@ -79,4 +73,3 @@ struct TaskListComponent: View {
     ]
         TaskListComponent(tasks: $tasks)
 }
-
