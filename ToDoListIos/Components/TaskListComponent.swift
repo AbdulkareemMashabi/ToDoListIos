@@ -37,7 +37,7 @@ struct TaskListComponent: View {
                         .frame(width: 20)
                 }
 
-            }.refreshable {
+            }.scrollIndicators(.hidden).refreshable {
                 let newTasks = await loadTasksShared(appToken: appToken, loadingManager: loadingmanager, alertManager: alertManager)
                 if !newTasks.isEmpty {
                     self.tasks = newTasks
