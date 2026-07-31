@@ -6,10 +6,20 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct TaskRow: View {
     @Binding var task: ToDoTask
     @EnvironmentObject var alertManager: AlertManager
+    @State private var player: AVAudioPlayer?
+    
+    func playSound() throws {
+        guard let url = Bundle.main.url(forResource: "correct_sound", withExtension: "mp3") else {
+            fatalError("Audio file not found")
+        }
+        player = try AVAudioPlayer(contentsOf: url)
+        player?.play()
+    }
     
     struct StatusButton: View {
         let status: Bool
@@ -53,6 +63,7 @@ struct TaskRow: View {
 
                     try updateTaskAPI(task: updatedTask)
                     task = updatedTask
+                    try playSound()
                 } catch {
                     let message =
                         (error as? LocalizedError)?.errorDescription ??
@@ -97,6 +108,7 @@ struct TaskRow: View {
 
                                 try updateTaskAPI(task: updatedTask)
                                 task = updatedTask
+                                try playSound()
                             } catch {
                                 let message =
                                     (error as? LocalizedError)?.errorDescription ??
@@ -129,5 +141,6 @@ struct TaskRow: View {
         ]
     )
 
-    return TaskRow(task: $task)
+    TaskRow(task: $task)
 }
+
