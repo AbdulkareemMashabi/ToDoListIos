@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct TaskListComponent: View {
+    @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject private var appToken: AppToken
+    @EnvironmentObject private var appLanguageManager: AppLanguageManager
+    @EnvironmentObject private var loadingmanager: LoadingManager
+    @EnvironmentObject private var alertManager: AlertManager
     @Binding var tasks: [ToDoTask]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            List(tasks, id:\.documentID) { task in
-                TaskRow(task: task).frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
+            List($tasks, id:\.documentID) { $task in
+                TaskRow(task: $task).frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
                     .listRowSeparator(.hidden)
                     .listRowInsets(    EdgeInsets(
                         top: 16,
@@ -32,6 +37,23 @@ struct TaskListComponent: View {
                         .frame(width: 20)
                 }
 
+            }.refreshable {
+                Task {
+                    do {
+                        let token: String = Storage.load(key: "token") ?? ""
+                        appToken.token = token
+                        if(!token.isEmpty){
+                            loadingmanager.isLoading.toggle()
+                            let tasks = try await fetchAllTasksAPI()
+                            self.tasks = tasks
+                            loadingmanager.isLoading.toggle()
+                        }
+                    } catch {
+                        let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+                        loadingmanager.isLoading.toggle()
+                        alertManager.show(message: message)
+                    }
+                }
             }.listStyle(.plain)
                 .scrollContentBackground(.hidden)
                 .background(.white)
@@ -57,3 +79,4 @@ struct TaskListComponent: View {
     ]
         TaskListComponent(tasks: $tasks)
 }
+
