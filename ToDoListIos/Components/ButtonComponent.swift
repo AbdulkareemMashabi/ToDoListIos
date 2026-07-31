@@ -12,7 +12,7 @@ struct ButtonComponent<LabelView: View>: View {
     var action: () -> Void
      var label: () -> LabelView
     @EnvironmentObject private var loadingManager: LoadingManager
-    let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Lotties/loadingButton.json"
+    let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Resources/Lotties/loadingButton.json"
     @State var isButtonDisabled: Bool = false
     
     var body: some View {

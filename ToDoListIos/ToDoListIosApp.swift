@@ -17,7 +17,7 @@ struct ToDoListIosApp: App {
       @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
 
-    let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Lotties/splash.json"
+    let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Resources/Lotties/splash.json"
 
     var body: some Scene {
         WindowGroup {
