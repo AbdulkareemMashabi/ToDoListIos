@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskRow: View {
-   var task: ToDoTask
+    @Binding var task: ToDoTask
     @EnvironmentObject var alertManager: AlertManager
     
     struct StatusButton: View {
@@ -52,6 +52,7 @@ struct TaskRow: View {
                     }
 
                     try updateTaskAPI(task: updatedTask)
+                    task = updatedTask
                 } catch {
                     let message =
                         (error as? LocalizedError)?.errorDescription ??
@@ -95,6 +96,7 @@ struct TaskRow: View {
                                 }
 
                                 try updateTaskAPI(task: updatedTask)
+                                task = updatedTask
                             } catch {
                                 let message =
                                     (error as? LocalizedError)?.errorDescription ??
@@ -113,20 +115,19 @@ struct TaskRow: View {
 }
 
 #Preview {
-    @Previewable @State var task: ToDoTask =
-        ToDoTask(
-            mainTask: MainTask(
-                calendarId: nil,
-                color: "",
-                date: "",
-                description: "",
-                status: false,
-                title: "Task"
-            ),
-            subTasks: [
-                SubTasks(title: "To Do", status: false)
-            ]
-        )
-    
-    TaskRow(task: task)
+    @State var task: ToDoTask = ToDoTask(
+        mainTask: MainTask(
+            calendarId: nil,
+            color: "",
+            date: "",
+            description: "",
+            status: false,
+            title: "Task"
+        ),
+        subTasks: [
+            SubTasks(title: "To Do", status: false)
+        ]
+    )
+
+    return TaskRow(task: $task)
 }
