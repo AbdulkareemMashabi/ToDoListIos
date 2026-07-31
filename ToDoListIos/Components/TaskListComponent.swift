@@ -46,12 +46,6 @@ struct TaskListComponent: View {
                 .scrollContentBackground(.hidden)
                 .background(.white)
         }.frame(maxHeight: .infinity ,alignment: .top)
-        .task {
-            let newTasks = await loadTasksShared(appToken: appToken, loadingManager: loadingmanager, alertManager: alertManager)
-            if !newTasks.isEmpty {
-                self.tasks = newTasks
-            }
-        }
     }
 }
 
