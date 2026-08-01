@@ -50,3 +50,23 @@ func updateTaskAPI (task: ToDoTask) throws {
         throw error
     }
 }
+
+func deleteTaskAPI (documentID: String) throws {
+    do {
+        let db = Firestore.firestore()
+        var deleteError: Error?
+
+        db.collection("tasks")
+            .document(documentID)
+            .delete { error in
+                if let error = error {
+                    deleteError = error
+                }
+            }
+        if let deleteError {
+            throw deleteError
+        }
+    }catch {
+        throw error
+    }
+}
