@@ -14,11 +14,17 @@ struct TaskListComponent: View {
     @EnvironmentObject private var loadingmanager: LoadingManager
     @EnvironmentObject private var alertManager: AlertManager
     @Binding var tasks: [ToDoTask]
+    
+    func deleteTask(documentID: String) {
+        let index = tasks.firstIndex(where: { $0.documentID == documentID })
+
+        tasks.remove(at: index!)
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             List($tasks, id:\.documentID) { $task in
-                TaskRow(task: $task).frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
+                TaskRow(task: $task, deleteTask: deleteTask).frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
                     .listRowSeparator(.hidden)
                     .listRowInsets(    EdgeInsets(
                         top: 16,
