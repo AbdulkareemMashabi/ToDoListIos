@@ -123,40 +123,38 @@ struct TaskRow: View {
                 }.padding(.leading, 24)
             }
         }.swipeActions {
-            HStack{
                 ButtonComponent {
                     
                 } label: {
-                    RoundedRectangle(cornerRadius: 10)
+                    Circle()
+                        .fill(Color(hex: "#E3F2FD"))
                         .frame(width: 56, height: 56)
-                        .foregroundColor(.blue)
                         .overlay(
-                            Image("info")
+                            Image("info").foregroundColor(Color(hex: "#1976D2"))
                         )
                 }
                 
                 ButtonComponent {
                     
                 } label: {
-                    RoundedRectangle(cornerRadius: 10)
+                    Circle()
+                        .fill(Color(hex: "#FFEBEE"))
                         .frame(width: 56, height: 56)
-                        .foregroundColor(.red)
                         .overlay(
-                            Image("trash")
+                            Image("trash").foregroundColor(Color(hex: "#D32F2F"))
                         )
                 }
                 
                 ButtonComponent {
                     
                 } label: {
-                    RoundedRectangle(cornerRadius: 10)
+                    Circle()
+                        .fill(Color(hex: "#FFF3E0"))
                         .frame(width: 56, height: 56)
-                        .foregroundColor(.yellow)
                         .overlay(
-                            Image("emptyStar")
+                            Image("emptyStar").foregroundColor(Color(hex: "#F57C00"))
                         )
                 }
-            }
 
         }
     }
