@@ -12,6 +12,7 @@ struct TaskRow: View {
     @Binding var task: ToDoTask
     @EnvironmentObject var alertManager: AlertManager
     @State private var player: AVAudioPlayer?
+    var deleteTask: (String) -> Void
     
     func playSound() throws {
         guard let url = Bundle.main.url(forResource: "correct_sound", withExtension: "mp3") else {
@@ -135,7 +136,18 @@ struct TaskRow: View {
                 }
                 
                 ButtonComponent {
-                    
+                    Task {
+                        do {
+                            try deleteTaskAPI(documentID: task.documentID ?? "")
+                            deleteTask(task.documentID ?? "")
+                        } catch {
+                            let message =
+                            (error as? LocalizedError)?.errorDescription ??
+                            error.localizedDescription
+                            
+                            alertManager.show(message: message)
+                        }
+                    }
                 } label: {
                     Circle()
                         .fill(Color(hex: "#FFEBEE"))
@@ -175,6 +187,5 @@ struct TaskRow: View {
         ]
     )
 
-    TaskRow(task: $task)
+    TaskRow(task: $task, deleteTask: { _ in })
 }
-
