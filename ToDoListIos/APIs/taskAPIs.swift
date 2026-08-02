@@ -15,6 +15,7 @@ func addTaskAPI (task: ToDoTask) async throws {
         var data: [String: Any] = [:]
         data["mainTask"] = try encoder.encode(task.mainTask)
         data["subTasks"] = []
+        data["favorite"] = false
         
         try await db.collection(Storage.load(key: "token")!)    .addDocument(data: data)
     } catch {
@@ -29,8 +30,7 @@ func fetchAllTasksAPI () async throws -> [ToDoTask] {
         let snapshot = try await db.collection(Storage.load(key: "token")!).getDocuments()
         
         return try snapshot.documents.map { document in
-            let documentData = try document.data(as: ToDoTask.self)
-            return ToDoTask(documentID: document.documentID, mainTask: documentData.mainTask, subTasks: documentData.subTasks)
+            return try document.data(as: ToDoTask.self)
         }
     }
     catch {
@@ -56,7 +56,7 @@ func deleteTaskAPI (documentID: String) throws {
         let db = Firestore.firestore()
         var deleteError: Error?
 
-        db.collection("tasks")
+        db.collection(Storage.load(key: "token")!)
             .document(documentID)
             .delete { error in
                 if let error = error {
