@@ -17,14 +17,44 @@ struct TaskListComponent: View {
     
     func deleteTask(documentID: String) {
         let index = tasks.firstIndex(where: { $0.documentID == documentID })
-
+        
         tasks.remove(at: index!)
     }
+    
+    func moveFavoriteToTop() {
+        guard let index = tasks.firstIndex(where: { $0.favorite }) else {
+            return
+        }
 
+        let favoriteTask = tasks.remove(at: index)
+        tasks.insert(favoriteTask, at: 0)
+    }
+    
+    func makeTaskUnFavorite(documentID: String) {
+        if let index = tasks.firstIndex(where: { $0.favorite && ($0.documentID ?? "") != documentID })
+        {
+                do {
+                    var updatedTask = tasks[index]
+                    updatedTask.favorite = false
+                    try updateTaskAPI(task: updatedTask)
+                    tasks[index].favorite = false
+                } catch {
+                    let message =
+                    (error as? LocalizedError)?.errorDescription ??
+                    error.localizedDescription
+                    
+                    alertManager.show(message: message)
+                }
+
+        }
+        
+        moveFavoriteToTop()
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            List($tasks, id:\.documentID) { $task in
-                TaskRow(task: $task, deleteTask: deleteTask).frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
+            List($tasks, id:\.mainTask.title) { $task in
+                TaskRow(task: $task, deleteTask: deleteTask, makeTaskUnfavorite: makeTaskUnFavorite).frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
                     .listRowSeparator(.hidden)
                     .listRowInsets(    EdgeInsets(
                         top: 16,
@@ -33,16 +63,23 @@ struct TaskListComponent: View {
                         trailing: 5
                     ))
                     .listRowBackground(Color.clear)
-                .padding(.leading, 28)        // leave room for the colored bar
-                .background(Color.white)
-                .cornerRadius(16)
-                .shadow(radius: 2)
-                .overlay(alignment: .leading) {
-                    LeftRoundedRectangle(radius: 16)
-                        .fill(Color(hex: task.mainTask.color))
-                        .frame(width: 20)
-                }
+                    .padding(.leading, 34)// leave room for the colored bar
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .shadow(radius: 2)
+                    .overlay(alignment: .leading) {
+                        ZStack {
+                            LeftRoundedRectangle(radius: 16)
+                                .fill(Color(hex: task.mainTask.color))
+                                .frame(width: 28)
+                            
+                            if(task.favorite) {
+                                Image("filledStar").foregroundColor(Color(hex: "#dbdb07"))
+                            }
 
+                        }
+                    }
+                
             }.scrollIndicators(.hidden).refreshable {
                 let newTasks = await loadTasksShared(appToken: appToken, loadingManager: loadingmanager, alertManager: alertManager)
                 if !newTasks.isEmpty {
@@ -51,7 +88,9 @@ struct TaskListComponent: View {
             }.listStyle(.plain)
                 .scrollContentBackground(.hidden)
                 .background(.white)
-        }.frame(maxHeight: .infinity ,alignment: .top)
+        }.frame(maxHeight: .infinity ,alignment: .top).onAppear{
+            moveFavoriteToTop()
+        }
     }
 }
 
@@ -59,17 +98,17 @@ struct TaskListComponent: View {
     @Previewable @State var tasks: [ToDoTask] = [
         ToDoTask(
             mainTask: MainTask(
-                calendarId: nil,
+                calendarId: "",
                 color: "",
                 date: "",
                 description: "",
                 status: false,
-                title: "Task"
+                title: "Task",
             ),
             subTasks: [
                 SubTasks(title: "To Do", status: false)
             ]
         )
     ]
-        TaskListComponent(tasks: $tasks)
+    TaskListComponent(tasks: $tasks)
 }
