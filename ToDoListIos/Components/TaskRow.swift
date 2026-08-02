@@ -13,6 +13,7 @@ struct TaskRow: View {
     @EnvironmentObject var alertManager: AlertManager
     @State private var player: AVAudioPlayer?
     var deleteTask: (String) -> Void
+    var makeTaskUnfavorite: (String) -> Void
     
     func playSound() throws {
         guard let url = Bundle.main.url(forResource: "correct_sound", withExtension: "mp3") else {
@@ -77,8 +78,8 @@ struct TaskRow: View {
             VStack(alignment: .leading) {
                 Text(task.mainTask.title).bold()
 
-                if let date = task.mainTask.date, !date.isEmpty {
-                    Text(date).foregroundColor(.gray)
+                if !task.mainTask.date.isEmpty {
+                    Text(task.mainTask.date).foregroundColor(.gray)
                 }
 
                 if (!task.subTasks.isEmpty)
@@ -158,13 +159,30 @@ struct TaskRow: View {
                 }
                 
                 ButtonComponent {
-                    
+                    Task {
+                        do {
+                            var updatedTask = task
+                            updatedTask.favorite.toggle()
+                            
+                            try updateTaskAPI(task: updatedTask)
+                            task.favorite.toggle()
+                            if(task.favorite){
+                                makeTaskUnfavorite(task.documentID!)
+                            }
+                        } catch {
+                            let message =
+                            (error as? LocalizedError)?.errorDescription ??
+                            error.localizedDescription
+                            
+                            alertManager.show(message: message)
+                        }
+                    }
                 } label: {
                     Circle()
                         .fill(Color(hex: "#FFF3E0"))
                         .frame(width: 56, height: 56)
                         .overlay(
-                            Image("emptyStar").foregroundColor(Color(hex: "#F57C00"))
+                            Image(task.favorite ? "filledStar" : "emptyStar").foregroundColor(Color(hex: "#dbdb07"))
                         )
                 }
 
@@ -173,19 +191,19 @@ struct TaskRow: View {
 }
 
 #Preview {
-    @State var task: ToDoTask = ToDoTask(
+    @Previewable @State var task: ToDoTask = ToDoTask(
         mainTask: MainTask(
-            calendarId: nil,
+            calendarId: "",
             color: "",
             date: "",
             description: "",
             status: false,
-            title: "Task"
+            title: "Task",
         ),
         subTasks: [
             SubTasks(title: "To Do", status: false)
         ]
     )
 
-    TaskRow(task: $task, deleteTask: { _ in })
+    TaskRow(task: $task, deleteTask: { _ in }, makeTaskUnfavorite: {_ in })
 }
