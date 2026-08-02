@@ -92,8 +92,8 @@ func getEmptyErrorMessage(fieldName:String, fieldValue:String) -> String {
     return fieldValue.isEmpty ? localized("validation.requiredFormat", fieldName) : ""
 }
 
-func getBorderColor(date: String?, status: Bool) -> String {
-    guard let date = date, !date.isEmpty else {
+func getBorderColor(date: String, status: Bool) -> String {
+    guard !date.isEmpty else {
         return status ? ColorsToDo.green.color : ColorsToDo.orange.color
     }
 
