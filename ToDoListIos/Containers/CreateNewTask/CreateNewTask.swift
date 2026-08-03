@@ -17,6 +17,7 @@ struct CreateNewTask: View {
     @EnvironmentObject private var toastManager: ToastManager
     @EnvironmentObject private var alertManager: AlertManager
     @EnvironmentObject var loadingManager: LoadingManager
+    @EnvironmentObject private var navigationManager: NavigationManager
     private var isButtonDisabled: Bool {
         return title.isEmpty
     }
@@ -69,16 +70,17 @@ struct CreateNewTask: View {
                                 }
                             }
 
-                            try await addTaskAPI(task: ToDoTask(mainTask: MainTask(calendarId: eventIdTask, color: color.color, date: selectedDate, description: description, status: false, title: title), subTasks: []))
+                           let documentID = try await addTaskAPI(task: ToDoTask(mainTask: MainTask(calendarId: eventIdTask, color: color.color, date: selectedDate, description: description, status: false, title: title), subTasks: []))
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
                                 toastManager.show(localized("task.addedSuccesfully"))
                             }
+                            let task = ToDoTask(documentID: documentID, mainTask: MainTask(calendarId: eventIdTask, color: color.color, date: selectedDate, description: description, status: false, title: title), subTasks: [])
+                            navigationManager.path.append(.taskDetails(task))
                         }
                         catch {
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
-
                             }
                             let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
                             alertManager.show(message: message)
