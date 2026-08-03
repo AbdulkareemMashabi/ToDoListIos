@@ -6,7 +6,7 @@ struct DateInput: View {
     @State private var pickerDate = Date()
     @State private var hasFocusedBefore = false
     @State private var showDatePicker = false
-    var dateIconColor: String = ColorsToDo.red.color
+    var dateIconColor: String = "#808080"
 
     var placeholder: String = ""
     var error: String = ""
