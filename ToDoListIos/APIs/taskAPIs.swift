@@ -6,7 +6,7 @@
 //
 import FirebaseFirestore
 
-func addTaskAPI (task: ToDoTask) async throws {
+func addTaskAPI (task: ToDoTask) async throws -> String {
     do {
         let db = Firestore.firestore()
         
@@ -17,7 +17,9 @@ func addTaskAPI (task: ToDoTask) async throws {
         data["subTasks"] = []
         data["favorite"] = false
         
-        try await db.collection(Storage.load(key: "token")!)    .addDocument(data: data)
+        let documentRef = try await db.collection(Storage.load(key: "token")!)    .addDocument(data: data)
+        
+        return documentRef.documentID
     } catch {
         throw error
     }
