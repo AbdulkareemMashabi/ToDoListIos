@@ -125,66 +125,52 @@ struct TaskRow: View {
                 }.padding(.leading, 24)
             }
         }.swipeActions {
-                ButtonComponent {
-                    
-                } label: {
-                    Circle()
-                        .fill(Color(hex: "#E3F2FD"))
-                        .frame(width: 56, height: 56)
-                        .overlay(
-                            Image("info").foregroundColor(Color(hex: "#1976D2"))
-                        )
-                }
+            Button {
                 
-                ButtonComponent {
-                    Task {
-                        do {
-                            try deleteTaskAPI(documentID: task.documentID ?? "")
-                            deleteTask(task.documentID ?? "")
-                        } catch {
-                            let message =
-                            (error as? LocalizedError)?.errorDescription ??
-                            error.localizedDescription
-                            
-                            alertManager.show(message: message)
-                        }
+            } label: {
+                Image("info")
+            }.tint(Color(hex: "#E3F2FD"))
+            
+            Button {
+                Task {
+                    do {
+                        try deleteTaskAPI(documentID: task.documentID ?? "")
+                        deleteTask(task.documentID ?? "")
+                    } catch {
+                        let message =
+                        (error as? LocalizedError)?.errorDescription ??
+                        error.localizedDescription
+                        
+                        alertManager.show(message: message)
                     }
-                } label: {
-                    Circle()
-                        .fill(Color(hex: "#FFEBEE"))
-                        .frame(width: 56, height: 56)
-                        .overlay(
-                            Image("trash").foregroundColor(Color(hex: "#D32F2F"))
-                        )
                 }
-                
-                ButtonComponent {
-                    Task {
-                        do {
-                            var updatedTask = task
-                            updatedTask.favorite.toggle()
-                            
-                            try updateTaskAPI(task: updatedTask)
-                            task.favorite.toggle()
-                            if(task.favorite){
-                                makeTaskUnfavorite(task.documentID!)
-                            }
-                        } catch {
-                            let message =
-                            (error as? LocalizedError)?.errorDescription ??
-                            error.localizedDescription
-                            
-                            alertManager.show(message: message)
+            } label: {
+                Image("trash")
+            }.tint(Color(hex: "#FFEBEE"))
+            
+            Button {
+                Task {
+                    do {
+                        var updatedTask = task
+                        updatedTask.favorite.toggle()
+                        
+                        try updateTaskAPI(task: updatedTask)
+                        task.favorite.toggle()
+                        if(task.favorite){
+                            makeTaskUnfavorite(task.documentID!)
                         }
+                    } catch {
+                        let message =
+                        (error as? LocalizedError)?.errorDescription ??
+                        error.localizedDescription
+                        
+                        alertManager.show(message: message)
                     }
-                } label: {
-                    Circle()
-                        .fill(Color(hex: "#FFF3E0"))
-                        .frame(width: 56, height: 56)
-                        .overlay(
-                            Image(task.favorite ? "filledStar" : "emptyStar").foregroundColor(Color(hex: "#dbdb07"))
-                        )
                 }
+            } label: {
+                Image(task.favorite ? "filledStar" : "emptyStar").tint(Color(hex: "#dbdb07"))
+            }.tint(Color(hex: "#FFF3E0"))
+            
 
         }
     }
