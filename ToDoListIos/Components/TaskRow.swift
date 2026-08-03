@@ -11,6 +11,7 @@ import AVFoundation
 struct TaskRow: View {
     @Binding var task: ToDoTask
     @EnvironmentObject var alertManager: AlertManager
+    @EnvironmentObject private var navigationManager: NavigationManager
     @State private var player: AVAudioPlayer?
     var deleteTask: (String) -> Void
     var makeTaskUnfavorite: (String) -> Void
@@ -126,7 +127,7 @@ struct TaskRow: View {
             }
         }.swipeActions {
             Button {
-                
+                navigationManager.path.append(.taskDetails(task))
             } label: {
                 Image("info")
             }.tint(Color(hex: "#E3F2FD"))
