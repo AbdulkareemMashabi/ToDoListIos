@@ -47,7 +47,7 @@ struct Register: View {
                             let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
                             alertManager.show(message: message)
                             await MainActor.run {
-                                loadingManager.isLoading.toggle()
+                                loadingManager.isLoadingButton.toggle()
                             }
                         }
                         
