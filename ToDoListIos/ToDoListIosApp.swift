@@ -64,6 +64,9 @@ struct ToDoListIosApp: App {
                             
                         case .accountDeletion:
                             AccountDeletion()
+                            
+                        case .taskDetails(let task):
+                            TaskDetails(task: task)
                         }
                     }
                 }
