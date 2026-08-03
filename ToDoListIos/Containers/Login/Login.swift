@@ -63,7 +63,9 @@ struct Login: View {
                     Text(localized("common.login"))
                 }.formButtonStyle().isButtonDisabled(isButtonDisabled)
                 
-                NavigationLink(value: Route.register) {
+                Button {
+                    navigationManager.path.append(Route.register)
+                } label: {
                     Text(localized("common.register")).fontWeight(.bold).foregroundColor(.cyan).frame(maxWidth:.infinity, alignment: .center).padding(.top)
                 }
                 

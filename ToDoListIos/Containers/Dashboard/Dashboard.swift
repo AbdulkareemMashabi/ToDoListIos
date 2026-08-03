@@ -22,14 +22,16 @@ struct Dashboard: View {
                     .imageScale(.large)
                 Text(localized("dashboard.emptyTitle")).fontWeight(.bold)
                 Text(localized("dashboard.emptySubtitle")).fontWeight(.bold).foregroundStyle(.gray)
-                NavigationLink(value: appToken.token.isEmpty ? Route.login : Route.createNewTask ) {
+                Button {
+                    navigationManager.path.append(appToken.token.isEmpty ? Route.login : Route.createNewTask)
+                } label: {
                     Image(systemName: "plus")
                         .padding(.vertical, 12)
                         .padding(.horizontal, 8)
-                }
-                .buttonStyle(.borderedProminent)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 40)
+                }                .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 40)
+
             }
             else {
                 TaskListComponent(tasks: $tasks)
@@ -70,9 +72,11 @@ struct Dashboard: View {
                                                 }
                                             })
                                         ]).padding(.horizontal).safeAreaInset(edge: .bottom) {
-                                            if(!tasks.isEmpty)
+                                            if(!tasks.isEmpty && !appToken.token.isEmpty)
                                             {
-                                                NavigationLink(value: Route.createNewTask ) {
+                                                Button {
+                                                    navigationManager.path.append(Route.createNewTask)
+                                                } label: {
                                                     Text(localized("dashboard.addNewTask"))
                                                 }.formButtonStyle().padding().background(.white).shadow(radius: 2).frame(maxWidth: .infinity)
                                             }
