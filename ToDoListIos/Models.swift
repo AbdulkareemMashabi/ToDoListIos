@@ -19,13 +19,13 @@ struct LoginBody: Codable {
     let userId: String
 }
 
-struct MainTask: Codable {
+struct MainTask: Codable, Hashable {
     let calendarId: String
     let color: String
-    let date: String
-    let description: String
+    var date: String
+    var description: String
     var status: Bool
-    let title: String
+    var title: String
 
     enum CodingKeys: String, CodingKey {
         case calendarId
@@ -64,12 +64,12 @@ struct MainTask: Codable {
     }
 }
 
-struct SubTasks: Codable {
+struct SubTasks: Codable, Hashable {
     let title: String
     var status: Bool
 }
 
-struct ToDoTask: Codable {
+struct ToDoTask: Codable, Hashable {
     @DocumentID var documentID: String?
     var favorite: Bool = false
     var mainTask: MainTask
