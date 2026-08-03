@@ -17,4 +17,5 @@ enum Route: Hashable {
     case createNewTask
     case forgetPassword
     case accountDeletion
+    case taskDetails(ToDoTask)
 }
