@@ -21,6 +21,7 @@ struct TextInput: View {
     var charsLimits: Int?
     var error: String = ""
     var isTextArea: Bool = false
+    var onBlur: (() -> Void)?
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -80,6 +81,11 @@ struct TextInput: View {
                         .onChange(of: isTextFieldFocus) {
                             if isTextFieldFocus {
                                 hasFocusedBefore = true
+                            }
+                            else {
+                                if let onBlurFunc = onBlur {
+                                    onBlurFunc()
+                                }
                             }
                         }
                         .onChange(of: data) {
