@@ -5,7 +5,7 @@ import FirebaseCore
 @main
 struct ToDoListIosApp: App {
     @State private var isLottieFinished = false
-
+    
     @StateObject private var loadingManager = LoadingManager()
     @StateObject private var appToken = AppToken()
     @StateObject private var navigationManager = NavigationManager()
@@ -13,23 +13,24 @@ struct ToDoListIosApp: App {
     @StateObject private var toastManager = ToastManager()
     @StateObject private var alertManager = AlertManager()
     @StateObject private var appLanguageManager = AppLanguageManager()
+    @StateObject private var focusingManager = FocusingManager()
     // register app delegate for Firebase setup
-      @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
-
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    
     let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Resources/Lotties/splash.json"
-
+    
     var body: some Scene {
         WindowGroup {
             ZStack(alignment: .top) {
-
+                
                 NavigationStack(path: $navigationManager.path) {
-
+                    
                     VStack {
                         if isLottieFinished {
                             Dashboard()
                                 .transition(.opacity)
-
+                            
                         } else {
                             LottieView(animation: .filepath(filePath))
                                 .playbackMode(
@@ -52,13 +53,13 @@ struct ToDoListIosApp: App {
                         switch route {
                         case .login:
                             Login()
-
+                            
                         case .register:
                             Register()
-
+                            
                         case .createNewTask:
                             CreateNewTask()
-
+                            
                         case .forgetPassword:
                             ForgetPassword()
                             
@@ -70,9 +71,9 @@ struct ToDoListIosApp: App {
                         }
                     }
                 }
-
+                
                 // MARK: - Full Screen Loader
-
+                
                 if loadingManager.isLoading {
                     Color.black.opacity(0.3)
                         .ignoresSafeArea()
@@ -83,27 +84,30 @@ struct ToDoListIosApp: App {
                         )
                         .zIndex(1000)
                 }
-
+                
                 // MARK: - Button Loader Overlay
-
+                
                 if loadingManager.isLoadingButton {
                     Color.black.opacity(0.1)
                         .ignoresSafeArea()
                         .zIndex(999)
                 }
-
+                
                 // MARK: - Toast
-
+                
                 if toastManager.isShowing {
                     ToastView(message: toastManager.message)
                         .padding(.top, 60)
                         .transition(
                             .move(edge: .top)
-                                .combined(with: .opacity)
+                            .combined(with: .opacity)
                         )
                         .zIndex(2000)
                 }
-            }
+            }.contentShape(Rectangle()).onTapGesture {
+                print("mdre")
+                focusingManager.blurTrigger = UUID()
+               }
             .alert(alertManager.title, isPresented: $alertManager.isPresented) {
                 Button(localized("common.ok")) {
                     alertManager.hide()
@@ -119,6 +123,7 @@ struct ToDoListIosApp: App {
             .environmentObject(toastManager)
             .environmentObject(alertManager)
             .environmentObject(appLanguageManager)
+            .environmentObject(focusingManager)
             .environment(\.locale, appLanguageManager.locale)
             .environment(\.layoutDirection, appLanguageManager.layoutDirection)
         }
