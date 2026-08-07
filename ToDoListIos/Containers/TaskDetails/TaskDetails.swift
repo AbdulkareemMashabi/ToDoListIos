@@ -90,13 +90,12 @@ struct TaskDetails: View {
                     .background(.white)
             }
             TextInput(data: $newSubTask, placeholder: localized("taskDetails.subTasksPlaceHolder"), onBlur: {
-                subTasks.append(SubTasks(id: UUID(), title: newSubTask, status: false))
-                newSubTask = ""
-                isTaskChanged = true
-            }).padding(.top, 8)
-            TextInput(data: $newSubTask, placeholder: localized("taskDetails.subTasksPlaceHolder"), onBlur: {
-                subTasks.append(SubTasks(id: UUID(), title: newSubTask, status: false))
-                newSubTask = ""
+                if(!newSubTask.isEmpty)
+                {
+                    subTasks.append(SubTasks(id: UUID(), title: newSubTask, status: false))
+                    newSubTask = ""
+                    isTaskChanged = true
+                }
             }).padding(.top, 8)
         }.customToolbar(title: task.mainTask.title, rightButtons: isTaskChanged ? [
             AnyView(
