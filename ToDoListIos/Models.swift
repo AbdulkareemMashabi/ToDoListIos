@@ -20,7 +20,7 @@ struct LoginBody: Codable {
 }
 
 struct MainTask: Codable, Hashable {
-    let calendarId: String
+    var calendarId: String
     let color: String
     var date: String
     var description: String
@@ -64,7 +64,8 @@ struct MainTask: Codable, Hashable {
     }
 }
 
-struct SubTasks: Codable, Hashable {
+struct SubTasks: Codable, Hashable, Identifiable {
+    let id: UUID
     let title: String
     var status: Bool
 }
