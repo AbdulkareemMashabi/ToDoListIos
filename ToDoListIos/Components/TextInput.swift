@@ -10,6 +10,7 @@ import SwiftUI
 struct TextInput: View {
     @Binding var data: String
     var placeholder: String = ""
+    @EnvironmentObject private var focusingManager: FocusingManager
     @FocusState private var isTextFieldFocus: Bool
     @State private var hasFocusedBefore: Bool = false
     var isSecureTextEntry: Bool = false
@@ -128,6 +129,11 @@ struct TextInput: View {
                     .padding(.top, 8)
                     .padding(.horizontal, 4)
             }
+        }.onChange(of: focusingManager.blurTrigger ) {
+            print("1")
+                isTextFieldFocus = false
+            print(isTextFieldFocus, "isTextFieldFocus", forceToFocused)
+            
         }
     }
 }
