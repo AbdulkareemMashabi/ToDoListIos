@@ -41,6 +41,10 @@
 "task.calendarAccessDenied" = "تم رفض الوصول إلى التقويم. يرجى السماح بالوصول إلى التقويم في الإعدادات.";
 "task.addedSuccesfully" = "تم إضافة المهمة بنجاح";
 
+"taskDetails.done" = "تم";
+"taskDetails.subTasks" = "مهام جانبية";
+"taskDetails.subTasksPlaceHolder" = "عنوان المهمة الفرعية الجديدة";
+
 "validation.emailRequired" = "البريد الإلكتروني مطلوب";
 "validation.invalidEmail" = "صيغة البريد الإلكتروني غير صحيحة";
 "validation.passwordLength" = "يجب أن تكون كلمة المرور 6 أحرف على الأقل";

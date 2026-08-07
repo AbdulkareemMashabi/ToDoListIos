@@ -41,6 +41,10 @@
 "task.calendarAccessDenied" = "Calendar access denied. Please allow calendar access in settings.";
 "task.addedSuccesfully" = "Task added successfully";
 
+"taskDetails.done" = "Done";
+"taskDetails.subTasks" = "Sub Tasks";
+"taskDetails.subTasksPlaceHolder" = "New Sub Task Title";
+
 "validation.emailRequired" = "Email is required";
 "validation.invalidEmail" = "Invalid email format";
 "validation.passwordLength" = "Password must be at least 6 characters long";
