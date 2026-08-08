@@ -44,6 +44,7 @@
 "taskDetails.done" = "Done";
 "taskDetails.subTasks" = "Sub Tasks";
 "taskDetails.subTasksPlaceHolder" = "New Sub Task Title";
+"taskDetails.failedToUpdateCalendar" = "Failed to update task in calendar";
 
 "validation.emailRequired" = "Email is required";
 "validation.invalidEmail" = "Invalid email format";

@@ -44,6 +44,7 @@
 "taskDetails.done" = "تم";
 "taskDetails.subTasks" = "مهام جانبية";
 "taskDetails.subTasksPlaceHolder" = "عنوان المهمة الفرعية الجديدة";
+"taskDetails.failedToUpdateCalendar" = "فشلت تحديث المهمة في التقويم";
 
 "validation.emailRequired" = "البريد الإلكتروني مطلوب";
 "validation.invalidEmail" = "صيغة البريد الإلكتروني غير صحيحة";
