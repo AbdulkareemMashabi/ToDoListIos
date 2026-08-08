@@ -12,7 +12,11 @@ struct CreateNewTask: View {
     @State private var description: String = ""
     @State private var isPresented: Bool = false
     @State private var selectedDate: String = ""
-    @State private var selectedDateObject: Date = Date()
+    @State private var selectedDateObject: Date = Calendar.current.date(
+        byAdding: .day,
+        value: 1,
+        to: Date()
+    )!
     @EnvironmentObject private var appColors: AppColors
     @EnvironmentObject private var toastManager: ToastManager
     @EnvironmentObject private var alertManager: AlertManager
@@ -52,7 +56,7 @@ struct CreateNewTask: View {
                             if isPresented {
                                 CalendarManager.shared.requestAccess { granted in
                                     if granted {
-                                        let (added, errorMessage, eventId) = CalendarManager.shared.addEvent(
+                                        let (added, eventId) = CalendarManager.shared.addEvent(
                                             title: title,
                                             description: description,
                                             startDate: Date(),
@@ -62,7 +66,7 @@ struct CreateNewTask: View {
                                         if added {
                                             toastManager.show(localized("task.addedToCalendar"))
                                         } else {
-                                            alertManager.show(message: errorMessage ?? localized("task.failedToAddToCalendar"))
+                                            alertManager.show(message: localized("task.failedToAddToCalendar"))
                                         }
                                     } else {
                                         alertManager.show(message: localized("task.calendarAccessDenied"))
