@@ -105,7 +105,6 @@ struct ToDoListIosApp: App {
                         .zIndex(2000)
                 }
             }.contentShape(Rectangle()).onTapGesture {
-                print("mdre")
                 focusingManager.blurTrigger = UUID()
                }
             .alert(alertManager.title, isPresented: $alertManager.isPresented) {
