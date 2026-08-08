@@ -13,18 +13,26 @@ struct TaskDetails: View {
     @State private var isAddedToCalnedar: Bool
     @State private var selectedDateObject: Date
     @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject var loadingManager: LoadingManager
+    @EnvironmentObject private var toastManager: ToastManager
+    @EnvironmentObject private var alertManager: AlertManager
     @State private var title: String
     @State private var description: String
     @State private var date: String
     @State private var subTasks: [SubTasks]
     @State private var isTaskChanged: Bool
     @State private var newSubTask: String
+    @State private var didPressDone = false
     
     init(task: ToDoTask) {
         self.task = task
         self.isPresented = false
         self.isAddedToCalnedar = !task.mainTask.calendarId.isEmpty
-        self.selectedDateObject = Date()
+        self.selectedDateObject = Calendar.current.date(
+            byAdding: .day,
+            value: 1,
+            to: Date()
+        )!
         self.title = task.mainTask.title
         self.description = task.mainTask.description
         self.date = task.mainTask.date
@@ -85,7 +93,7 @@ struct TaskDetails: View {
                             trailing: 5
                         ))
                         .listRowBackground(Color.clear)
-                }.scrollIndicators(.hidden).listStyle(.plain)
+                }.frame(height: CGFloat(subTasks.count * 60)).scrollIndicators(.hidden).listStyle(.plain)
                     .scrollContentBackground(.hidden)
                     .background(.white)
             }
@@ -100,31 +108,98 @@ struct TaskDetails: View {
         }.customToolbar(title: task.mainTask.title, rightButtons: isTaskChanged ? [
             AnyView(
             ButtonComponent {
-                print("")
+                Task {
+                    do {
+                        var eventIdTask: String = ""
+                        await MainActor.run {
+                            loadingManager.isLoadingButton.toggle()
+                        }
+                        if isAddedToCalnedar {
+                            CalendarManager.shared.requestAccess { granted in
+                                if granted {
+                                    if task.mainTask.calendarId.isEmpty {
+                                        let (added, eventId) = CalendarManager.shared.addEvent(
+                                            title: title,
+                                            description: description,
+                                            startDate: Date(),
+                                            endDate: selectedDateObject
+                                        )
+                                        if added {
+                                            toastManager.show(localized("task.addedToCalendar"))
+                                        } else {
+                                            alertManager.show(message: localized("task.failedToAddToCalendar"))
+                                        }
+                                        eventIdTask = eventId ?? ""
+                                    }
+                                    else {
+                                        eventIdTask = task.mainTask.calendarId
+                                        let updated = CalendarManager.shared.updateEvent( eventId: eventIdTask, title: title, description: description, startDate: Date(), endDate: selectedDateObject )
+                                        if updated {
+                                         toastManager.show(localized("task.updatedInCalendar"))
+                                        }
+                                        else {
+                                            alertManager.show( message: localized("task.failedToUpdateCalendar") )
+                                        }
+                                        
+                                    }
+
+                                } else {
+                                    alertManager.show(message: localized("task.calendarAccessDenied"))
+                                }
+                            }
+                        }
+                        
+                        task.mainTask.calendarId = eventIdTask
+                        task.mainTask.title = title
+                        task.mainTask.description = description
+                        task.mainTask.date = date
+                        task.subTasks = subTasks
+                        
+                        try updateTaskAPI(task: task)
+                        navigationManager.path.removeAll()
+                        
+                        await MainActor.run {
+                            loadingManager.isLoadingButton.toggle()
+                        }
+                    } catch {
+                        await MainActor.run {
+                            loadingManager.isLoadingButton.toggle()
+                        }
+                        let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+                        alertManager.show(message: message)
+                    }
+                }
             } label: {
                 Text(localized("taskDetails.done")).foregroundColor(.cyan)
             }
             )
         ] : []).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).padding(.horizontal).sheet(isPresented: $isPresented, onDismiss: {
-            title = task.mainTask.title
-            description = task.mainTask.description
-            date = task.mainTask.date
-            isAddedToCalnedar = !task.mainTask.calendarId.isEmpty
+            if didPressDone {
+                didPressDone = false
+            } else {
+                title = task.mainTask.title
+                description = task.mainTask.description
+                date = task.mainTask.date
+                isAddedToCalnedar = !task.mainTask.calendarId.isEmpty
+            }
         }){
             VStack{
                 TextInput(data: $title, placeholder: localized("task.title") ,error: title.isEmpty ? localized("task.titleRequired") : "")
-                DateInput(selectedDate: $task.mainTask.date, onDateSelected: { date in
+                DateInput(selectedDate: $date, onDateSelected: { date in
                     selectedDateObject = date
                 }, placeholder: localized("task.dateOptional"))
-                TextInput(data: $task.mainTask.description, placeholder: localized("task.description"), isTextArea: true)
+                TextInput(data: $description, placeholder: localized("task.description"), isTextArea: true)
                 Toggle(isOn: $isAddedToCalnedar) {
                     Text(localized("task.addToCalendar"))
                 }.padding(.vertical, 8).disabled(!task.mainTask.calendarId.isEmpty)
                 ButtonComponent {
+                    didPressDone = true
                     task.mainTask.title = title
-                    task.mainTask.description = task.mainTask.description
-                    task.mainTask.date = task.mainTask.date
+                    task.mainTask.description = description
+                    task.mainTask.date = date
+                    isAddedToCalnedar = isAddedToCalnedar
                     isTaskChanged = true
+                    isPresented = false
                 } label: {
                     Text(localized("common.submit"))
                 }.formButtonStyle().disabled(title.isEmpty)
