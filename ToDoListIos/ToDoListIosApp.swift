@@ -106,13 +106,34 @@ struct ToDoListIosApp: App {
                 }
             }.contentShape(Rectangle()).onTapGesture {
                 focusingManager.blurTrigger = UUID()
-               }
-            .alert(alertManager.title, isPresented: $alertManager.isPresented) {
-                Button(localized("common.ok")) {
-                    alertManager.hide()
+            }.overlay {
+                if alertManager.isPresented {
+                    Color.black.opacity(0.5)
+                        .ignoresSafeArea()
+                        .zIndex(999).overlay {
+                             
+                                VStack(spacing: 16) {
+                                    Text(alertManager.title)
+                                        .font(.headline)
+                                    
+                                    Text(alertManager.message)
+                                    if(alertManager.buttons.isEmpty){ Button(localized("common.ok")) { alertManager.hide() }}
+                                    else {
+                                        ForEach(alertManager.buttons) { item in
+                                            ButtonComponent {
+                                                item.action()
+                                                alertManager.hide()
+                                            } label: {
+                                                Text(item.title)
+                                                    .frame(maxWidth: .infinity)
+                                            }.background(item.buttonVariant.color).formButtonStyle()
+                                        }
+                                    }
+
+                                }.padding().background(.white).cornerRadius(16).padding()
+                            
+                        }
                 }
-            } message: {
-                Text(alertManager.message)
             }
             .animation(.easeInOut(duration: 0.3), value: toastManager.isShowing)
             .environmentObject(loadingManager)

@@ -133,18 +133,26 @@ struct TaskRow: View {
             }.tint(Color(hex: "#E3F2FD"))
             
             Button {
-                Task {
-                    do {
-                        try deleteTaskAPI(documentID: task.documentID ?? "")
-                        deleteTask(task.documentID ?? "")
-                    } catch {
-                        let message =
-                        (error as? LocalizedError)?.errorDescription ??
-                        error.localizedDescription
-                        
-                        alertManager.show(message: message)
+
+                
+                alertManager.show(title: localized("task.deleteTaskTitle"), message: localized("task.deleteTaskSubTitle"), buttons: [AlertButton(title: localized("task.deleteButton"), action: {
+                    Task {
+                        do {
+                            try deleteTaskAPI(documentID: task.documentID ?? "")
+                            deleteTask(task.documentID ?? "")
+                        } catch {
+                            let message =
+                            (error as? LocalizedError)?.errorDescription ??
+                            error.localizedDescription
+                            
+                            alertManager.show(message: message)
+                        }
                     }
-                }
+                    
+                }, buttonVariant: .danger), AlertButton(title: localized("task.cancelButton"), action: {
+                    alertManager.hide()
+                    
+                }, buttonVariant: .normal)])
             } label: {
                 Image("trash")
             }.tint(Color(hex: "#FFEBEE"))
