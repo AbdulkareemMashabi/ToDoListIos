@@ -130,9 +130,7 @@ struct TextInput: View {
                     .padding(.horizontal, 4)
             }
         }.onChange(of: focusingManager.blurTrigger ) {
-            print("1")
                 isTextFieldFocus = false
-            print(isTextFieldFocus, "isTextFieldFocus", forceToFocused)
             
         }
     }
