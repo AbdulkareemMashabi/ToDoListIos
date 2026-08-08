@@ -23,7 +23,7 @@ struct TaskDetails: View {
     @State private var isTaskChanged: Bool
     @State private var newSubTask: String
     @State private var didPressDone = false
-    
+
     init(task: ToDoTask) {
         self.task = task
         self.isPresented = false
@@ -40,7 +40,54 @@ struct TaskDetails: View {
         self.isTaskChanged = false
         self.newSubTask = ""
     }
-    
+
+    private func performCalendarIfNeeded(title: String, description: String, selectedDateObject: Date, existingEventId: String, isAddedToCalendar: Bool) async -> String {
+        await withCheckedContinuation { continuation in
+            // Default to existingEventId; may be replaced
+            var resultEventId = existingEventId
+            guard isAddedToCalendar else {
+                continuation.resume(returning: resultEventId)
+                return
+            }
+            CalendarManager.shared.requestAccess { granted in
+                if granted {
+                    if existingEventId.isEmpty {
+                        let (added, eventId) = CalendarManager.shared.addEvent(
+                            title: title,
+                            description: description,
+                            startDate: Date(),
+                            endDate: selectedDateObject
+                        )
+                        if added {
+                            toastManager.show(localized("task.addedToCalendar"))
+                        } else {
+                            alertManager.show(message: localized("task.failedToAddToCalendar"))
+                        }
+                        resultEventId = eventId ?? ""
+                        continuation.resume(returning: resultEventId)
+                    } else {
+                        let updated = CalendarManager.shared.updateEvent(
+                            eventId: existingEventId,
+                            title: title,
+                            description: description,
+                            startDate: Date(),
+                            endDate: selectedDateObject
+                        )
+                        if updated {
+                            toastManager.show(localized("task.updatedInCalendar"))
+                        } else {
+                            alertManager.show(message: localized("task.failedToUpdateCalendar"))
+                        }
+                        continuation.resume(returning: resultEventId)
+                    }
+                } else {
+                    alertManager.show(message: localized("task.calendarAccessDenied"))
+                    continuation.resume(returning: resultEventId)
+                }
+            }
+        }
+    }
+
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -110,44 +157,16 @@ struct TaskDetails: View {
             ButtonComponent {
                 Task {
                     do {
-                        var eventIdTask: String = ""
                         await MainActor.run {
                             loadingManager.isLoadingButton.toggle()
                         }
-                        if isAddedToCalnedar {
-                            CalendarManager.shared.requestAccess { granted in
-                                if granted {
-                                    if task.mainTask.calendarId.isEmpty {
-                                        let (added, eventId) = CalendarManager.shared.addEvent(
-                                            title: title,
-                                            description: description,
-                                            startDate: Date(),
-                                            endDate: selectedDateObject
-                                        )
-                                        if added {
-                                            toastManager.show(localized("task.addedToCalendar"))
-                                        } else {
-                                            alertManager.show(message: localized("task.failedToAddToCalendar"))
-                                        }
-                                        eventIdTask = eventId ?? ""
-                                    }
-                                    else {
-                                        eventIdTask = task.mainTask.calendarId
-                                        let updated = CalendarManager.shared.updateEvent( eventId: eventIdTask, title: title, description: description, startDate: Date(), endDate: selectedDateObject )
-                                        if updated {
-                                         toastManager.show(localized("task.updatedInCalendar"))
-                                        }
-                                        else {
-                                            alertManager.show( message: localized("task.failedToUpdateCalendar") )
-                                        }
-                                        
-                                    }
-
-                                } else {
-                                    alertManager.show(message: localized("task.calendarAccessDenied"))
-                                }
-                            }
-                        }
+                        let eventIdTask: String = await performCalendarIfNeeded(
+                            title: title,
+                            description: description,
+                            selectedDateObject: selectedDateObject,
+                            existingEventId: task.mainTask.calendarId,
+                            isAddedToCalendar: isAddedToCalnedar
+                        )
                         
                         task.mainTask.calendarId = eventIdTask
                         task.mainTask.title = title
@@ -225,3 +244,4 @@ struct TaskDetails: View {
 
     TaskDetails(task: task)
 }
+

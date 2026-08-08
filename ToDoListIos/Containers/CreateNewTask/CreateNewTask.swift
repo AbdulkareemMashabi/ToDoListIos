@@ -27,6 +27,36 @@ struct CreateNewTask: View {
     }
     @State private var color: ColorsToDo = ColorsToDo.red
     
+    private func createCalendarEventIfNeeded(title: String, description: String, endDate: Date, shouldAddToCalendar: Bool) async -> String {
+        await withCheckedContinuation { continuation in
+            var resultEventId: String = ""
+            guard shouldAddToCalendar else {
+                continuation.resume(returning: resultEventId)
+                return
+            }
+            CalendarManager.shared.requestAccess { granted in
+                if granted {
+                    let (added, eventId) = CalendarManager.shared.addEvent(
+                        title: title,
+                        description: description,
+                        startDate: Date(),
+                        endDate: endDate
+                    )
+                    resultEventId = eventId ?? ""
+                    if added {
+                        toastManager.show(localized("task.addedToCalendar"))
+                    } else {
+                        alertManager.show(message: localized("task.failedToAddToCalendar"))
+                    }
+                    continuation.resume(returning: resultEventId)
+                } else {
+                    alertManager.show(message: localized("task.calendarAccessDenied"))
+                    continuation.resume(returning: resultEventId)
+                }
+            }
+        }
+    }
+    
     var body: some View {
         ZStack(alignment: .bottom){
             Image(color.image).resizable()
@@ -49,37 +79,23 @@ struct CreateNewTask: View {
                 ButtonComponent {
                     Task {
                         do {
-                            var eventIdTask: String = ""
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
                             }
-                            if isPresented {
-                                CalendarManager.shared.requestAccess { granted in
-                                    if granted {
-                                        let (added, eventId) = CalendarManager.shared.addEvent(
-                                            title: title,
-                                            description: description,
-                                            startDate: Date(),
-                                            endDate: selectedDateObject
-                                        )
-                                        eventIdTask = eventId ?? ""
-                                        if added {
-                                            toastManager.show(localized("task.addedToCalendar"))
-                                        } else {
-                                            alertManager.show(message: localized("task.failedToAddToCalendar"))
-                                        }
-                                    } else {
-                                        alertManager.show(message: localized("task.calendarAccessDenied"))
-                                    }
-                                }
-                            }
+                            let eventIdTask: String = await createCalendarEventIfNeeded(
+                                title: title,
+                                description: description,
+                                endDate: selectedDateObject,
+                                shouldAddToCalendar: isPresented
+                            )
 
-                           let documentID = try await addTaskAPI(task: ToDoTask(mainTask: MainTask(calendarId: eventIdTask, color: color.color, date: selectedDate, description: description, status: false, title: title), subTasks: []))
+                            let documentID = try await addTaskAPI(task: ToDoTask(mainTask: MainTask(calendarId: eventIdTask, color: color.color, date: selectedDate, description: description, status: false, title: title), subTasks: []))
                             await MainActor.run {
                                 loadingManager.isLoadingButton.toggle()
                                 toastManager.show(localized("task.addedSuccesfully"))
                             }
                             let task = ToDoTask(documentID: documentID, mainTask: MainTask(calendarId: eventIdTask, color: color.color, date: selectedDate, description: description, status: false, title: title), subTasks: [])
+                            navigationManager.path.removeAll()
                             navigationManager.path.append(.taskDetails(task))
                         }
                         catch {
