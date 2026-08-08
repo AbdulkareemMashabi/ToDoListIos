@@ -8,35 +8,71 @@ class CalendarManager {
     func requestAccess(completion: @escaping (Bool) -> Void) {
         if #available(iOS 17.0, *) {
             eventStore.requestFullAccessToEvents { granted, error in
-                DispatchQueue.main.async { completion(granted) }
+                DispatchQueue.main.async {
+                    completion(granted)
+                }
             }
         } else {
             eventStore.requestAccess(to: .event) { granted, error in
-                DispatchQueue.main.async { completion(granted) }
+                DispatchQueue.main.async {
+                    completion(granted)
+                }
             }
         }
     }
 
-    @discardableResult
-    func addEvent(title: String, description: String, startDate: Date, endDate: Date) -> (Bool, String?, String?) {
+    func addEvent(
+        title: String,
+        description: String,
+        startDate: Date,
+        endDate: Date
+    ) -> (Bool, String?) {
         let event = EKEvent(eventStore: eventStore)
+
         event.title = title
         event.notes = description
         event.startDate = startDate
         event.endDate = endDate
+
         if let defaultCalendar = eventStore.defaultCalendarForNewEvents {
             event.calendar = defaultCalendar
         } else {
             event.calendar = eventStore.calendars(for: .event).first
         }
+
         guard event.calendar != nil else {
-            return (false, "No calendar found", nil)
+            return (false, nil)
         }
+
         do {
             try eventStore.save(event, span: .thisEvent)
-            return (true, nil, event.eventIdentifier)
+            return (true, event.eventIdentifier)
         } catch {
-            return (false, error.localizedDescription, nil)
+            return (false, nil)
+        }
+    }
+
+    func updateEvent(
+        eventId: String,
+        title: String,
+        description: String,
+        startDate: Date,
+        endDate: Date
+    ) -> Bool {
+        guard let event = eventStore.event(withIdentifier: eventId) else {
+            return false
+        }
+
+        event.title = title
+        event.notes = description
+        event.startDate = startDate
+        event.endDate = endDate
+
+        do {
+            try eventStore.save(event, span: .thisEvent)
+            return true
+        } catch {
+            return false
         }
     }
 }
