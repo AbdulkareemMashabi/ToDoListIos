@@ -4,7 +4,11 @@ struct DateInput: View {
     @Binding var selectedDate: String
     var onDateSelected: ((Date) -> Void)?
     @EnvironmentObject private var focusingManager: FocusingManager
-    @State private var pickerDate = Date()
+    @State private var pickerDate = Calendar.current.date(
+        byAdding: .day,
+        value: 1,
+        to: Date()
+    )!
     @State private var hasFocusedBefore = false
     @State private var showDatePicker = false
     var dateIconColor: String = "#808080"
@@ -15,6 +19,12 @@ struct DateInput: View {
     var forceToFocused: Bool {
         showDatePicker || !selectedDate.isEmpty
     }
+    
+    let tomorrow = Calendar.current.date(
+        byAdding: .day,
+        value: 1,
+        to: Calendar.current.startOfDay(for: Date())
+    )!
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -60,6 +70,7 @@ struct DateInput: View {
                     DatePicker(
                         localized("common.selectDate"),
                         selection: $pickerDate,
+                        in: tomorrow...,
                         displayedComponents: .date
                     )
                     .datePickerStyle(.graphical)
