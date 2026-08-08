@@ -45,87 +45,87 @@ struct TaskRow: View {
     }
     
     var body: some View {
-        HStack {
+        VStack (alignment: .leading){
+            HStack {
 
-            StatusButton(
-                status: task.mainTask.status,
-                borderColor: Color(
-                    hex: getBorderColor(
-                        date: task.mainTask.date,
-                        status: task.mainTask.status
+                StatusButton(
+                    status: task.mainTask.status,
+                    borderColor: Color(
+                        hex: getBorderColor(
+                            date: task.mainTask.date,
+                            status: task.mainTask.status
+                        )
                     )
-                )
-            ) {
-                do {
-                    var updatedTask = task
-                    updatedTask.mainTask.status = true
+                ) {
+                    do {
+                        var updatedTask = task
+                        updatedTask.mainTask.status = true
 
-                    for index in updatedTask.subTasks.indices {
-                        updatedTask.subTasks[index].status = true
-                    }
-
-                    try updateTaskAPI(task: updatedTask)
-                    task = updatedTask
-                    try playSound()
-                } catch {
-                    let message =
-                        (error as? LocalizedError)?.errorDescription ??
-                        error.localizedDescription
-
-                    alertManager.show(message: message)
-                }
-            }
-            
-            VStack(alignment: .leading) {
-                Text(task.mainTask.title).bold()
-
-                if !task.mainTask.date.isEmpty {
-                    Text(task.mainTask.date).foregroundColor(.gray)
-                }
-
-                if (!task.subTasks.isEmpty)
-                {
-                    Divider()
-                }
-                   
-
-                ForEach(Array(task.subTasks.enumerated()), id: \.offset) { index, subTask in
-                    HStack {
-
-                        StatusButton(
-                            status: subTask.status,
-                            borderColor: Color(
-                                hex: subTask.status
-                                    ? ColorsToDo.green.color
-                                    : ColorsToDo.orange.color
-                            )
-                        ) {
-                            do {
-                                var updatedTask = task
-
-                                updatedTask.subTasks[index].status = true
-
-                                if updatedTask.subTasks.allSatisfy(\.status) {
-                                    updatedTask.mainTask.status = true
-                                }
-
-                                try updateTaskAPI(task: updatedTask)
-                                task = updatedTask
-                                try playSound()
-                            } catch {
-                                let message =
-                                    (error as? LocalizedError)?.errorDescription ??
-                                    error.localizedDescription
-
-                                alertManager.show(message: message)
-                            }
+                        for index in updatedTask.subTasks.indices {
+                            updatedTask.subTasks[index].status = true
                         }
 
-                        Text(subTask.title)
+                        try updateTaskAPI(task: updatedTask)
+                        task = updatedTask
+                        try playSound()
+                    } catch {
+                        let message =
+                            (error as? LocalizedError)?.errorDescription ??
+                            error.localizedDescription
+
+                        alertManager.show(message: message)
                     }
-                }.padding(.leading, 24)
+                }
+                
+                VStack(alignment: .leading) {
+                    Text(task.mainTask.title).bold()
+
+                    if !task.mainTask.date.isEmpty {
+                        Text(task.mainTask.date).foregroundColor(.gray)
+                    }
+                       
+                }
             }
-        }.swipeActions {
+            if (!task.subTasks.isEmpty)
+            {
+                Divider().padding(.trailing, 8)
+            }
+            ForEach(Array(task.subTasks.enumerated()), id: \.offset) { index, subTask in
+                HStack {
+
+                    StatusButton(
+                        status: subTask.status,
+                        borderColor: Color(
+                            hex: subTask.status
+                                ? ColorsToDo.green.color
+                                : ColorsToDo.orange.color
+                        )
+                    ) {
+                        do {
+                            var updatedTask = task
+
+                            updatedTask.subTasks[index].status = true
+
+                            if updatedTask.subTasks.allSatisfy(\.status) {
+                                updatedTask.mainTask.status = true
+                            }
+
+                            try updateTaskAPI(task: updatedTask)
+                            task = updatedTask
+                            try playSound()
+                        } catch {
+                            let message =
+                                (error as? LocalizedError)?.errorDescription ??
+                                error.localizedDescription
+
+                            alertManager.show(message: message)
+                        }
+                    }
+
+                    Text(subTask.title)
+                }
+            }.padding(.leading, 16)
+        }.padding(.vertical, 8).swipeActions {
             Button {
                 navigationManager.path.append(.taskDetails(task))
             } label: {
