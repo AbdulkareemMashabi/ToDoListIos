@@ -40,6 +40,10 @@
 "task.failedToAddToCalendar" = "فشلت إضافة المهمة إلى التقويم";
 "task.calendarAccessDenied" = "تم رفض الوصول إلى التقويم. يرجى السماح بالوصول إلى التقويم في الإعدادات.";
 "task.addedSuccesfully" = "تم إضافة المهمة بنجاح";
+"task.deleteTaskTitle" = "حذف مهمة";
+"task.deleteTaskSubTitle" = "هل أنت متأكد من حذف هذه المهمة؟";
+"task.deleteButton" = "تأكيد";
+"task.cancelButton" = "الغاء";
 
 "taskDetails.done" = "تم";
 "taskDetails.subTasks" = "مهام جانبية";

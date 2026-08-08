@@ -40,6 +40,10 @@
 "task.failedToAddToCalendar" = "Failed to add task to calendar";
 "task.calendarAccessDenied" = "Calendar access denied. Please allow calendar access in settings.";
 "task.addedSuccesfully" = "Task added successfully";
+"task.deleteTaskTitle" = "Delete Task";
+"task.deleteTaskSubTitle" = "Are you sure about deleteing this task?";
+"task.deleteButton" = "Confirm";
+"task.cancelButton" = "Cancel";
 
 "taskDetails.done" = "Done";
 "taskDetails.subTasks" = "Sub Tasks";
