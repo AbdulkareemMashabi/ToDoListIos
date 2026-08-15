@@ -29,12 +29,15 @@ struct TaskListComponent: View {
     }
     
     func moveFavoriteToTop() {
-        guard let index = tasks.firstIndex(where: { $0.favorite }) else {
+        guard let index = tasks.firstIndex(where: { $0.favorite }),
+              index != 0 else {
             return
         }
-        
-        let favoriteTask = tasks.remove(at: index)
-        tasks.insert(favoriteTask, at: 0)
+
+        withAnimation(.easeInOut(duration: 0.15)) {
+            let task = tasks.remove(at: index)
+            tasks.insert(task, at: 0)
+        }
     }
     
     func makeTaskUnFavorite(documentID: String) {
@@ -45,6 +48,7 @@ struct TaskListComponent: View {
                 updatedTask.favorite = false
                 try updateTaskAPI(task: updatedTask)
                 tasks[index].favorite = false
+                moveFavoriteToTop()
             } catch {
                 let message =
                 (error as? LocalizedError)?.errorDescription ??
@@ -54,8 +58,9 @@ struct TaskListComponent: View {
             }
             
         }
-        
-        moveFavoriteToTop()
+        else {
+            moveFavoriteToTop()
+        }
     }
     
     var body: some View {
