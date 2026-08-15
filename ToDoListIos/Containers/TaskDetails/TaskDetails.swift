@@ -127,11 +127,14 @@ struct TaskDetails: View {
                         Spacer()
 
                         Button {
-                             subTasks.remove(at: index)
+                            subTasks.remove(at: index)
                             isTaskChanged = true
                         } label: {
                             Image("delete")
+                                .frame(width: 44, height: 44)
+                                .contentShape(Rectangle())
                         }
+                        .buttonStyle(.plain)
                     }                   .listRowSeparator(.hidden)
                         .listRowInsets(    EdgeInsets(
                             top: 16,
