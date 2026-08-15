@@ -14,11 +14,13 @@ struct ToDoListIosApp: App {
     @StateObject private var alertManager = AlertManager()
     @StateObject private var appLanguageManager = AppLanguageManager()
     @StateObject private var focusingManager = FocusingManager()
+    @StateObject private var lottieManager = LottieManager()
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     
-    let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Resources/Lotties/splash.json"
+    let splash = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Resources/Lotties/splash.json"
+    let doneLottie = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Resources/Lotties/doneLottie.json"
     
     var body: some Scene {
         WindowGroup {
@@ -32,7 +34,7 @@ struct ToDoListIosApp: App {
                                 .transition(.opacity)
                             
                         } else {
-                            LottieView(animation: .filepath(filePath))
+                            LottieView(animation: .filepath(splash))
                                 .playbackMode(
                                     .playing(
                                         .toProgress(
@@ -46,6 +48,22 @@ struct ToDoListIosApp: App {
                                 }
                                 .transition(.opacity)
                                 .background(Color(white: 0.9))
+                        }
+                    }.overlay {
+                        if (lottieManager.isDoneLottieEnabled)
+                        {
+                            LottieView(animation: .filepath(doneLottie))
+                                .playbackMode(
+                                    .playing(
+                                        .toProgress(
+                                            1,
+                                            loopMode: .playOnce
+                                        )
+                                    )
+                                )
+                                .animationDidFinish { _ in
+                                    lottieManager.isDoneLottieEnabled = false
+                                }
                         }
                     }
                     .animation(.linear(duration: 0.3), value: isLottieFinished)
@@ -144,6 +162,7 @@ struct ToDoListIosApp: App {
             .environmentObject(alertManager)
             .environmentObject(appLanguageManager)
             .environmentObject(focusingManager)
+            .environmentObject(lottieManager)
             .environment(\.locale, appLanguageManager.locale)
             .environment(\.layoutDirection, appLanguageManager.layoutDirection)
         }
