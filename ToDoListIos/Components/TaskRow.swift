@@ -13,8 +13,6 @@ struct TaskRow: View {
     @EnvironmentObject var alertManager: AlertManager
     @EnvironmentObject private var navigationManager: NavigationManager
     @State private var player: AVAudioPlayer?
-    var deleteTask: (String) -> Void
-    var makeTaskUnfavorite: (String) -> Void
     
     func playSound() throws {
         guard let url = Bundle.main.url(forResource: "correct_sound", withExtension: "mp3") else {
@@ -125,63 +123,7 @@ struct TaskRow: View {
                     Text(subTask.title)
                 }
             }.padding(.leading, 16)
-        }.padding(.vertical, 8).swipeActions {
-            Button {
-                navigationManager.path.append(.taskDetails(task))
-            } label: {
-                Image("info")
-            }.tint(Color(hex: "#E3F2FD"))
-            
-            Button {
-
-                
-                alertManager.show(title: localized("task.deleteTaskTitle"), message: localized("task.deleteTaskSubTitle"), buttons: [AlertButton(title: localized("task.deleteButton"), action: {
-                    Task {
-                        do {
-                            try deleteTaskAPI(documentID: task.documentID ?? "")
-                            deleteTask(task.documentID ?? "")
-                        } catch {
-                            let message =
-                            (error as? LocalizedError)?.errorDescription ??
-                            error.localizedDescription
-                            
-                            alertManager.show(message: message)
-                        }
-                    }
-                    
-                }, buttonVariant: .danger), AlertButton(title: localized("task.cancelButton"), action: {
-                    alertManager.hide()
-                    
-                }, buttonVariant: .normal)])
-            } label: {
-                Image("trash")
-            }.tint(Color(hex: "#FFEBEE"))
-            
-            Button {
-                Task {
-                    do {
-                        var updatedTask = task
-                        updatedTask.favorite.toggle()
-                        
-                        try updateTaskAPI(task: updatedTask)
-                        task.favorite.toggle()
-                        if(task.favorite){
-                            makeTaskUnfavorite(task.documentID!)
-                        }
-                    } catch {
-                        let message =
-                        (error as? LocalizedError)?.errorDescription ??
-                        error.localizedDescription
-                        
-                        alertManager.show(message: message)
-                    }
-                }
-            } label: {
-                Image(task.favorite ? "filledStar" : "emptyStar").tint(Color(hex: "#dbdb07"))
-            }.tint(Color(hex: "#FFF3E0"))
-            
-
-        }
+        }.padding(.vertical, 8)
     }
 }
 
@@ -200,5 +142,5 @@ struct TaskRow: View {
         ]
     )
 
-    TaskRow(task: $task, deleteTask: { _ in }, makeTaskUnfavorite: {_ in })
+    TaskRow(task: $task)
 }
