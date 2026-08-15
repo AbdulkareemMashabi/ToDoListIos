@@ -18,7 +18,6 @@ struct TaskListComponent: View {
     
     init(tasks: Binding<[ToDoTask]>){
         self._tasks = tasks
-        print(tasks.count, "tasks")
         showSwipeHint = tasks.count == 1
     }
     
