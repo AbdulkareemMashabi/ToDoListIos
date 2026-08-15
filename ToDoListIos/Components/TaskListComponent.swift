@@ -85,6 +85,8 @@ struct TaskListComponent: View {
                             }
                             
                         }
+                    }.onChange(of: tasks.count){
+                        showSwipeHint = tasks.count == 1
                     }.taskSwipeActions(task: $task, showSwipeHint: $showSwipeHint, deleteTask: deleteTask, makeTaskUnfavorite: makeTaskUnFavorite)
                 
             }.scrollIndicators(.hidden).refreshable {
