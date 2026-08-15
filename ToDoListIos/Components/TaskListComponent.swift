@@ -14,6 +14,13 @@ struct TaskListComponent: View {
     @EnvironmentObject private var loadingmanager: LoadingManager
     @EnvironmentObject private var alertManager: AlertManager
     @Binding var tasks: [ToDoTask]
+    @State private var showSwipeHint: Bool
+    
+    init(tasks: Binding<[ToDoTask]>){
+        self._tasks = tasks
+        print(tasks.count, "tasks")
+        showSwipeHint = tasks.count == 1
+    }
     
     func deleteTask(documentID: String) {
         let index = tasks.firstIndex(where: { $0.documentID == documentID })
@@ -25,7 +32,7 @@ struct TaskListComponent: View {
         guard let index = tasks.firstIndex(where: { $0.favorite }) else {
             return
         }
-
+        
         let favoriteTask = tasks.remove(at: index)
         tasks.insert(favoriteTask, at: 0)
     }
@@ -33,19 +40,19 @@ struct TaskListComponent: View {
     func makeTaskUnFavorite(documentID: String) {
         if let index = tasks.firstIndex(where: { $0.favorite && ($0.documentID ?? "") != documentID })
         {
-                do {
-                    var updatedTask = tasks[index]
-                    updatedTask.favorite = false
-                    try updateTaskAPI(task: updatedTask)
-                    tasks[index].favorite = false
-                } catch {
-                    let message =
-                    (error as? LocalizedError)?.errorDescription ??
-                    error.localizedDescription
-                    
-                    alertManager.show(message: message)
-                }
-
+            do {
+                var updatedTask = tasks[index]
+                updatedTask.favorite = false
+                try updateTaskAPI(task: updatedTask)
+                tasks[index].favorite = false
+            } catch {
+                let message =
+                (error as? LocalizedError)?.errorDescription ??
+                error.localizedDescription
+                
+                alertManager.show(message: message)
+            }
+            
         }
         
         moveFavoriteToTop()
@@ -54,7 +61,7 @@ struct TaskListComponent: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             List($tasks, id:\.mainTask.title) { $task in
-                TaskRow(task: $task, deleteTask: deleteTask, makeTaskUnfavorite: makeTaskUnFavorite).frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
+                TaskRow(task: $task).frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
                     .listRowSeparator(.hidden)
                     .listRowInsets(    EdgeInsets(
                         top: 16,
@@ -76,9 +83,9 @@ struct TaskListComponent: View {
                             if(task.favorite) {
                                 Image("filledStar").foregroundColor(Color(hex: "#dbdb07"))
                             }
-
+                            
                         }
-                    }
+                    }.taskSwipeActions(task: $task, showSwipeHint: $showSwipeHint, deleteTask: deleteTask, makeTaskUnfavorite: makeTaskUnFavorite)
                 
             }.scrollIndicators(.hidden).refreshable {
                 let newTasks = await loadTasksShared(appToken: appToken, loadingManager: loadingmanager, alertManager: alertManager)
