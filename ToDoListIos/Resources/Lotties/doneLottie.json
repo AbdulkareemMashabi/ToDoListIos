@@ -1,0 +1,4228 @@
+{
+  "v": "4.8.0",
+  "meta": {"g": "LottieFiles AE 3.5.7", "a": "", "k": "", "d": "", "tc": ""},
+  "fr": 29.9700012207031,
+  "ip": 0,
+  "op": 63.0000025660426,
+  "w": 375,
+  "h": 812,
+  "nm": "tarate3",
+  "ddd": 0,
+  "assets": [
+    {
+      "id": "image_0",
+      "w": 6,
+      "h": 6,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAgklEQVQImWNQ+bi2QeP9agcGNMDE/I/BgeXv//2GL5cvsHi+XAEmwaj7avUC1r9/41n+/mNg/fOPgfXP342s//5tYGL783sD65+/DGy/IZj1zz8H1t8MF5jOSkVtYP31byLbn38P2f78ZWD9/XfBNu3ECygW+lye7RBwfrYDAwMDAwBJUzlpFK8sRAAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_1",
+      "w": 5,
+      "h": 7,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAHCAYAAADAp4fuAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAQ0lEQVQImW3MQQ3DQADEwMkhOSiFVCgXRqVSBmXgfKIqiuLfWtaqZrWqT7XAOf7A8MDA7yqqObCw43v613ar3phPlw60syeJQ2pBxQAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_2",
+      "w": 5,
+      "h": 8,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAICAYAAAAx8TU7AAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAhklEQVQImTXLsQ2CQBSA4f+9g+LeHYcrOIFsoIkL2FDQsIEJLVswgiM4wo2gGzCCtSFiobRf8gnA0raZGF/U9b2YppsALH2fqaqjpISmtFcAMdthBmbIOM4KsJod5IdPAH0PQ/MHMHsAqPP+tNU1hAygq/eXDV1ZZoDCxXj9hHDGrJGumwG+/7YZDyZm9GUAAAAASUVORK5CYII=",
+      "e": 1
+    },
+    {
+      "id": "image_3",
+      "w": 9,
+      "h": 6,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAGCAYAAAARx7TFAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAk0lEQVQImVXNMRIBYRBE4WdninQPoIpEjEzoHpJNZY7AaYRuId4jbEmkSmj/6ZHYQtxf9RsBLJ6XxqJ0XsClupJWXlj5SMfrdNc6wLjvDxa59EhMwiJxCQ+1wIBUD4N9oEdioS2Ab+7nefYxMyUeX2SRWAYAXr1KY8Ff5uftAeCTopsVnSoJF1hka5EPKN1lve8A3u1eYPb0QbBCAAAAAElFTkSuQmCC",
+      "e": 1
+    },
+    {
+      "id": "image_4",
+      "w": 12,
+      "h": 11,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAALCAYAAABLcGxfAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAA9ElEQVQokYWQu00DURBFz5032gxBASAt0lo2JKYEl+AOMB1AB6YCXILdgTtACCQQAbvGBITQARnSrrSPwF+wgYkmOOeO5ootU01bHSz0UQC8cCUDHT28AWi70Cwwb0sOFkCOLFyExv1gQygn2bmCX80gBwUwBznIzmwd/szTVKb+7PAia7ZHdOnZ7dDXBZePQbsg0FySvddYN2ncFQBLoZykQxTbC1gA0k1Iyq4fPn4sQwHK/KAndPo9mZG3nno/f1SV73fArhdtYE40HyXH0w0YwOqazvw+SET4FV5Vmacn1XNWVC/N8Z/g+sTX5k7M073/uC+ZiDwK/SzVtAAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_5",
+      "w": 5,
+      "h": 4,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAYAAABGM/VAAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAVklEQVQImQXBMQ2AMBRF0dukApCABByAlFrACTMTIzMKkMFISAc6vra/K5zj1uMLMvpidLkwLLObfEwEGaMqZAMA/7yQG6iCKgLwMbGqsZXGee3uBvgBT4UkkS5EQ8EAAAAASUVORK5CYII=",
+      "e": 1
+    },
+    {
+      "id": "image_6",
+      "w": 5,
+      "h": 4,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAYAAABGM/VAAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAOklEQVQImU3KQRHAIBTE0CwKKqFSKgFJSEFaJXwH6YEyw7smUQfLA8wkE/VSy6XUuyUpoP/3y0ndgQ+gIBx0pQqqqQAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_7",
+      "w": 3,
+      "h": 2,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAMklEQVQImWNgQAOMv0NDPRgZGBIYGBh2sKxevYDpv5TUW0Zt7RsMpqZv0FUzMDAwMAAAUyYJqSbivIsAAAAASUVORK5CYII=",
+      "e": 1
+    },
+    {
+      "id": "image_8",
+      "w": 5,
+      "h": 6,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAGCAYAAAAL+1RLAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAaUlEQVQImU3NsRWCMBSG0S+aLn94MAkruII9xavJErgGFW7gCIzCHoCx0XO8C1z42ofhto/jBBAAqnt7ShuSkdI9Vvf23TRrkAyJmjPx7LolpNQjQc6PWMrrgtmCGZg9r6VMv4Njnp0/H2TDF2j+lrr6AAAAAElFTkSuQmCC",
+      "e": 1
+    },
+    {
+      "id": "image_9",
+      "w": 2,
+      "h": 3,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAQElEQVQImT3IoRGAMBAAsAAveogqXGfoHkhMV+h8rMBIaHoHjsiAp7X97X2DGaaIY5RS/5DSFTnfELDUelrXAR9p5QmMMjiQ8QAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_10",
+      "w": 4,
+      "h": 8,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAICAYAAADeM14FAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAaklEQVQImT3KsRUBYRSE0W/mzZLSkQ5oQQc6ogQy4RYg+DuxmT2WJXGk91zdd8fVa3wetMjGy+6a9zidJG1dRp16AyiGFLiapU+vKlSGaPBcbsQ/CEnSqIIUSfD6vB/0HxAAlS/E7TFPty92MxkRas0OMwAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_11",
+      "w": 8,
+      "h": 8,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAqUlEQVQYlW2PMRLBQBiFvz/Wvt0sE0dwhBzBEVLS5QiYUbgHPZXWERyFGyQ1k2gwxvjK973iPeNFX1WTbjyue+9nxDjBe5B2BnCfz2cW4xnvCySQMOmWOVc6ABuNaqTiJUCik+rBdts4AFKqviXScbjZXADcY72uTSoIAbyHENoMlu9tGSlBSkfyvCUliPFgq1XzLtjnxX5fdiFcsjwvbbG48o/+dJr+Zk+dlyErRYPkqwAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_12",
+      "w": 7,
+      "h": 8,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAICAYAAAA1BOUGAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAnklEQVQImV2OsQ2CUBRFz//+8N+DhDAKKzgCHaFRS6hgAxegMLGicwLYxBUcAVtiwEIxxNPde3KTa/jyyvMBkQQREAHVqwGYiiK1IndUQQQjwuL9yQHYMKy3AlV2qoObqiolCA4/IQLe30zTjM6q1uZTsK6tc2cA69r2OIvsiaInYQhRdDFl+QAw69ul69LZ+8HGcWqybOSfpe+TbX4DEy4eXsqYJi8AAAAASUVORK5CYII=",
+      "e": 1
+    },
+    {
+      "id": "image_13",
+      "w": 4,
+      "h": 4,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAT0lEQVQImQFEALv/AQAAAACJpv9Q7/EAUOj4AHACfJn/gOLnAK/h6QAgoHEB8ATi6gBA7vEAAO3yAJAAAAAABOXqAGrr8QBW9PcAvwAAAAAYXh1xZENJVwAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_14",
+      "w": 10,
+      "h": 8,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAzUlEQVQYlX2PQWoCURBEa/7vL7jLESQgCIIEAlkJuvAA3kBc5hYuvYWzHYQJuYCYE5gb6CqLIIRkJUx3dRaOMIjYUPSDqoYuPP6Vw+5vmfd+3jq4M0HMJ2KciVX7wXeRP38V01vBrH9cb4P7KNIRjYh01PwRzCHu2013tpDI2jTHFY8iHcl8AQAhGQ+ihFitJhshqpcf7TMZkYxIet7No8y9AwChXVV5JOeifL8EkhJJHcmIlvoYALJms+lu9aCiT4EYC4lAIhpOxcvr8h8LgoGpwA+qUgAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_15",
+      "w": 10,
+      "h": 8,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAApklEQVQYlX2QoQ3CYBSE7929Ggx0g7JBx0AWi2odW1A2wGFIwCBJYAQ2gBGYoJWIJj+itCAol1xOvC+XyzMMqMr2CagMbmk9apZezbZJA+YAQDEJYkIxDeLYZIC4nh6KpzdgbmYrEwERfKe1fkyOixIAHARMgn0BXQZX2U1xuv+ETERAdP6AEW+B6o99m3SNd/O6AxmfirOJF3MBLljrO8nN0Ef+6gUOJB82BxPr1QAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_16",
+      "w": 8,
+      "h": 8,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAtUlEQVQYlW2OIQ7CQBREZ3d/seUIIBAkiBp8DQmSG9DegMPgAYVAgETuDfAoUAgEoLt/PgJqCE9NJpOXcfhSPPbdhqnKkpVetSs0iHLpAGB035UOdhBlHmgISojaNbOmEADwxkrU8kAiqEGUkIQqDuqnAECWOAsfJb6GTRzMIwDI+LatfGIuavgY8DLhov3mQ0N0EjeifEkiOqrr2K+f7cC1YXJeFV4tOrjiOKwv+Mf0tOr9dm8131unm/Qb+QAAAABJRU5ErkJggg==",
+      "e": 1
+    },
+    {
+      "id": "image_17",
+      "w": 3,
+      "h": 2,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAMklEQVQImWNgQAOMv8PCXBgZGBIY/v/fw7J69QKm/5KSHxm1tO4wmJq+QVfNwMDAwAAApIALrcLOqNsAAAAASUVORK5CYII=",
+      "e": 1
+    },
+    {
+      "id": "image_18",
+      "w": 5,
+      "h": 6,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAGCAYAAAAL+1RLAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAaUlEQVQImU3NsRWCMBSG0S+aLn94MAkruII9xavJErgGFW7gCIzCHoCx0XO8C1z42ofhto/jBBAAqnt7ShuSkdI9Vvf23TRrkAyJmjPx7LolpNQjQc6PWMrrgtmCGZg9r6VMv4Njnp0/H2TDF2j+lrr6AAAAAElFTkSuQmCC",
+      "e": 1
+    },
+    {
+      "id": "image_19",
+      "w": 6,
+      "h": 7,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAHCAYAAAArkDztAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAJHpUWHRDcmVhdG9yAAAImXNMyU9KVXBMK0ktUnBNS0tNLikGAEF6Bs5qehXFAAAAg0lEQVQImW3NsRGCMBhA4Zd4xwX+H8wIjuAIjmCTioYRcBLSUklBD6swgaxgT8ROLfzqd/cA2EJoUl23/DBbCA3O3RF5Hpw7mxhXAIvIFVVQPb6qat67zgOYvW1PKcsepihABEQWm+cXa2JcjeqNsgRVEJnx/jtLfT+kcRz4Z5+mT/oGw7wf3aG3lkkAAAAASUVORK5CYII=",
+      "e": 1
+    }
+  ],
+  "layers": [
+    {
+      "ddd": 0,
+      "ind": 1,
+      "ty": 4,
+      "nm": "Shape Layer 8",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": 0, "ix": 10},
+        "p": {"a": 0, "k": [159.648, 416.944, 0], "ix": 2},
+        "a": {"a": 0, "k": [82.25, -109.25, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [88.25, -107.25],
+                    [103.25, -93.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.207843152214, 0.384313755409, 1, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 6",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [76.25, -110.5],
+                    [56.75, -121]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.207843152214, 0.384313755409, 1, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 5",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 2,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [77.75, -106.25],
+                    [67.75, -98]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.207843152214, 0.384313755409, 1, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 4",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 3,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [83.25, -105.5],
+                    [82.75, -84.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.207843152214, 0.384313755409, 1, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 3",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 4,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [87.75, -110.25],
+                    [97.5, -127.25]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.207843152214, 0.384313755409, 1, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 2",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 5,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [80, -113],
+                    [83, -145.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.207843152214, 0.384313755409, 1, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 1",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 6,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "tm",
+          "s": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.52], "y": [1]},
+                "o": {"x": [0.48], "y": [0]},
+                "t": 48.2,
+                "s": [0]
+              },
+              {"t": 53.8000021913189, "s": [100]}
+            ],
+            "ix": 1
+          },
+          "e": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.52], "y": [1]},
+                "o": {"x": [0.48], "y": [0]},
+                "t": 44,
+                "s": [0]
+              },
+              {"t": 49.6000020202494, "s": [100]}
+            ],
+            "ix": 2
+          },
+          "o": {"a": 0, "k": 0, "ix": 3},
+          "m": 1,
+          "ix": 7,
+          "nm": "Trim Paths 1",
+          "mn": "ADBE Vector Filter - Trim",
+          "hd": false
+        }
+      ],
+      "ip": 44.0000017921567,
+      "op": 55.0000022401959,
+      "st": 30.0000012219251,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 2,
+      "ty": 4,
+      "nm": "Shape Layer 7",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": 0, "ix": 10},
+        "p": {"a": 0, "k": [203.689, 338.956, 0], "ix": 2},
+        "a": {"a": 0, "k": [82.25, -109.25, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [88.25, -107.25],
+                    [103.25, -93.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.984313785329, 0.835294177485, 0.16862745098, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 6",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [76.25, -110.5],
+                    [56.75, -121]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.984313785329, 0.835294177485, 0.16862745098, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 5",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 2,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [77.75, -106.25],
+                    [67.75, -98]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.984313785329, 0.835294177485, 0.16862745098, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 4",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 3,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [83.25, -105.5],
+                    [82.75, -84.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.984313785329, 0.835294177485, 0.16862745098, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 3",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 4,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [87.75, -110.25],
+                    [97.5, -127.25]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.984313785329, 0.835294177485, 0.16862745098, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 2",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 5,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [80, -113],
+                    [83, -145.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.984313785329, 0.835294177485, 0.16862745098, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 1",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 6,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "tm",
+          "s": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.52], "y": [1]},
+                "o": {"x": [0.48], "y": [0]},
+                "t": 51.714,
+                "s": [0]
+              },
+              {"t": 58.0000023623884, "s": [100]}
+            ],
+            "ix": 1
+          },
+          "e": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.52], "y": [1]},
+                "o": {"x": [0.48], "y": [0]},
+                "t": 47,
+                "s": [0]
+              },
+              {"t": 53.2862521703935, "s": [100]}
+            ],
+            "ix": 2
+          },
+          "o": {"a": 0, "k": 0, "ix": 3},
+          "m": 1,
+          "ix": 7,
+          "nm": "Trim Paths 1",
+          "mn": "ADBE Vector Filter - Trim",
+          "hd": false
+        }
+      ],
+      "ip": 47.0000019143492,
+      "op": 58.0000023623884,
+      "st": 33.0000013441176,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 3,
+      "ty": 4,
+      "nm": "Shape Layer 6",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": 0, "ix": 10},
+        "p": {"a": 0, "k": [187.5, 406, 0], "ix": 2},
+        "a": {"a": 0, "k": [0, 0, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [60.075, 96.397]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [-11.985, -19.232]
+                  ],
+                  "v": [
+                    [198.237, 151.606],
+                    [12.081, -63.825]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.984313785329, 0.835294177485, 0.16862745098, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 1",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "zz",
+          "nm": "Zig Zag 1",
+          "s": {"a": 0, "k": 4.1, "ix": 1},
+          "r": {"a": 0, "k": 20.9, "ix": 2},
+          "pt": {"a": 0, "k": 2, "ix": 3},
+          "ix": 2,
+          "mn": "ADBE Vector Filter - Zigzag",
+          "hd": false
+        },
+        {
+          "ty": "tm",
+          "s": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.833], "y": [0.833]},
+                "o": {"x": [0.167], "y": [0.167]},
+                "t": 43,
+                "s": [0]
+              },
+              {"t": 53.0000021587343, "s": [100]}
+            ],
+            "ix": 1
+          },
+          "e": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.833], "y": [0.833]},
+                "o": {"x": [0.167], "y": [0.167]},
+                "t": 36,
+                "s": [0]
+              },
+              {"t": 46.0000018736184, "s": [100]}
+            ],
+            "ix": 2
+          },
+          "o": {"a": 0, "k": 0, "ix": 3},
+          "m": 1,
+          "ix": 3,
+          "nm": "Trim Paths 1",
+          "mn": "ADBE Vector Filter - Trim",
+          "hd": false
+        }
+      ],
+      "ip": 36.0000014663101,
+      "op": 54.0000021994651,
+      "st": 36.0000014663101,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 4,
+      "ty": 4,
+      "nm": "Shape Layer 5",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": 0, "ix": 10},
+        "p": {"a": 0, "k": [187.5, 406, 0], "ix": 2},
+        "a": {"a": 0, "k": [0, 0, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [-47.263, 147.155]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [6.929, -21.575]
+                  ],
+                  "v": [
+                    [-200.763, 174.606],
+                    [-31.053, 9.281]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.207843152214, 0.384313755409, 1, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 1",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "zz",
+          "nm": "Zig Zag 1",
+          "s": {"a": 0, "k": 4.1, "ix": 1},
+          "r": {"a": 0, "k": 20.9, "ix": 2},
+          "pt": {"a": 0, "k": 2, "ix": 3},
+          "ix": 2,
+          "mn": "ADBE Vector Filter - Zigzag",
+          "hd": false
+        },
+        {
+          "ty": "tm",
+          "s": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.833], "y": [0.833]},
+                "o": {"x": [0.167], "y": [0.167]},
+                "t": 40,
+                "s": [0]
+              },
+              {"t": 50.0000020365418, "s": [100]}
+            ],
+            "ix": 1
+          },
+          "e": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.833], "y": [0.833]},
+                "o": {"x": [0.167], "y": [0.167]},
+                "t": 33,
+                "s": [0]
+              },
+              {"t": 43.0000017514259, "s": [100]}
+            ],
+            "ix": 2
+          },
+          "o": {"a": 0, "k": 0, "ix": 3},
+          "m": 1,
+          "ix": 3,
+          "nm": "Trim Paths 1",
+          "mn": "ADBE Vector Filter - Trim",
+          "hd": false
+        }
+      ],
+      "ip": 33.0000013441176,
+      "op": 51.0000020772726,
+      "st": 33.0000013441176,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 5,
+      "ty": 4,
+      "nm": "Shape Layer 4",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": 0, "ix": 10},
+        "p": {"a": 0, "k": [136.71, 318.77, 0], "ix": 2},
+        "a": {"a": 0, "k": [82.25, -109.25, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [88.25, -107.25],
+                    [103.25, -93.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.196078446332, 0.90588241278, 0.658823529412, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 6",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [76.25, -110.5],
+                    [56.75, -121]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.196078446332, 0.90588241278, 0.658823529412, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 5",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 2,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [77.75, -106.25],
+                    [67.75, -98]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.196078446332, 0.90588241278, 0.658823529412, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 4",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 3,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [83.25, -105.5],
+                    [82.75, -84.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.196078446332, 0.90588241278, 0.658823529412, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 3",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 4,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [87.75, -110.25],
+                    [97.5, -127.25]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.196078446332, 0.90588241278, 0.658823529412, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 2",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 5,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [80, -113],
+                    [83, -145.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.196078446332, 0.90588241278, 0.658823529412, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 1",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 6,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "tm",
+          "s": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.52], "y": [1]},
+                "o": {"x": [0.48], "y": [0]},
+                "t": 19.2,
+                "s": [0]
+              },
+              {"t": 24.8000010101247, "s": [100]}
+            ],
+            "ix": 1
+          },
+          "e": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.52], "y": [1]},
+                "o": {"x": [0.48], "y": [0]},
+                "t": 15,
+                "s": [0]
+              },
+              {"t": 20.6000008390552, "s": [100]}
+            ],
+            "ix": 2
+          },
+          "o": {"a": 0, "k": 0, "ix": 3},
+          "m": 1,
+          "ix": 7,
+          "nm": "Trim Paths 1",
+          "mn": "ADBE Vector Filter - Trim",
+          "hd": false
+        }
+      ],
+      "ip": 15.0000006109625,
+      "op": 26.0000010590017,
+      "st": 1.00000004073083,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 6,
+      "ty": 4,
+      "nm": "Shape Layer 3",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": 0, "ix": 10},
+        "p": {"a": 0, "k": [187.5, 406, 0], "ix": 2},
+        "a": {"a": 0, "k": [0, 0, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [88.25, -107.25],
+                    [103.25, -93.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.992156922583, 0.521568627451, 0.521568627451, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 6",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [76.25, -110.5],
+                    [56.75, -121]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.992156922583, 0.521568627451, 0.521568627451, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 5",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 2,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [77.75, -106.25],
+                    [67.75, -98]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.992156922583, 0.521568627451, 0.521568627451, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 4",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 3,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [83.25, -105.5],
+                    [82.75, -84.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.992156922583, 0.521568627451, 0.521568627451, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 3",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 4,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [87.75, -110.25],
+                    [97.5, -127.25]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.992156922583, 0.521568627451, 0.521568627451, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 2",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 5,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [80, -113],
+                    [83, -145.5]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.992156922583, 0.521568627451, 0.521568627451, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 1",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 6,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "tm",
+          "s": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.52], "y": [1]},
+                "o": {"x": [0.48], "y": [0]},
+                "t": 22.714,
+                "s": [0]
+              },
+              {"t": 29.0000011811942, "s": [100]}
+            ],
+            "ix": 1
+          },
+          "e": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.52], "y": [1]},
+                "o": {"x": [0.48], "y": [0]},
+                "t": 18,
+                "s": [0]
+              },
+              {"t": 24.2862509891992, "s": [100]}
+            ],
+            "ix": 2
+          },
+          "o": {"a": 0, "k": 0, "ix": 3},
+          "m": 1,
+          "ix": 7,
+          "nm": "Trim Paths 1",
+          "mn": "ADBE Vector Filter - Trim",
+          "hd": false
+        }
+      ],
+      "ip": 18.000000733155,
+      "op": 29.0000011811942,
+      "st": 4.00000016292334,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 7,
+      "ty": 4,
+      "nm": "Shape Layer 2",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": 0, "ix": 10},
+        "p": {"a": 0, "k": [187.5, 406, 0], "ix": 2},
+        "a": {"a": 0, "k": [0, 0, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [76.358, 31.949]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [-20.905, -8.747]
+                  ],
+                  "v": [
+                    [198.237, 151.606],
+                    [78.142, -106.949]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.992156922583, 0.521568627451, 0.521568627451, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 1",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "zz",
+          "nm": "Zig Zag 1",
+          "s": {"a": 0, "k": 4.1, "ix": 1},
+          "r": {"a": 0, "k": 20.9, "ix": 2},
+          "pt": {"a": 0, "k": 2, "ix": 3},
+          "ix": 2,
+          "mn": "ADBE Vector Filter - Zigzag",
+          "hd": false
+        },
+        {
+          "ty": "tm",
+          "s": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.833], "y": [0.833]},
+                "o": {"x": [0.167], "y": [0.167]},
+                "t": 14,
+                "s": [0]
+              },
+              {"t": 24.00000097754, "s": [100]}
+            ],
+            "ix": 1
+          },
+          "e": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.833], "y": [0.833]},
+                "o": {"x": [0.167], "y": [0.167]},
+                "t": 7,
+                "s": [0]
+              },
+              {"t": 17.0000006924242, "s": [100]}
+            ],
+            "ix": 2
+          },
+          "o": {"a": 0, "k": 0, "ix": 3},
+          "m": 1,
+          "ix": 3,
+          "nm": "Trim Paths 1",
+          "mn": "ADBE Vector Filter - Trim",
+          "hd": false
+        }
+      ],
+      "ip": 7.00000028511585,
+      "op": 25.0000010182709,
+      "st": 7.00000028511585,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 8,
+      "ty": 4,
+      "nm": "Shape Layer 1",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": 0, "ix": 10},
+        "p": {"a": 0, "k": [187.5, 406, 0], "ix": 2},
+        "a": {"a": 0, "k": [0, 0, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [-47.263, 147.155]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [6.93, -21.575]
+                  ],
+                  "v": [
+                    [-200.763, 174.606],
+                    [-52.156, -91.646]
+                  ],
+                  "c": false
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": {
+                "a": 0,
+                "k": [0.196078446332, 0.90588241278, 0.658823529412, 1],
+                "ix": 3
+              },
+              "o": {"a": 0, "k": 100, "ix": 4},
+              "w": {"a": 0, "k": 2, "ix": 5},
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": {"a": 0, "k": [0, 0], "ix": 2},
+              "a": {"a": 0, "k": [0, 0], "ix": 1},
+              "s": {"a": 0, "k": [100, 100], "ix": 3},
+              "r": {"a": 0, "k": 0, "ix": 6},
+              "o": {"a": 0, "k": 100, "ix": 7},
+              "sk": {"a": 0, "k": 0, "ix": 4},
+              "sa": {"a": 0, "k": 0, "ix": 5},
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Shape 1",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "zz",
+          "nm": "Zig Zag 1",
+          "s": {"a": 0, "k": 4.1, "ix": 1},
+          "r": {"a": 0, "k": 20.9, "ix": 2},
+          "pt": {"a": 0, "k": 2, "ix": 3},
+          "ix": 2,
+          "mn": "ADBE Vector Filter - Zigzag",
+          "hd": false
+        },
+        {
+          "ty": "tm",
+          "s": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.833], "y": [0.833]},
+                "o": {"x": [0.167], "y": [0.167]},
+                "t": 11,
+                "s": [0]
+              },
+              {"t": 21.0000008553475, "s": [100]}
+            ],
+            "ix": 1
+          },
+          "e": {
+            "a": 1,
+            "k": [
+              {
+                "i": {"x": [0.833], "y": [0.833]},
+                "o": {"x": [0.167], "y": [0.167]},
+                "t": 4,
+                "s": [0]
+              },
+              {"t": 14.0000005702317, "s": [100]}
+            ],
+            "ix": 2
+          },
+          "o": {"a": 0, "k": 0, "ix": 3},
+          "m": 1,
+          "ix": 3,
+          "nm": "Trim Paths 1",
+          "mn": "ADBE Vector Filter - Trim",
+          "hd": false
+        }
+      ],
+      "ip": 4.00000016292334,
+      "op": 22.0000008960784,
+      "st": 4.00000016292334,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 9,
+      "ty": 2,
+      "nm": "Layer 129",
+      "refId": "image_0",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.612, 863.957, 0],
+              "to": [-9.976, -56.735, 0],
+              "ti": [9.976, -73.265, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [362.759, 523.549, 0],
+              "to": [-9.976, 73.265, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [362.759, 1303.549, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.884, 2.87, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 10,
+      "ty": 2,
+      "nm": "Layer 128",
+      "refId": "image_1",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.642, 863.692, 0],
+              "to": [-60.126, -50.852, 0],
+              "ti": [60.126, -79.148, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [61.889, 558.582, 0],
+              "to": [-60.126, 79.148, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [61.889, 1338.582, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.441, 3.109, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 11,
+      "ty": 2,
+      "nm": "Layer 127",
+      "refId": "image_2",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [412.369, 854.031, 0],
+              "to": [-42.09, -10.459, 0],
+              "ti": [63.024, -280.274, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [159.831, 791.276, 0],
+              "to": [-27.584, 122.67, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [159.831, 1571.276, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.135, 3.919, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 12,
+      "ty": 2,
+      "nm": "Layer 126",
+      "refId": "image_3",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.256, 863.952, 0],
+              "to": [-63.137, -48.319, 0],
+              "ti": [167.137, -237.681, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [43.435, 574.037, 0],
+              "to": [-59.384, 84.448, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [43.435, 1354.037, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [4.03, 2.829, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 13,
+      "ty": 2,
+      "nm": "Layer 125",
+      "refId": "image_4",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.556, 863.796, 0],
+              "to": [-48.025, -65.436, 0],
+              "ti": [48.025, -64.564, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [134.409, 471.182, 0],
+              "to": [-48.025, 64.564, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [134.409, 1251.182, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [5.845, 5.204, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 14,
+      "ty": 2,
+      "nm": "Layer 124",
+      "refId": "image_5",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.327, 864.013, 0],
+              "to": [-60.186, -43.522, 0],
+              "ti": [60.186, -86.478, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [61.21, 602.883, 0],
+              "to": [-60.186, 86.478, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [61.21, 1382.883, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.095, 1.896, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 15,
+      "ty": 2,
+      "nm": "Layer 123",
+      "refId": "image_6",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.468, 863.891, 0],
+              "to": [-16.669, -96.462, 0],
+              "ti": [101.229, -4.348, 0]
+            },
+            {
+              "i": {"x": 0.715, "y": 0.686},
+              "o": {"x": 0.386, "y": 0},
+              "t": 20.001,
+              "s": [322.452, 285.117, 0],
+              "to": [-8.862, 0.381, 0],
+              "ti": [7.31, -3.345, 0]
+            },
+            {
+              "i": {"x": 0.379, "y": 1},
+              "o": {"x": 0.458, "y": 0.186},
+              "t": 27.001,
+              "s": [272.226, 292.784, 0],
+              "to": [-124.572, 57.008, 0],
+              "ti": [10.705, -98.55, 0]
+            },
+            {"t": 60.0005024438705, "s": [290.452, 923.117, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.247, 1.789, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 16,
+      "ty": 2,
+      "nm": "Layer 122",
+      "refId": "image_7",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.345, 864.033, 0],
+              "to": [-16.533, -77.542, 0],
+              "ti": [55.693, -9.157, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [323.145, 398.783, 0],
+              "to": [-132.533, 21.792, 0],
+              "ti": [-8, -133.333, 0]
+            },
+            {"t": 60.0005024438705, "s": [371.145, 1198.783, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [1.111, 0.918, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 17,
+      "ty": 2,
+      "nm": "Layer 121",
+      "refId": "image_8",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.596, 863.897, 0],
+              "to": [-28.612, -71.802, 0],
+              "ti": [28.612, -58.198, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [250.923, 433.088, 0],
+              "to": [-28.612, 58.198, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [250.923, 1213.088, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.375, 2.809, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 18,
+      "ty": 2,
+      "nm": "Layer 120",
+      "refId": "image_9",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.507, 863.813, 0],
+              "to": [-11.089, -67.926, 0],
+              "ti": [11.089, -62.074, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [355.975, 456.258, 0],
+              "to": [-11.089, 62.074, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [355.975, 1236.258, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [0.795, 1.215, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 19,
+      "ty": 2,
+      "nm": "Layer 119",
+      "refId": "image_10",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.643, 864.004, 0],
+              "to": [-44.583, -88.891, 0],
+              "ti": [44.583, -41.109, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [155.145, 330.66, 0],
+              "to": [-44.583, 41.109, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [155.145, 1110.66, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [1.911, 3.919, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 20,
+      "ty": 2,
+      "nm": "Layer 118",
+      "refId": "image_11",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.605, 863.746, 0],
+              "to": [-67.503, -124.721, 0],
+              "ti": [67.503, -5.279, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [17.589, 115.421, 0],
+              "to": [-67.503, 5.279, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [17.589, 895.421, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [3.899, 3.659, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 21,
+      "ty": 2,
+      "nm": "Layer 117",
+      "refId": "image_12",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.586, 863.754, 0],
+              "to": [-28.227, -87.996, 0],
+              "ti": [28.227, -42.004, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [253.223, 335.778, 0],
+              "to": [-28.227, 42.004, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [253.223, 1115.778, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [3.379, 3.665, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 22,
+      "ty": 2,
+      "nm": "Layer 116",
+      "refId": "image_13",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.455, 863.96, 0],
+              "to": [-5.52, -425.645, 0],
+              "ti": [24.853, -19.688, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [245.336, 422.087, 0],
+              "to": [-24.853, 19.688, 0],
+              "ti": [-4.667, -93.333, 0]
+            },
+            {"t": 60.0005024438705, "s": [273.336, 982.087, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [1.728, 1.856, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 23,
+      "ty": 2,
+      "nm": "Layer 115",
+      "refId": "image_14",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [218.28, 900.041, 0],
+              "to": [-33.136, -84.436, 0],
+              "ti": [229.136, -77.564, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [19.463, 393.428, 0],
+              "to": [-53.365, 18.064, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [19.463, 1173.428, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [4.545, 3.919, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 24,
+      "ty": 2,
+      "nm": "Layer 114",
+      "refId": "image_15",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.367, 863.74, 0],
+              "to": [-48.39, -128.379, 0],
+              "ti": [48.39, -1.621, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [132.03, 93.464, 0],
+              "to": [-48.39, 1.621, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [132.03, 873.464, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [4.663, 3.629, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 25,
+      "ty": 2,
+      "nm": "Layer 113",
+      "refId": "image_16",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.605, 863.746, 0],
+              "to": [-36.67, -127.069, 0],
+              "ti": [36.67, -2.931, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [202.588, 101.332, 0],
+              "to": [-36.67, 2.931, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [202.588, 881.332, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [3.899, 3.658, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 26,
+      "ty": 2,
+      "nm": "Layer 112",
+      "refId": "image_17",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.345, 864.033, 0],
+              "to": [-13.407, -80.016, 0],
+              "ti": [13.407, -49.984, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [341.903, 383.935, 0],
+              "to": [-13.407, 49.984, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [341.903, 1163.935, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [1.111, 0.918, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 27,
+      "ty": 2,
+      "nm": "Layer 111",
+      "refId": "image_18",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.596, 863.897, 0],
+              "to": [-12.893, -76.039, 0],
+              "ti": [12.893, -53.961, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [345.24, 407.665, 0],
+              "to": [-12.893, 53.961, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [345.24, 1187.665, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.375, 2.808, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 28,
+      "ty": 2,
+      "nm": "Layer 110",
+      "refId": "image_19",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [422.422, 863.802, 0],
+              "to": [-26.564, -106.088, 0],
+              "ti": [26.564, -23.912, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 20.001,
+              "s": [263.038, 227.275, 0],
+              "to": [-26.564, 23.912, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 60.0005024438705, "s": [263.038, 1007.275, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.712, 3.196, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 10.0000004073083,
+      "op": 73.000002973351,
+      "st": 11.9980004886886,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 29,
+      "ty": 2,
+      "nm": "Layer 109",
+      "refId": "image_0",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.388, 823.957, 0],
+              "to": [62.024, -50.068, 0],
+              "ti": [-62.024, -79.932, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [362.759, 523.549, 0],
+              "to": [62.024, 79.932, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [362.759, 1303.549, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.884, 2.87, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 30,
+      "ty": 2,
+      "nm": "Layer 108",
+      "refId": "image_1",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.358, 823.692, 0],
+              "to": [11.874, -44.185, 0],
+              "ti": [-11.874, -85.815, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [61.889, 558.582, 0],
+              "to": [11.874, 85.815, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [61.889, 1338.582, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.441, 3.109, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 31,
+      "ty": 2,
+      "nm": "Layer 107",
+      "refId": "image_2",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.631, 824.031, 0],
+              "to": [28.244, -5.459, 0],
+              "ti": [-28.244, -124.541, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [159.831, 791.276, 0],
+              "to": [28.244, 124.541, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [159.831, 1571.276, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.135, 3.919, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 32,
+      "ty": 2,
+      "nm": "Layer 106",
+      "refId": "image_3",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.744, 823.952, 0],
+              "to": [8.863, -41.653, 0],
+              "ti": [-8.863, -88.347, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [43.435, 574.037, 0],
+              "to": [8.863, 88.347, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [43.435, 1354.037, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [4.03, 2.829, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 33,
+      "ty": 2,
+      "nm": "Layer 105",
+      "refId": "image_4",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.444, 823.796, 0],
+              "to": [23.975, -58.769, 0],
+              "ti": [-23.975, -71.231, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [134.409, 471.182, 0],
+              "to": [23.975, 71.231, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [134.409, 1251.182, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [5.845, 5.204, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 34,
+      "ty": 2,
+      "nm": "Layer 104",
+      "refId": "image_5",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.673, 824.013, 0],
+              "to": [11.814, -36.855, 0],
+              "ti": [-11.814, -93.145, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [61.21, 602.883, 0],
+              "to": [11.814, 93.145, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [61.21, 1382.883, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.095, 1.896, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 35,
+      "ty": 2,
+      "nm": "Layer 103",
+      "refId": "image_6",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.532, 823.891, 0],
+              "to": [65.664, -58.462, 0],
+              "ti": [-65.664, -71.538, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [384.452, 473.117, 0],
+              "to": [65.664, 71.538, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [384.452, 1253.117, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.247, 1.789, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 36,
+      "ty": 2,
+      "nm": "Layer 102",
+      "refId": "image_7",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.655, 824.033, 0],
+              "to": [63.467, -67.542, 0],
+              "ti": [-63.467, -62.458, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [371.145, 418.783, 0],
+              "to": [63.467, 62.458, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [371.145, 1198.783, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [1.111, 0.918, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 37,
+      "ty": 2,
+      "nm": "Layer 101",
+      "refId": "image_8",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.404, 823.897, 0],
+              "to": [43.388, -65.135, 0],
+              "ti": [-43.388, -64.865, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [250.923, 433.088, 0],
+              "to": [43.388, 64.865, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [250.923, 1213.088, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.375, 2.809, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 38,
+      "ty": 2,
+      "nm": "Layer 100",
+      "refId": "image_9",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.493, 823.813, 0],
+              "to": [60.911, -61.259, 0],
+              "ti": [-60.911, -68.741, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [355.975, 456.258, 0],
+              "to": [60.911, 68.741, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [355.975, 1236.258, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [0.795, 1.215, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 39,
+      "ty": 2,
+      "nm": "Layer 99",
+      "refId": "image_10",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.357, 824.004, 0],
+              "to": [27.417, -82.224, 0],
+              "ti": [-27.417, -47.776, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [155.145, 330.66, 0],
+              "to": [27.417, 47.776, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [155.145, 1110.66, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [1.911, 3.919, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 40,
+      "ty": 2,
+      "nm": "Layer 98",
+      "refId": "image_11",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.395, 823.746, 0],
+              "to": [4.497, -118.054, 0],
+              "ti": [-4.497, -11.946, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [17.589, 115.421, 0],
+              "to": [4.497, 11.946, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [17.589, 895.421, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [3.899, 3.659, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 41,
+      "ty": 2,
+      "nm": "Layer 97",
+      "refId": "image_12",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.414, 823.754, 0],
+              "to": [43.773, -81.329, 0],
+              "ti": [-43.773, -48.671, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [253.223, 335.778, 0],
+              "to": [43.773, 48.671, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [253.223, 1115.778, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [3.379, 3.665, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 42,
+      "ty": 2,
+      "nm": "Layer 96",
+      "refId": "image_13",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.545, 823.96, 0],
+              "to": [50.48, -6.312, 0],
+              "ti": [-50.48, -123.688, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [293.336, 786.087, 0],
+              "to": [50.48, 123.688, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [293.336, 1566.087, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [1.728, 1.856, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 43,
+      "ty": 2,
+      "nm": "Layer 95",
+      "refId": "image_14",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.72, 824.041, 0],
+              "to": [4.864, -71.769, 0],
+              "ti": [-4.864, -58.231, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [19.463, 393.428, 0],
+              "to": [4.864, 58.231, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [19.463, 1173.428, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [4.545, 3.919, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 44,
+      "ty": 2,
+      "nm": "Layer 94",
+      "refId": "image_15",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.633, 823.74, 0],
+              "to": [23.61, -121.713, 0],
+              "ti": [-23.61, -8.287, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [132.03, 93.464, 0],
+              "to": [23.61, 8.287, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [132.03, 873.464, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [4.663, 3.629, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 45,
+      "ty": 2,
+      "nm": "Layer 91",
+      "refId": "image_16",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.395, 823.746, 0],
+              "to": [35.33, -120.402, 0],
+              "ti": [-35.33, -9.598, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [202.588, 101.332, 0],
+              "to": [35.33, 9.598, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [202.588, 881.332, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [3.899, 3.658, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 46,
+      "ty": 2,
+      "nm": "Layer 90",
+      "refId": "image_17",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.655, 824.033, 0],
+              "to": [58.593, -73.35, 0],
+              "ti": [-58.593, -56.65, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [341.903, 383.935, 0],
+              "to": [58.593, 56.65, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [341.903, 1163.935, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [1.111, 0.918, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 47,
+      "ty": 2,
+      "nm": "Layer 89",
+      "refId": "image_18",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.404, 823.897, 0],
+              "to": [59.107, -69.372, 0],
+              "ti": [-59.107, -60.628, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [345.24, 407.665, 0],
+              "to": [59.107, 60.628, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [345.24, 1187.665, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.375, 2.808, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 48,
+      "ty": 2,
+      "nm": "Layer 88",
+      "refId": "image_19",
+      "sr": 1,
+      "ks": {
+        "o": {"a": 0, "k": 100, "ix": 11},
+        "r": {"a": 0, "k": -5.86, "ix": 10},
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 0.001,
+              "s": [-9.578, 823.802, 0],
+              "to": [45.436, -99.421, 0],
+              "ti": [-45.436, -30.579, 0]
+            },
+            {
+              "i": {"x": 0.42, "y": 1},
+              "o": {"x": 0.58, "y": 0},
+              "t": 10.001,
+              "s": [263.038, 227.275, 0],
+              "to": [45.436, 30.579, 0],
+              "ti": [0, -130, 0]
+            },
+            {"t": 50.0005020365621, "s": [263.038, 1007.275, 0]}
+          ],
+          "ix": 2
+        },
+        "a": {"a": 0, "k": [2.712, 3.196, 0], "ix": 1},
+        "s": {"a": 0, "k": [100, 100, 100], "ix": 6}
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 63.0000025660426,
+      "st": 1.99800008138021,
+      "bm": 0
+    }
+  ],
+  "markers": []
+}
