@@ -13,6 +13,7 @@ struct TaskRow: View {
     @EnvironmentObject var alertManager: AlertManager
     @EnvironmentObject private var navigationManager: NavigationManager
     @State private var player: AVAudioPlayer?
+    @EnvironmentObject var lottieManager: LottieManager
     
     func playSound() throws {
         guard let url = Bundle.main.url(forResource: "correct_sound", withExtension: "mp3") else {
@@ -66,6 +67,7 @@ struct TaskRow: View {
                         try updateTaskAPI(task: updatedTask)
                         task = updatedTask
                         try playSound()
+                        lottieManager.isDoneLottieEnabled.toggle()
                     } catch {
                         let message =
                             (error as? LocalizedError)?.errorDescription ??
@@ -111,6 +113,9 @@ struct TaskRow: View {
                             try updateTaskAPI(task: updatedTask)
                             task = updatedTask
                             try playSound()
+                            if (updatedTask.mainTask.status) {
+                                lottieManager.isDoneLottieEnabled.toggle()
+                            }
                         } catch {
                             let message =
                                 (error as? LocalizedError)?.errorDescription ??
