@@ -64,7 +64,7 @@ struct TaskListComponent: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            List($tasks, id:\.mainTask.title) { $task in
+            List($tasks, id:\.documentID) { $task in
                 TaskRow(task: $task).frame(maxWidth: .infinity, minHeight: 60 ,alignment: .leading)
                     .listRowSeparator(.hidden)
                     .listRowInsets(    EdgeInsets(
@@ -93,7 +93,9 @@ struct TaskListComponent: View {
                         showSwipeHint = tasks.count == 1
                     }.taskSwipeActions(task: $task, showSwipeHint: $showSwipeHint, deleteTask: deleteTask, makeTaskUnfavorite: makeTaskUnFavorite)
                 
-            }.scrollIndicators(.hidden).refreshable {
+            }.scrollIndicators(.hidden).onChange(of: tasks){
+                moveFavoriteToTop()
+            }.refreshable {
                 let newTasks = await loadTasksShared(appToken: appToken, loadingManager: loadingmanager, alertManager: alertManager)
                 if !newTasks.isEmpty {
                     self.tasks = newTasks
