@@ -10,6 +10,10 @@
 		5D9E8F103013F4C8002E88EA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9E8F0F3013F4C8002E88EA /* FirebaseAuth */; };
 		5D9E8F123013F4C8002E88EA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9E8F113013F4C8002E88EA /* FirebaseCore */; };
 		5D9E8F143013F4C8002E88EA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9E8F133013F4C8002E88EA /* FirebaseFirestore */; };
+		5DB2B1A0303422E0002F8D69 /* SharedModels in Frameworks */ = {isa = PBXBuildFile; productRef = AABB0003 /* SharedModels */; };
+		5DB2B1A1303422E0002F8D69 /* SharedModels in Frameworks */ = {isa = PBXBuildFile; productRef = AABB0002 /* SharedModels */; };
+		5DB2B21B30342567002F8D69 /* SharedModels in Frameworks */ = {isa = PBXBuildFile; productRef = 5DB2B21A30342567002F8D69 /* SharedModels */; };
+		5DB2B21E303425E3002F8D69 /* SharedModels in Frameworks */ = {isa = PBXBuildFile; productRef = 5DB2B21D303425E3002F8D69 /* SharedModels */; };
 		5DD720922F7569A10065BA99 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD720912F7569A10065BA99 /* CryptoSwift */; };
 		5DD720952F756A1E0065BA99 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD720942F756A1E0065BA99 /* Lottie */; };
 		5DE475533032FCE800DE931A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE475523032FCE800DE931A /* WidgetKit.framework */; };
@@ -105,11 +109,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DB2B1A1303422E0002F8D69 /* SharedModels in Frameworks */,
 				5DD720922F7569A10065BA99 /* CryptoSwift in Frameworks */,
 				5D9E8F103013F4C8002E88EA /* FirebaseAuth in Frameworks */,
 				5D9E8F123013F4C8002E88EA /* FirebaseCore in Frameworks */,
 				5D9E8F143013F4C8002E88EA /* FirebaseFirestore in Frameworks */,
 				5DD720952F756A1E0065BA99 /* Lottie in Frameworks */,
+				5DB2B21B30342567002F8D69 /* SharedModels in Frameworks */,
+				5DB2B21E303425E3002F8D69 /* SharedModels in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DB2B1A0303422E0002F8D69 /* SharedModels in Frameworks */,
 				5DE475553032FCE800DE931A /* SwiftUI.framework in Frameworks */,
 				5DE475533032FCE800DE931A /* WidgetKit.framework in Frameworks */,
 			);
@@ -198,6 +206,9 @@
 				5D9E8F0F3013F4C8002E88EA /* FirebaseAuth */,
 				5D9E8F113013F4C8002E88EA /* FirebaseCore */,
 				5D9E8F133013F4C8002E88EA /* FirebaseFirestore */,
+				AABB0002 /* SharedModels */,
+				5DB2B21A30342567002F8D69 /* SharedModels */,
+				5DB2B21D303425E3002F8D69 /* SharedModels */,
 			);
 			productName = ToDoListIos;
 			productReference = 5DA70A252E9EC5C600F2C141 /* ToDoListIos.app */;
@@ -266,6 +277,7 @@
 			);
 			name = ToDoAppWidgetExtension;
 			packageProductDependencies = (
+				AABB0003 /* SharedModels */,
 			);
 			productName = ToDoAppWidgetExtension;
 			productReference = 5DE475513032FCE800DE931A /* ToDoAppWidgetExtension.appex */;
@@ -311,6 +323,7 @@
 				5DD720902F7569A10065BA99 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				5DD720932F756A1E0065BA99 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				5D9E8F0E3013F4C8002E88EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5DB2B21C303425E3002F8D69 /* XCLocalSwiftPackageReference "SharedModels" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5DA70A262E9EC5C600F2C141 /* Products */;
@@ -536,6 +549,7 @@
 				DEVELOPMENT_TEAM = F4VGX56N2M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "To-do List";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "This app needs calendar access to add your tasks.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This app needs calendar access to add your tasks.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -547,7 +561,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				INFOPLIST_KEY_CFBundleDisplayName = "To-do List";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AbdulkareemMashabi.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -568,6 +581,7 @@
 				DEVELOPMENT_TEAM = F4VGX56N2M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "To-do List";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "This app needs calendar access to add your tasks.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This app needs calendar access to add your tasks.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -575,7 +589,6 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_CFBundleDisplayName = "To-do List";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -773,6 +786,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		5DB2B21C303425E3002F8D69 /* XCLocalSwiftPackageReference "SharedModels" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SharedModels;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		5D9E8F0E3013F4C8002E88EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -816,6 +836,14 @@
 			package = 5D9E8F0E3013F4C8002E88EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
+		5DB2B21A30342567002F8D69 /* SharedModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SharedModels;
+		};
+		5DB2B21D303425E3002F8D69 /* SharedModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SharedModels;
+		};
 		5DD720912F7569A10065BA99 /* CryptoSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5DD720902F7569A10065BA99 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
@@ -825,6 +853,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5DD720932F756A1E0065BA99 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		AABB0002 /* SharedModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SharedModels;
+		};
+		AABB0003 /* SharedModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SharedModels;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
