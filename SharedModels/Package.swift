@@ -12,15 +12,9 @@ let package = Package(
             targets: ["SharedModels"]
         ),
     ],
-    dependencies: [
-        .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "12.16.0"),
-    ],
     targets: [
         .target(
-            name: "SharedModels",
-            dependencies: [
-                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
-            ]
+            name: "SharedModels"
         ),
     ]
 )

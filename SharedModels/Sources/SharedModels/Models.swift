@@ -1,5 +1,4 @@
 import Foundation
-import FirebaseFirestore
 import WidgetKit
 
 public struct MainTask: Codable, Hashable {
@@ -59,8 +58,8 @@ public struct SubTask: Codable, Hashable, Identifiable {
 }
 
 public struct ToDoTask: Codable, Hashable, TimelineEntry {
-    public let date: Date = Date()
-    @DocumentID public var documentID: String?
+    public var date: Date = Date()
+    public var documentID: String?
     public var favorite: Bool = false
     public var mainTask: MainTask
     public var subTasks: [SubTask] = []
@@ -75,5 +74,28 @@ public struct ToDoTask: Codable, Hashable, TimelineEntry {
         self.favorite = favorite
         self.mainTask = mainTask
         self.subTasks = subTasks
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case documentID
+        case favorite
+        case mainTask
+        case subTasks
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        documentID = try container.decodeIfPresent(String.self, forKey: .documentID)
+        favorite = try container.decodeIfPresent(Bool.self, forKey: .favorite) ?? false
+        mainTask = try container.decode(MainTask.self, forKey: .mainTask)
+        subTasks = try container.decodeIfPresent([SubTask].self, forKey: .subTasks) ?? []
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(documentID, forKey: .documentID)
+        try container.encode(favorite, forKey: .favorite)
+        try container.encode(mainTask, forKey: .mainTask)
+        try container.encode(subTasks, forKey: .subTasks)
     }
 }
