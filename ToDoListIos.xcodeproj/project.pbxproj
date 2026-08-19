@@ -60,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5D54154B30356A1D00D50748 /* ToDoAppWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoAppWidgetExtension.entitlements; sourceTree = "<group>"; };
 		5DA70A252E9EC5C600F2C141 /* ToDoListIos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListIos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA70A352E9EC5C700F2C141 /* ToDoListIosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListIosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA70A3F2E9EC5C700F2C141 /* ToDoListIosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListIosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +151,7 @@
 		5DA70A1C2E9EC5C600F2C141 = {
 			isa = PBXGroup;
 			children = (
+				5D54154B30356A1D00D50748 /* ToDoAppWidgetExtension.entitlements */,
 				5DA70A382E9EC5C700F2C141 /* ToDoListIosTests */,
 				5DA70A422E9EC5C700F2C141 /* ToDoListIosUITests */,
 				5DE475563032FCE800DE931A /* ToDoAppWidget */,
@@ -543,6 +545,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToDoListIos/ToDoListIos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoListIos/Preview Content\"";
@@ -575,6 +578,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToDoListIos/ToDoListIos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoListIos/Preview Content\"";
@@ -679,6 +683,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ToDoAppWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F4VGX56N2M;
@@ -710,6 +715,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ToDoAppWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F4VGX56N2M;
