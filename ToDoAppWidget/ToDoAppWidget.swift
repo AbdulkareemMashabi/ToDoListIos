@@ -7,52 +7,37 @@
 
 import WidgetKit
 import SwiftUI
+import SharedModels
 
 struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+    func placeholder(in context: Context) -> ToDoTask {
+        ToDoTask(
+            favorite: true,
+            mainTask: MainTask(calendarId: "", color: "", date: Date().ISO8601Format(), description: "", status: false, title: "Finish Homework"),
+            subTasks: [SubTask(title: "Math", status: true), SubTask(title: "Science", status: false)]
+        )
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
-        completion(entry)
+    func getSnapshot(in context: Context, completion: @escaping (ToDoTask) -> ()) {
+        completion(placeholder(in: context))
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+    func getTimeline(in context: Context, completion: @escaping (Timeline<ToDoTask>) -> ()) {
+        let entry = placeholder(in: context)
+        let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }
-
-//    func relevances() async -> WidgetRelevances<Void> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let emoji: String
-}
-
-struct ToDoAppWidgetEntryView : View {
-    var entry: Provider.Entry
+struct ToDoAppWidgetEntryView: View {
+    var entry: ToDoTask
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Emoji:")
-            Text(entry.emoji)
+        VStack(alignment: .leading) {
+            Text(entry.mainTask.title).bold()
+            if !entry.mainTask.date.isEmpty {
+                Text(entry.mainTask.date).font(.caption).foregroundColor(.gray)
+            }
         }
     }
 }
@@ -62,34 +47,11 @@ struct ToDoAppWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(iOS 17.0, *) {
-                ToDoAppWidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                ToDoAppWidgetEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
+            ToDoAppWidgetEntryView(entry: entry)
+                .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("Favorite Task")
         .description("Keep track of your favorite task")
-        .supportedFamilies([
-            // Home Screen
-            .systemSmall,
-            .systemMedium,
-            .systemLarge,
-
-            // Lock Screen
-            .accessoryCircular,
-            .accessoryRectangular,
-            .accessoryInline
-        ])
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
-}
-
-#Preview(as: .systemSmall) {
-    ToDoAppWidget()
-} timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
 }
