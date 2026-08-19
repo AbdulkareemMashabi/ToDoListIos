@@ -121,7 +121,7 @@ struct TaskListComponent: View {
                 title: "Task",
             ),
             subTasks: [
-                SubTasks(id: UUID() ,title: "To Do", status: false)
+                SubTask(id: UUID() ,title: "To Do", status: false)
             ]
         )
     ]

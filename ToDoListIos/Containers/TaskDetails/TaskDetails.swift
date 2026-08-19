@@ -19,7 +19,7 @@ struct TaskDetails: View {
     @State private var title: String
     @State private var description: String
     @State private var date: String
-    @State private var subTasks: [SubTasks]
+    @State private var subTasks: [SubTask]
     @State private var isTaskChanged: Bool
     @State private var newSubTask: String
     @State private var didPressDone = false
@@ -150,7 +150,7 @@ struct TaskDetails: View {
             TextInput(data: $newSubTask, placeholder: localized("taskDetails.subTasksPlaceHolder"), onBlur: {
                 if(!newSubTask.isEmpty)
                 {
-                    subTasks.append(SubTasks(id: UUID(), title: newSubTask, status: false))
+                    subTasks.append(SubTask(id: UUID(), title: newSubTask, status: false))
                     newSubTask = ""
                     isTaskChanged = true
                 }
@@ -241,7 +241,7 @@ struct TaskDetails: View {
             title: "Task",
         ),
         subTasks: [
-            SubTasks(id: UUID(), title: "To Do", status: false)
+            SubTask(id: UUID(), title: "To Do", status: false)
         ]
     )
 
