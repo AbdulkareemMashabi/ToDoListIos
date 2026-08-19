@@ -32,7 +32,9 @@ func fetchAllTasksAPI () async throws -> [ToDoTask] {
         let snapshot = try await db.collection(Storage.load(key: "token")!).getDocuments()
         
         return try snapshot.documents.map { document in
-            return try document.data(as: ToDoTask.self)
+            var task = try document.data(as: ToDoTask.self)
+            task.documentID = document.documentID
+            return task
         }
     }
     catch {
