@@ -10,6 +10,16 @@ import SwiftUI
 import SharedModels
 
 struct Provider: TimelineProvider {
+    func loadFavoriteTask() -> ToDoTask? {
+        let shared = UserDefaults(suiteName: "group.com.abdulkareem.ToDoList.widget")
+        guard let data = shared?.data(forKey: "favoriteTask"),
+              let task = try? JSONDecoder().decode(ToDoTask.self, from: data) else {
+            return nil
+        }
+        print(task,"task")
+        return task
+    }
+
     func placeholder(in context: Context) -> ToDoTask {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
@@ -21,11 +31,11 @@ struct Provider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (ToDoTask) -> ()) {
-        completion(placeholder(in: context))
+        completion(loadFavoriteTask() ?? placeholder(in: context))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<ToDoTask>) -> ()) {
-        let entry = placeholder(in: context)
+        let entry = loadFavoriteTask() ?? placeholder(in: context)
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }
