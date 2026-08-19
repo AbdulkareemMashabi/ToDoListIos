@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseFirestore
 import SharedModels
 
 typealias ToDoTask = SharedModels.ToDoTask
