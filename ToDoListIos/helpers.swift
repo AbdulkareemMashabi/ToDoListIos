@@ -147,3 +147,21 @@ func loadTasksShared(appToken: AppToken, loadingManager: LoadingManager, alertMa
     }
 }
 
+@MainActor
+func saveFavoriteTaskInStorage(_ task: ToDoTask?) {
+    print("task", task)
+    do {
+        let shared = UserDefaults(suiteName: "group.com.abdulkareem.ToDoList.widget")
+        if let task = task {
+            let data = try JSONEncoder().encode(task)
+            shared?.set(data, forKey: "favoriteTask")
+            print("done")
+        } else {
+            shared?.removeObject(forKey: "favoriteTask")
+        }
+
+    } catch {
+        print("error: \(error.localizedDescription)")
+    }
+}
+
