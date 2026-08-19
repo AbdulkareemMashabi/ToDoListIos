@@ -128,7 +128,12 @@ struct TaskRow: View {
                     Text(subTask.title)
                 }
             }.padding(.leading, 16)
-        }.padding(.vertical, 8)
+        }.padding(.vertical, 8).onAppear {
+            if(task.favorite){
+                print("1")
+                saveFavoriteTaskInStorage(task)
+            }
+        }
     }
 }
 
