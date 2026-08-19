@@ -92,6 +92,10 @@ struct TaskSwipeActionsModifier: ViewModifier {
                             
                             if task.favorite {
                                 makeTaskUnfavorite(task.documentID!)
+                                saveFavoriteTaskInStorage(task)
+                            }
+                            else {
+                                saveFavoriteTaskInStorage(nil)
                             }
                         } catch {
                             let message =
