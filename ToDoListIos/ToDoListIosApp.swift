@@ -166,6 +166,9 @@ struct ToDoListIosApp: App {
             .environment(\.locale, appLanguageManager.locale)
             .environment(\.layoutDirection, appLanguageManager.layoutDirection)
             .id(appLanguageManager.language)
+            .onOpenURL { url in
+                processWidgetAction(url: url)
+            }
         }
     }
 }
