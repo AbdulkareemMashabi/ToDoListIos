@@ -42,14 +42,20 @@ func fetchAllTasksAPI () async throws -> [ToDoTask] {
     }
 }
 
+@MainActor
 func updateTaskAPI (task: ToDoTask) throws {
     do {
         let db = Firestore.firestore()
-
+        
         guard let documentID = task.documentID else { return }
         try db.collection(Storage.load(key: "token")!)
             .document(documentID)
             .setData(from: task)
+        
+        if(task.favorite)
+        {
+            saveFavoriteTaskInStorage(task)
+        }
     }catch {
         throw error
     }
@@ -59,7 +65,7 @@ func deleteTaskAPI (documentID: String) throws {
     do {
         let db = Firestore.firestore()
         var deleteError: Error?
-
+        
         db.collection(Storage.load(key: "token")!)
             .document(documentID)
             .delete { error in
