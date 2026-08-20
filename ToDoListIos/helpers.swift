@@ -165,7 +165,7 @@ func saveFavoriteTaskInStorage(_ task: ToDoTask?) {
 }
 
 @MainActor
-func processWidgetAction(url: URL) {
+func processWidgetAction(url: URL, taskStore: TaskStore) {
     guard let parsed = WidgetAction.parse(url: url) else { return }
 
     let shared = UserDefaults(suiteName: WidgetAction.suiteName)
@@ -187,6 +187,12 @@ func processWidgetAction(url: URL) {
         try updateTaskAPI(task: task)
     } catch {
         print("Widget action sync failed: \(error.localizedDescription)")
+    }
+
+    saveFavoriteTaskInStorage(task)
+
+    if let index = taskStore.tasks.firstIndex(where: { $0.documentID == task.documentID }) {
+        taskStore.tasks[index] = task
     }
 }
 

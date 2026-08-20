@@ -13,11 +13,11 @@ struct Dashboard: View {
     @EnvironmentObject private var appLanguageManager: AppLanguageManager
     @EnvironmentObject private var loadingmanager: LoadingManager
     @EnvironmentObject private var alertManager: AlertManager
-    @State private var tasks: [ToDoTask] = []
+    @EnvironmentObject private var taskStore: TaskStore
     
     var body: some View {
         VStack {
-            if(appToken.token.isEmpty || tasks.isEmpty){
+            if(appToken.token.isEmpty || taskStore.tasks.isEmpty){
                 Image("emptyListPic")
                     .imageScale(.large)
                 Text(localized("dashboard.emptyTitle")).fontWeight(.bold)
@@ -34,7 +34,7 @@ struct Dashboard: View {
 
             }
             else {
-                TaskListComponent(tasks: $tasks)
+                TaskListComponent(tasks: $taskStore.tasks)
 
             }
 
@@ -42,7 +42,7 @@ struct Dashboard: View {
             Task {
                 let newTasks = await loadTasksShared(appToken: appToken, loadingManager: loadingmanager, alertManager: alertManager)
                 if !newTasks.isEmpty {
-                    self.tasks = newTasks
+                    self.taskStore.tasks = newTasks
                 }
             }
         }.customToolbar(                title: localized("app.title"),
@@ -72,7 +72,7 @@ struct Dashboard: View {
                                                 }
                                             })
                                         ]).padding(.horizontal).safeAreaInset(edge: .bottom) {
-                                            if(!tasks.isEmpty && !appToken.token.isEmpty)
+                                            if(!taskStore.tasks.isEmpty && !appToken.token.isEmpty)
                                             {
                                                 Button {
                                                     navigationManager.path.append(Route.createNewTask)

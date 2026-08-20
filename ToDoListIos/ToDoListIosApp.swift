@@ -15,6 +15,7 @@ struct ToDoListIosApp: App {
     @StateObject private var appLanguageManager = AppLanguageManager()
     @StateObject private var focusingManager = FocusingManager()
     @StateObject private var lottieManager = LottieManager()
+    @StateObject private var taskStore = TaskStore()
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
@@ -163,11 +164,12 @@ struct ToDoListIosApp: App {
             .environmentObject(appLanguageManager)
             .environmentObject(focusingManager)
             .environmentObject(lottieManager)
+            .environmentObject(taskStore)
             .environment(\.locale, appLanguageManager.locale)
             .environment(\.layoutDirection, appLanguageManager.layoutDirection)
             .id(appLanguageManager.language)
             .onOpenURL { url in
-                processWidgetAction(url: url)
+                processWidgetAction(url: url, taskStore: taskStore)
             }
         }
     }
