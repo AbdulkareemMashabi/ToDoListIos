@@ -71,18 +71,13 @@ struct ToDoAppWidgetEntryView: View {
     private var taskView: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 8) {
-                if entry.mainTask.status {
-                    Image(systemName: "checkmark.circle.fill")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.green)
+                if let docID = entry.documentID,
+                   let url = WidgetAction.buildURL(docID: docID) {
+                    Link(destination: url) {
+                        statusCircle(status: entry.mainTask.status, date: entry.mainTask.date)
+                    }
                 } else {
-                    Circle()
-                        .stroke(
-                            Color(hex: getWidgetBorderColor(date: entry.mainTask.date, status: entry.mainTask.status)),
-                            lineWidth: 2
-                        )
-                        .frame(width: 20, height: 20)
+                    statusCircle(status: entry.mainTask.status, date: entry.mainTask.date)
                 }
 
                 VStack(alignment: .leading, spacing: 2) {
@@ -107,18 +102,13 @@ struct ToDoAppWidgetEntryView: View {
 
             ForEach(Array(entry.subTasks.enumerated()), id: \.element.id) { index, subTask in
                 HStack(spacing: 8) {
-                    if subTask.status {
-                        Image(systemName: "checkmark.circle.fill")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.green)
+                    if let docID = entry.documentID,
+                       let url = WidgetAction.buildURL(docID: docID, subTaskIndex: index) {
+                        Link(destination: url) {
+                            subStatusCircle(status: subTask.status)
+                        }
                     } else {
-                        Circle()
-                            .stroke(
-                                Color(hex: subTask.status ? "#34C759" : "#FF9500"),
-                                lineWidth: 2
-                            )
-                            .frame(width: 20, height: 20)
+                        subStatusCircle(status: subTask.status)
                     }
 
                     Text(subTask.title)
@@ -126,6 +116,42 @@ struct ToDoAppWidgetEntryView: View {
                         .lineLimit(1)
                 }
                 .padding(.leading, 16)
+            }
+        }
+    }
+
+    private func statusCircle(status: Bool, date: String) -> some View {
+        Group {
+            if status {
+                Image(systemName: "checkmark.circle.fill")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(.green)
+            } else {
+                Circle()
+                    .stroke(
+                        Color(hex: getWidgetBorderColor(date: date, status: status)),
+                        lineWidth: 2
+                    )
+                    .frame(width: 20, height: 20)
+            }
+        }
+    }
+
+    private func subStatusCircle(status: Bool) -> some View {
+        Group {
+            if status {
+                Image(systemName: "checkmark.circle.fill")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(.green)
+            } else {
+                Circle()
+                    .stroke(
+                        Color(hex: status ? "#34C759" : "#FF9500"),
+                        lineWidth: 2
+                    )
+                    .frame(width: 20, height: 20)
             }
         }
     }
