@@ -551,7 +551,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoListIos/Preview Content\"";
 				DEVELOPMENT_TEAM = F4VGX56N2M;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "To-do List";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "This app needs calendar access to add your tasks.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This app needs calendar access to add your tasks.";
@@ -584,7 +585,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoListIos/Preview Content\"";
 				DEVELOPMENT_TEAM = F4VGX56N2M;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "To-do List";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "This app needs calendar access to add your tasks.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This app needs calendar access to add your tasks.";
