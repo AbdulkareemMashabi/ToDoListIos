@@ -9,6 +9,7 @@ import Foundation
 import CryptoSwift
 import SwiftUI
 import WidgetKit
+import SharedModels
 
 func localized(_ key: String) -> String {
     return localized(key, languageCode: AppLanguageManager.resolvedLanguageCode)
@@ -160,6 +161,32 @@ func saveFavoriteTaskInStorage(_ task: ToDoTask?) {
         WidgetCenter.shared.reloadAllTimelines()
     } catch {
         WidgetCenter.shared.reloadAllTimelines()
+    }
+}
+
+@MainActor
+func processWidgetAction(url: URL) {
+    guard let parsed = WidgetAction.parse(url: url) else { return }
+
+    let shared = UserDefaults(suiteName: WidgetAction.suiteName)
+    guard let data = shared?.data(forKey: "favoriteTask"),
+          var task = try? JSONDecoder().decode(ToDoTask.self, from: data),
+          task.documentID == parsed.docID else { return }
+
+    if let index = parsed.subTaskIndex, index < task.subTasks.count {
+        task.subTasks[index].status.toggle()
+        task.mainTask.status = task.subTasks.allSatisfy({ $0.status })
+    } else {
+        task.mainTask.status.toggle()
+        for i in task.subTasks.indices {
+            task.subTasks[i].status = task.mainTask.status
+        }
+    }
+
+    do {
+        try updateTaskAPI(task: task)
+    } catch {
+        print("Widget action sync failed: \(error.localizedDescription)")
     }
 }
 
