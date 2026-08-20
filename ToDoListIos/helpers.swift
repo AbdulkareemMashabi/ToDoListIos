@@ -8,6 +8,7 @@
 import Foundation
 import CryptoSwift
 import SwiftUI
+import WidgetKit
 
 func localized(_ key: String) -> String {
     return localized(key, languageCode: AppLanguageManager.resolvedLanguageCode)
@@ -151,14 +152,14 @@ func loadTasksShared(appToken: AppToken, loadingManager: LoadingManager, alertMa
 func saveFavoriteTaskInStorage(_ task: ToDoTask?) {
     do {
         let shared = UserDefaults(suiteName: "group.com.abdulkareem.ToDoList.widget")
+        shared?.removeObject(forKey: "favoriteTask")
         if let task = task {
             let data = try JSONEncoder().encode(task)
             shared?.set(data, forKey: "favoriteTask")
-        } else {
-            shared?.removeObject(forKey: "favoriteTask")
         }
-
+        WidgetCenter.shared.reloadAllTimelines()
     } catch {
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 
