@@ -111,9 +111,9 @@ struct TaskSwipeActionsModifier: ViewModifier {
                         ? "filledStar"
                         : "emptyStar"
                     )
-                    .tint(Color(hex: "#dbdb07"))
+                    .tint(Color(hex: "#FFB300"))
                 }
-                .tint(Color(hex: "#FFF3E0"))
+                .tint(Color(hex: "#FFF8E1"))
             }
     }
 }
