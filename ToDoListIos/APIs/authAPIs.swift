@@ -5,26 +5,16 @@
 //  Created by Abdulkareem Mashabi on 09/06/1447 AH.
 //
 import Foundation
-import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
 enum AuthAPIError: Error, LocalizedError {
-    case invalidResponseStatus(Int)
-    case decodingFailed
     case missingDeviceID
-    case requestConstructionFailed
 
     var errorDescription: String? {
         switch self {
-        case .invalidResponseStatus(let code):
-            return localized("api.requestFailedStatus", "\(code)")
-        case .decodingFailed:
-            return localized("api.decodingFailed")
         case .missingDeviceID:
             return localized("api.missingDeviceID")
-        case .requestConstructionFailed:
-            return localized("api.requestConstructionFailed")
         }
     }
 }

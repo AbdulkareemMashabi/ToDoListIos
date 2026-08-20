@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CryptoSwift
 import SwiftUI
 import WidgetKit
 import SharedModels

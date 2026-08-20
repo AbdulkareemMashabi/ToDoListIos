@@ -1,6 +1,5 @@
 import SwiftUI
 import Lottie
-import FirebaseCore
 
 @main
 struct ToDoListIosApp: App {

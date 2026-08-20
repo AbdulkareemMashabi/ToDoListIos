@@ -58,19 +58,11 @@ final class AppLanguageManager: ObservableObject {
         language.layoutDirection
     }
 
-    func useSystemLanguage() {
-        language = .system
-    }
-
     func useEnglish() {
         language = .english
     }
 
     func useArabic() {
         language = .arabic
-    }
-
-    func setLanguage(_ language: Language) {
-        self.language = language
     }
 }

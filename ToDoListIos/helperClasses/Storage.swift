@@ -8,7 +8,7 @@
 import Foundation
 import Security
 
-final class Storage: ObservableObject {
+final class Storage {
 
    static func save(key: String, value: String) {
         let data = Data(value.utf8)
