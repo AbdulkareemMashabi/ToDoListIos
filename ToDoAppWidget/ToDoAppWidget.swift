@@ -158,7 +158,6 @@ struct ToDoAppWidgetEntryView: View {
 
     private func widgetLocalizedString(_ key: String) -> String {
         let shared = UserDefaults(suiteName: "group.com.abdulkareem.ToDoList.widget")
-        print(shared?.string(forKey: "appLanguage"),"mdre")
         let langCode = shared?.string(forKey: "appLanguage") ?? Locale.current.language.languageCode?.identifier ?? "en"
 
         if let bundlePath = Bundle.main.path(forResource: langCode, ofType: "lproj"),
