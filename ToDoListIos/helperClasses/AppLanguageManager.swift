@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 final class AppLanguageManager: ObservableObject {
     enum Language: String, CaseIterable {
@@ -25,6 +26,9 @@ final class AppLanguageManager: ObservableObject {
     @Published private(set) var language: Language {
         didSet {
             UserDefaults.standard.set(language.rawValue, forKey: Self.storageKey)
+            let shared = UserDefaults(suiteName: "group.com.abdulkareem.ToDoList.widget")
+            shared?.set(language.rawValue, forKey: Self.storageKey)
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 

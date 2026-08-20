@@ -34,7 +34,10 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<ToDoTask>) -> ()) {
-        let entry = loadFavoriteTask() ?? placeholder(in: context)
+        let entry = loadFavoriteTask() ?? ToDoTask(
+            mainTask: MainTask(calendarId: "", color: "", date: "", description: "", status: false, title: ""),
+            subTasks: []
+        )
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }
@@ -42,8 +45,30 @@ struct Provider: TimelineProvider {
 
 struct ToDoAppWidgetEntryView: View {
     var entry: ToDoTask
+    @Environment(\.widgetFamily) var family
 
     var body: some View {
+        if entry.mainTask.title.isEmpty {
+            emptyStateView
+        } else {
+            taskView
+        }
+    }
+
+    private var emptyStateView: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "star")
+                .font(.system(size: 32))
+                .foregroundColor(.gray)
+            Text(widgetLocalizedString("widget.noFavoriteTask"))
+                .font(.system(size: 13, weight: .medium))
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var taskView: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 8) {
                 if entry.mainTask.status {
@@ -103,6 +128,22 @@ struct ToDoAppWidgetEntryView: View {
                 .padding(.leading, 16)
             }
         }
+    }
+
+    private func widgetLocalizedString(_ key: String) -> String {
+        let shared = UserDefaults(suiteName: "group.com.abdulkareem.ToDoList.widget")
+        print(shared?.string(forKey: "appLanguage"),"mdre")
+        let langCode = shared?.string(forKey: "appLanguage") ?? Locale.current.language.languageCode?.identifier ?? "en"
+
+        if let bundlePath = Bundle.main.path(forResource: langCode, ofType: "lproj"),
+           let bundle = Bundle(path: bundlePath) {
+            return NSLocalizedString(key, bundle: bundle, comment: "")
+        }
+        if let bundlePath = Bundle.main.path(forResource: "en", ofType: "lproj"),
+           let bundle = Bundle(path: bundlePath) {
+            return NSLocalizedString(key, bundle: bundle, comment: "")
+        }
+        return key
     }
 
     private func getWidgetBorderColor(date: String, status: Bool) -> String {
