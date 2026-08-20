@@ -16,7 +16,6 @@ struct Provider: TimelineProvider {
               let task = try? JSONDecoder().decode(ToDoTask.self, from: data) else {
             return nil
         }
-        print(task,"task")
         return task
     }
 
@@ -75,7 +74,10 @@ struct ToDoAppWidgetEntryView: View {
             }
 
             if !entry.subTasks.isEmpty {
-                Divider().padding(4)
+                Rectangle()
+                    .fill(Color.gray.opacity(0.3))
+                    .frame(height: 1)
+                    .padding(.vertical, 4)
             }
 
             ForEach(Array(entry.subTasks.enumerated()), id: \.element.id) { index, subTask in
