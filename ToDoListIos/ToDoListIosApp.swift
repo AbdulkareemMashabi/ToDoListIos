@@ -165,6 +165,7 @@ struct ToDoListIosApp: App {
             .environmentObject(lottieManager)
             .environment(\.locale, appLanguageManager.locale)
             .environment(\.layoutDirection, appLanguageManager.layoutDirection)
+            .id(appLanguageManager.language)
         }
     }
 }
