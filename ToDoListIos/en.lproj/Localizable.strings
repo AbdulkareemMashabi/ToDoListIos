@@ -56,7 +56,12 @@
 "validation.passwordsMismatch" = "Passwords do not match";
 "validation.requiredFormat" = "%@ is required";
 
-"api.requestFailedStatus" = "Request failed with status code: %@.";
-"api.decodingFailed" = "Failed to decode the response from the server.";
-"api.missingDeviceID" = "Unable to access a valid device identifier.";
-"api.requestConstructionFailed" = "Failed to construct a valid request.";
+"api.loginFailed" = "Login failed. Please check your email and password.";
+"api.registerFailed" = "Registration failed. Please try again.";
+"api.resetPasswordFailed" = "Failed to send reset email. Please try again.";
+"api.deleteAccountFailed" = "Failed to delete account. Please try again.";
+"api.missingDeviceID" = "Unable to access device identifier.";
+"api.addTaskFailed" = "Failed to add task. Please try again.";
+"api.fetchTasksFailed" = "Failed to load tasks. Please pull down to refresh.";
+"api.updateTaskFailed" = "Failed to update task. Please try again.";
+"api.deleteTaskFailed" = "Failed to delete task. Please try again.";

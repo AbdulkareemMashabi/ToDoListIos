@@ -1,52 +1,68 @@
-//
-//  authAPIs.swift
-//  ToDoListIos
-//
-//  Created by Abdulkareem Mashabi on 09/06/1447 AH.
-//
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-enum AuthAPIError: Error, LocalizedError {
+enum APIError: Error, LocalizedError {
+    case loginFailed
+    case registerFailed
+    case resetPasswordFailed
+    case deleteAccountFailed
     case missingDeviceID
+    case addTaskFailed
+    case fetchTasksFailed
+    case updateTaskFailed
+    case deleteTaskFailed
 
     var errorDescription: String? {
         switch self {
+        case .loginFailed:
+            return localized("api.loginFailed")
+        case .registerFailed:
+            return localized("api.registerFailed")
+        case .resetPasswordFailed:
+            return localized("api.resetPasswordFailed")
+        case .deleteAccountFailed:
+            return localized("api.deleteAccountFailed")
         case .missingDeviceID:
             return localized("api.missingDeviceID")
+        case .addTaskFailed:
+            return localized("api.addTaskFailed")
+        case .fetchTasksFailed:
+            return localized("api.fetchTasksFailed")
+        case .updateTaskFailed:
+            return localized("api.updateTaskFailed")
+        case .deleteTaskFailed:
+            return localized("api.deleteTaskFailed")
         }
     }
 }
 
 func signUpFireBase(email: String, password: String) async throws -> String {
     do {
-       let result = try await Auth.auth().createUser(withEmail: email, password: password)
+        let result = try await Auth.auth().createUser(withEmail: email, password: password)
         return result.user.uid
-    }catch {
-        throw error
+    } catch {
+        throw APIError.registerFailed
     }
-
 }
 
 func loginFireBase(email: String, password: String) async throws -> String {
     do {
-       let result = try await Auth.auth().signIn(
-        withEmail: email,
-        password: password
-    )
+        let result = try await Auth.auth().signIn(
+            withEmail: email,
+            password: password
+        )
         return result.user.uid
-    }catch {
-        throw error
+    } catch {
+        throw APIError.loginFailed
     }
-
 }
 
 func resetPasswordFirebase(email: String) async throws {
     do {
         try await Auth.auth().sendPasswordReset(withEmail: email)
-    }catch {
-        throw error
+    } catch {
+        throw APIError.resetPasswordFailed
     }
 }
 
@@ -60,9 +76,9 @@ func deleteAccountFirebase(email: String, password: String) async throws {
         } else {
             userId = try await loginFireBase(email: email, password: password)
         }
-        
+
         let db = Firestore.firestore()
-        
+
         let snapshot = try await db.collection(userId).getDocuments()
 
         let batch = db.batch()
@@ -72,19 +88,18 @@ func deleteAccountFirebase(email: String, password: String) async throws {
         }
 
         try await batch.commit()
-        
+
         let credential = EmailAuthProvider.credential(
             withEmail: email,
             password: password
         )
-        
+
         Storage.save(key: "token", value: "")
         if let validuser = user {
             try await validuser.reauthenticate(with: credential)
             try await validuser.delete()
         }
-    }catch {
-        throw error
+    } catch {
+        throw APIError.deleteAccountFailed
     }
 }
-

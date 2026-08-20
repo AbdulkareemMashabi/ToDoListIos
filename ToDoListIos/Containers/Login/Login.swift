@@ -76,7 +76,7 @@ struct Login: View {
                                 loadingManager.isLoading.toggle()
                             }
                             guard let deviceId = UIDevice.current.identifierForVendor?.uuidString else {
-                                throw AuthAPIError.missingDeviceID
+                                throw APIError.missingDeviceID
                             }
                             Storage.save(key: "token", value: deviceId)
                             appToken.token = deviceId

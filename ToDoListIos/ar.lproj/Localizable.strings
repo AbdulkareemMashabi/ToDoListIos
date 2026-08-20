@@ -56,7 +56,12 @@
 "validation.passwordsMismatch" = "كلمتا المرور غير متطابقتين";
 "validation.requiredFormat" = "%@ مطلوب";
 
-"api.requestFailedStatus" = "فشل الطلب برمز الحالة: %@.";
-"api.decodingFailed" = "فشل فك ترميز الاستجابة من الخادم.";
-"api.missingDeviceID" = "تعذر الوصول إلى معرّف جهاز صالح.";
-"api.requestConstructionFailed" = "فشل إنشاء طلب صالح.";
+"api.loginFailed" = "فشل تسجيل الدخول. يرجى التحقق من البريد الإلكتروني وكلمة المرور.";
+"api.registerFailed" = "فشل إنشاء الحساب. يرجى المحاولة مرة أخرى.";
+"api.resetPasswordFailed" = "فشل إرسال بريد إعادة التعيين. يرجى المحاولة مرة أخرى.";
+"api.deleteAccountFailed" = "فشل حذف الحساب. يرجى المحاولة مرة أخرى.";
+"api.missingDeviceID" = "تعذر الوصول إلى معرّف الجهاز.";
+"api.addTaskFailed" = "فشل إضافة المهمة. يرجى المحاولة مرة أخرى.";
+"api.fetchTasksFailed" = "فشل تحميل المهام. يرجى السحب للأسفل للتحديث.";
+"api.updateTaskFailed" = "فشل تحديث المهمة. يرجى المحاولة مرة أخرى.";
+"api.deleteTaskFailed" = "فشل حذف المهمة. يرجى المحاولة مرة أخرى.";
