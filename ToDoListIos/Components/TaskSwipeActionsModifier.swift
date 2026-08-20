@@ -88,11 +88,11 @@ struct TaskSwipeActionsModifier: ViewModifier {
                             updatedTask.favorite.toggle()
                             
                             try updateTaskAPI(task: updatedTask)
-                            task.favorite.toggle()
+                            task.favorite.toggle()                            
                             
                             if task.favorite {
-                                makeTaskUnfavorite(task.documentID!)
                                 saveFavoriteTaskInStorage(task)
+                                makeTaskUnfavorite(task.documentID!)
                             }
                             else {
                                 saveFavoriteTaskInStorage(nil)
