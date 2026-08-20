@@ -129,27 +129,30 @@ struct ToDoListIosApp: App {
                     Color.black.opacity(0.5)
                         .ignoresSafeArea()
                         .zIndex(999).overlay {
-                             
-                                VStack(spacing: 16) {
-                                    Text(alertManager.title)
-                                        .font(.headline)
-                                    
-                                    Text(alertManager.message)
-                                    if(alertManager.buttons.isEmpty){ Button(localized("common.ok")) { alertManager.hide() }}
-                                    else {
-                                        ForEach(alertManager.buttons) { item in
-                                            ButtonComponent {
-                                                item.action()
-                                                alertManager.hide()
-                                            } label: {
-                                                Text(item.title)
-                                                    .frame(maxWidth: .infinity)
-                                            }.background(item.buttonVariant.color).formButtonStyle()
-                                        }
-                                    }
+                            VStack(spacing: 16) {
+                                Text(alertManager.title)
+                                    .font(.headline)
 
-                                }.padding().background(.white).cornerRadius(16).padding()
-                            
+                                Text(alertManager.message)
+                                    .multilineTextAlignment(.center)
+
+                                if alertManager.buttons.isEmpty {
+                                    Button(localized("common.ok")) { alertManager.hide() }
+                                } else {
+                                    ForEach(alertManager.buttons) { item in
+                                        ButtonComponent {
+                                            item.action()
+                                            alertManager.hide()
+                                        } label: {
+                                            Text(item.title)
+                                        }.background(item.buttonVariant.color).formButtonStyle()
+                                    }
+                                }
+                            }
+                            .padding()
+                            .background(.white)
+                            .cornerRadius(16)
+                            .frame(width: 327)
                         }
                 }
             }
