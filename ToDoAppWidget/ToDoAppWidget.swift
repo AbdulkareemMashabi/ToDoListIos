@@ -51,8 +51,53 @@ struct ToDoAppWidgetEntryView: View {
         if entry.mainTask.title.isEmpty {
             emptyStateView
         } else {
-            taskView
+            switch family {
+            case .accessoryRectangular:
+                accessoryRectangularView
+            default:
+                taskView
+            }
         }
+    }
+
+    private var accessoryRectangularView: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            HStack(spacing: 4) {
+                Image(systemName: entry.mainTask.status ? "checkmark.circle.fill" : "circle")
+                    .font(.caption)
+                    .foregroundColor(entry.mainTask.status ? .green : .orange)
+                Text(entry.mainTask.title)
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .lineLimit(1)
+                    .foregroundColor(.white)
+            }
+            if !entry.subTasks.isEmpty {
+                Text("\(completedSubTasks)/\(totalSubTasks)")
+                    .font(.caption2)
+                    .foregroundColor(.white.opacity(0.7))
+            }
+        }
+        .padding(8)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            LinearGradient(
+                colors: entry.mainTask.status
+                    ? [Color.green.opacity(0.15), Color.green.opacity(0.05)]
+                    : [Color.orange.opacity(0.15), Color.orange.opacity(0.05)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+    }
+
+    private var completedSubTasks: Int {
+        entry.subTasks.filter(\.status).count
+    }
+
+    private var totalSubTasks: Int {
+        entry.subTasks.count
     }
 
     private var emptyStateView: some View {
@@ -208,7 +253,10 @@ struct ToDoAppWidget: Widget {
         }
         .configurationDisplayName("Favorite Task")
         .description("Keep track of your favorite task")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([
+            .systemSmall, .systemMedium, .systemLarge,
+            .accessoryRectangular
+        ])
     }
 }
 
