@@ -137,7 +137,7 @@ struct TaskDetails: View {
                         .buttonStyle(.plain)
                     }                   .listRowSeparator(.hidden)
                         .listRowInsets(    EdgeInsets(
-                            top: 16,
+                            top: 4,
                             leading: 5,
                             bottom: 0,
                             trailing: 5
@@ -154,7 +154,7 @@ struct TaskDetails: View {
                     newSubTask = ""
                     isTaskChanged = true
                 }
-            }).padding(.top, 8)
+            })
         }.customToolbar(title: task.mainTask.title, rightButtons: isTaskChanged ? [
             AnyView(
             ButtonComponent {
