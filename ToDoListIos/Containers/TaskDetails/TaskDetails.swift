@@ -15,7 +15,7 @@ struct TaskDetails: View {
     @State private var isTaskChanged = false
     @State private var isEditSheetPresented = false
     @State private var didConfirmEdit = false
-    @State private var selectedDateObject = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    @State private var selectedDateObject: Date
 
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject private var loadingManager: LoadingManager
@@ -26,6 +26,7 @@ struct TaskDetails: View {
         _task = State(initialValue: task)
         _draft = State(initialValue: Draft(task: task))
         _subTasks = State(initialValue: task.subTasks)
+        _selectedDateObject = State(initialValue: Self.parseTaskDate(task.mainTask.date))
     }
 
     // MARK: - Body
@@ -212,6 +213,34 @@ struct TaskDetails: View {
                 alertManager.show(message: error.userFacingMessage)
             }
         }
+    }
+
+    /// Parses a task's stored date string into a `Date`. Tries the format
+    /// `DateInput` actually writes (`.numeric` in the current locale) first,
+    /// then a canonical `dd/MM/yyyy`, then a locale-aware short-date. Falls
+    /// back to tomorrow so a missing or unparseable date never breaks the
+    /// calendar sync.
+    private static func parseTaskDate(_ dateString: String) -> Date {
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        guard !dateString.isEmpty else { return tomorrow }
+
+        // 1. Matches `pickerDate.formatted(date: .numeric, time: .omitted)`
+        if let date = try? Date(dateString, strategy: Date.FormatStyle(date: .numeric, time: .omitted)) {
+            return date
+        }
+
+        let formatter = DateFormatter()
+
+        // 2. Canonical dd/MM/yyyy (older-stored dates or manual entries)
+        formatter.dateFormat = "dd/MM/yyyy"
+        if let date = formatter.date(from: dateString) { return date }
+
+        // 3. Current-locale short style
+        formatter.dateFormat = nil
+        formatter.dateStyle = .short
+        if let date = formatter.date(from: dateString) { return date }
+
+        return tomorrow
     }
 }
 
