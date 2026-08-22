@@ -17,9 +17,10 @@ func saveFavoriteTaskInStorage(_ task: ToDoTask?) {
 }
 
 /// Applies a widget-originated status toggle (main or sub-task) to the shared
-/// favorite task, syncs it to Firestore and updates the in-memory task store.
+/// favorite task, syncs it to Firestore, updates the in-memory task store,
+/// and mirrors the in-app completion feedback (sound + done animation).
 @MainActor
-func processWidgetAction(url: URL, taskStore: TaskStore) {
+func processWidgetAction(url: URL, taskStore: TaskStore, lottieManager: LottieManager) {
     guard let parsed = WidgetAction.parse(url: url) else { return }
 
     let shared = UserDefaults(suiteName: AppConstants.appGroupIdentifier)
@@ -29,14 +30,21 @@ func processWidgetAction(url: URL, taskStore: TaskStore) {
         task.documentID == parsed.docID
     else { return }
 
+    let didCompleteItem: Bool
+    let didCompleteMainTask: Bool
+
     if let index = parsed.subTaskIndex, index < task.subTasks.count {
         task.subTasks[index].status.toggle()
         task.mainTask.status = task.subTasks.allSatisfy(\.status)
+        didCompleteItem = task.subTasks[index].status
+        didCompleteMainTask = didCompleteItem && task.mainTask.status
     } else {
         task.mainTask.status.toggle()
         for i in task.subTasks.indices {
             task.subTasks[i].status = task.mainTask.status
         }
+        didCompleteItem = task.mainTask.status
+        didCompleteMainTask = task.mainTask.status
     }
 
     do {
@@ -49,5 +57,14 @@ func processWidgetAction(url: URL, taskStore: TaskStore) {
 
     if let index = taskStore.tasks.firstIndex(where: { $0.documentID == task.documentID }) {
         taskStore.tasks[index] = task
+    }
+
+    // Only fire completion cues when the widget action moved the item to done
+    // (matching in-app behavior — un-completing is silent).
+    if didCompleteItem {
+        SoundPlayer.playCorrect()
+    }
+    if didCompleteMainTask {
+        lottieManager.isDoneLottieEnabled = true
     }
 }

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AVFoundation
 
 struct TaskRow: View {
     @Binding var task: ToDoTask
@@ -14,8 +13,6 @@ struct TaskRow: View {
     @EnvironmentObject private var alertManager: AlertManager
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject private var lottieManager: LottieManager
-
-    @State private var player: AVAudioPlayer?
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -85,21 +82,13 @@ struct TaskRow: View {
         do {
             try updateTaskAPI(task: updated)
             task = updated
-            try playSound()
+            SoundPlayer.playCorrect()
             if triggerDoneAnimation {
-                lottieManager.isDoneLottieEnabled.toggle()
+                lottieManager.isDoneLottieEnabled = true
             }
         } catch {
             alertManager.show(message: error.userFacingMessage)
         }
-    }
-
-    private func playSound() throws {
-        guard let url = Bundle.main.url(forResource: "correct_sound", withExtension: "mp3") else {
-            return
-        }
-        player = try AVAudioPlayer(contentsOf: url)
-        player?.play()
     }
 }
 

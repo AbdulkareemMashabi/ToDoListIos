@@ -35,7 +35,7 @@ struct ToDoListIosApp: App {
             .environment(\.layoutDirection, appLanguageManager.layoutDirection)
             .id(appLanguageManager.language)
             .onOpenURL { url in
-                processWidgetAction(url: url, taskStore: taskStore)
+                processWidgetAction(url: url, taskStore: taskStore, lottieManager: lottieManager)
             }
         }
     }
