@@ -2,7 +2,7 @@
 "common.email" = "البريد الإلكتروني";
 "common.password" = "كلمة المرور";
 "common.confirmPassword" = "تأكيد كلمة المرور";
-"common.submit" = "إرسال";
+"common.submit" = "تأكيد";
 "common.login" = "تسجيل الدخول";
 "common.register" = "إنشاء حساب";
 "common.error" = "خطأ";
