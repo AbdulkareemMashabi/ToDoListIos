@@ -34,10 +34,11 @@
 "task.titleRequired" = "العنوان مطلوب";
 "task.dateOptional" = "التاريخ (اختياري)";
 "task.description" = "الوصف";
-"task.descriptionRequired" = "الوصف مطلوب";
 "task.addToCalendar" = "إضافة المهمة إلى التقويم";
 "task.addedToCalendar" = "تمت إضافة المهمة إلى التقويم";
+"task.updatedInCalendar" = "تم تحديث المهمة في التقويم";
 "task.failedToAddToCalendar" = "فشلت إضافة المهمة إلى التقويم";
+"task.failedToUpdateCalendar" = "فشل تحديث المهمة في التقويم";
 "task.calendarAccessDenied" = "تم رفض الوصول إلى التقويم. يرجى السماح بالوصول إلى التقويم في الإعدادات.";
 "task.addedSuccesfully" = "تم إضافة المهمة بنجاح";
 "task.deleteTaskTitle" = "حذف مهمة";
@@ -48,7 +49,6 @@
 "taskDetails.done" = "تم";
 "taskDetails.subTasks" = "مهام جانبية";
 "taskDetails.subTasksPlaceHolder" = "عنوان المهمة الفرعية الجديدة";
-"taskDetails.failedToUpdateCalendar" = "فشلت تحديث المهمة في التقويم";
 
 "validation.emailRequired" = "البريد الإلكتروني مطلوب";
 "validation.invalidEmail" = "صيغة البريد الإلكتروني غير صحيحة";

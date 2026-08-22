@@ -34,10 +34,11 @@
 "task.titleRequired" = "Title is required";
 "task.dateOptional" = "Date (Optional)";
 "task.description" = "Description";
-"task.descriptionRequired" = "Description is required";
 "task.addToCalendar" = "Add The Task To The Calendar";
 "task.addedToCalendar" = "Task added to calendar";
+"task.updatedInCalendar" = "Task updated in calendar";
 "task.failedToAddToCalendar" = "Failed to add task to calendar";
+"task.failedToUpdateCalendar" = "Failed to update task in calendar";
 "task.calendarAccessDenied" = "Calendar access denied. Please allow calendar access in settings.";
 "task.addedSuccesfully" = "Task added successfully";
 "task.deleteTaskTitle" = "Delete Task";
@@ -48,7 +49,6 @@
 "taskDetails.done" = "Done";
 "taskDetails.subTasks" = "Sub Tasks";
 "taskDetails.subTasksPlaceHolder" = "New Sub Task Title";
-"taskDetails.failedToUpdateCalendar" = "Failed to update task in calendar";
 
 "validation.emailRequired" = "Email is required";
 "validation.invalidEmail" = "Invalid email format";
