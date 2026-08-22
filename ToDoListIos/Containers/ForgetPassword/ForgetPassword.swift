@@ -9,50 +9,54 @@ import SwiftUI
 
 struct ForgetPassword: View {
     @State private var email = ""
-    private var isButtonDisabled: Bool {
-        return !isValidEmail(email) || email.isEmpty
-    }
+
     @EnvironmentObject private var loadingManager: LoadingManager
     @EnvironmentObject private var navigationManager: NavigationManager
-    @EnvironmentObject var toastManager: ToastManager
-    @EnvironmentObject var alertManager: AlertManager
-    
+    @EnvironmentObject private var toastManager: ToastManager
+    @EnvironmentObject private var alertManager: AlertManager
+
+    private var isSubmitDisabled: Bool {
+        email.isEmpty || !Validators.isValidEmail(email)
+    }
+
     var body: some View {
-        ZStack (alignment: .top){
+        ZStack(alignment: .top) {
             Image("waves").resizable().ignoresSafeArea()
-            VStack(alignment:.leading) {
+
+            VStack(alignment: .leading) {
                 Text(localized("forgetPassword.title")).fontWeight(.bold)
                 Text(localized("forgetPassword.subtitle")).foregroundStyle(.gray)
-                TextInput(data: $email, placeholder: localized("common.email"), error: getEmailValidation(email: email))
-                ButtonComponent {
-                    Task {
-                        do {
-                            await MainActor.run {
-                                loadingManager.isLoadingButton.toggle()
-                            }
-                            try await resetPasswordFirebase(email: email)
-                            await MainActor.run {
-                                loadingManager.isLoadingButton.toggle()
-                                toastManager.show(localized("forgetPassword.resetSent"))
-                                navigationManager.path.removeLast()
-                            }
-                        }catch {
-                            let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
-                            alertManager.show(message: message)
-                            await MainActor.run {
-                                loadingManager.isLoadingButton.toggle()
-                            }
-                        }
-                    }
-                    
-                } label: {
+
+                TextInput(
+                    data: $email,
+                    placeholder: localized("common.email"),
+                    error: Validators.email(email)
+                )
+
+                ButtonComponent(action: sendReset) {
                     Text(localized("common.submit"))
-                }.formButtonStyle().isButtonDisabled(isButtonDisabled)
-                
-            }.padding()
-            
-            
-        }.navigationTitle(localized("login.forgetPassword")).navigationBarTitleDisplayMode(.inline)
+                }
+                .formButtonStyle()
+                .isButtonDisabled(isSubmitDisabled)
+            }
+            .padding()
+        }
+        .navigationTitle(localized("login.forgetPassword"))
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func sendReset() {
+        Task { @MainActor in
+            loadingManager.isLoadingButton = true
+            defer { loadingManager.isLoadingButton = false }
+            do {
+                try await resetPasswordFirebase(email: email)
+                toastManager.show(localized("forgetPassword.resetSent"))
+                navigationManager.path.removeLast()
+            } catch {
+                alertManager.show(message: error.userFacingMessage)
+            }
+        }
     }
 }
 

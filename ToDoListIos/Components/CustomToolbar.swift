@@ -4,51 +4,44 @@ struct CustomToolbar: ViewModifier {
     let title: String
     var leftButtons: [AnyView] = []
     var rightButtons: [AnyView] = []
-    
+
     func body(content: Content) -> some View {
         content
             .toolbar {
-                // LEFT SIDE
-                if (!leftButtons.isEmpty) {
+                if !leftButtons.isEmpty {
                     ToolbarItem(placement: .navigationBarLeading) {
                         HStack(spacing: 16) {
-                            ForEach(leftButtons.indices, id: \.self) { index in
-                                leftButtons[index]
-                            }
+                            ForEach(leftButtons.indices, id: \.self) { leftButtons[$0] }
                         }
                     }
                 }
 
-                
-                // CENTER TITLE (PRINCIPAL)
                 ToolbarItem(placement: .principal) {
-                    Text(title)
-                        .font(.headline)
+                    Text(title).font(.headline)
                 }
-                
-                if (!rightButtons.isEmpty)
-                {
+
+                if !rightButtons.isEmpty {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         HStack(spacing: 16) {
-                            ForEach(rightButtons.indices, id: \.self) { index in
-                                rightButtons[index]
-                            }
+                            ForEach(rightButtons.indices, id: \.self) { rightButtons[$0] }
                         }
                     }
                 }
-                // RIGHT SIDE
-
-            }.navigationBarTitleDisplayMode(.inline)
-        
+            }
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 extension View {
-    public func customToolbar(title: String,
-                              leftButtons: [AnyView] = [],
-                              rightButtons: [AnyView] = []) -> some View {
-        modifier(CustomToolbar(title: title,
-                               leftButtons: leftButtons,
-                               rightButtons: rightButtons))
+    public func customToolbar(
+        title: String,
+        leftButtons: [AnyView] = [],
+        rightButtons: [AnyView] = []
+    ) -> some View {
+        modifier(CustomToolbar(
+            title: title,
+            leftButtons: leftButtons,
+            rightButtons: rightButtons
+        ))
     }
 }

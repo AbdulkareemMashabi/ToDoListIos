@@ -10,21 +10,18 @@ import Lottie
 
 struct ButtonComponent<LabelView: View>: View {
     var action: () -> Void
-     var label: () -> LabelView
+    var label: () -> LabelView
     @EnvironmentObject private var loadingManager: LoadingManager
-    let filePath = "/Users/abdulkareemmashabi/Desktop/ToDoListIos/ToDoListIos/Resources/Lotties/loadingButton.json"
-    
+
     var body: some View {
         Button(action: action) {
             if loadingManager.isLoadingButton {
-                LottieView(animation: .filepath(filePath))
+                LottieView(animation: .filepath(LottieAsset.loadingButton.filepath))
                     .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
                     .scaleEffect(0.6)
-            }
-            else {
+            } else {
                 label().frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            
         }
     }
 }

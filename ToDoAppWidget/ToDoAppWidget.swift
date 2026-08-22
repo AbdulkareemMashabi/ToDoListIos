@@ -9,55 +9,91 @@ import WidgetKit
 import SwiftUI
 import SharedModels
 
-struct Provider: TimelineProvider {
-    func loadFavoriteTask() -> ToDoTask? {
-        let shared = UserDefaults(suiteName: "group.com.abdulkareem.ToDoList.widget")
-        guard let data = shared?.data(forKey: "favoriteTask"),
-              let task = try? JSONDecoder().decode(ToDoTask.self, from: data) else {
-            return nil
-        }
-        return task
-    }
+// MARK: - Constants
 
+private enum WidgetConstants {
+    static let favoriteTaskKey = "favoriteTask"
+    static let languageKey = "appLanguage"
+    static let fallbackLanguage = "en"
+}
+
+// MARK: - Timeline provider
+
+struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> ToDoTask {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = TaskStatusColor.dateFormat
         return ToDoTask(
             favorite: true,
-            mainTask: MainTask(calendarId: "", color: "#FF3B30", date: formatter.string(from: Date()), description: "", status: false, title: "Finish Homework"),
-            subTasks: [SubTask(title: "Math", status: true), SubTask(title: "Science", status: false)]
+            mainTask: MainTask(
+                calendarId: "",
+                color: ColorsToDo.red.hex,
+                date: formatter.string(from: Date()),
+                description: "",
+                status: false,
+                title: "Finish Homework"
+            ),
+            subTasks: [
+                SubTask(title: "Math", status: true),
+                SubTask(title: "Science", status: false)
+            ]
         )
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (ToDoTask) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (ToDoTask) -> Void) {
         completion(loadFavoriteTask() ?? placeholder(in: context))
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<ToDoTask>) -> ()) {
-        let entry = loadFavoriteTask() ?? ToDoTask(
+    func getTimeline(in context: Context, completion: @escaping (Timeline<ToDoTask>) -> Void) {
+        let entry = loadFavoriteTask() ?? emptyEntry
+        completion(Timeline(entries: [entry], policy: .atEnd))
+    }
+
+    private var emptyEntry: ToDoTask {
+        ToDoTask(
             mainTask: MainTask(calendarId: "", color: "", date: "", description: "", status: false, title: ""),
             subTasks: []
         )
-        let timeline = Timeline(entries: [entry], policy: .atEnd)
-        completion(timeline)
+    }
+
+    private func loadFavoriteTask() -> ToDoTask? {
+        let shared = UserDefaults(suiteName: WidgetAction.suiteName)
+        guard let data = shared?.data(forKey: WidgetConstants.favoriteTaskKey) else {
+            return nil
+        }
+        return try? JSONDecoder().decode(ToDoTask.self, from: data)
     }
 }
 
+// MARK: - Entry view
+
 struct ToDoAppWidgetEntryView: View {
-    var entry: ToDoTask
-    @Environment(\.widgetFamily) var family
+    let entry: ToDoTask
+    @Environment(\.widgetFamily) private var family
 
     var body: some View {
         if entry.mainTask.title.isEmpty {
             emptyStateView
+        } else if family == .accessoryRectangular {
+            accessoryRectangularView
         } else {
-            switch family {
-            case .accessoryRectangular:
-                accessoryRectangularView
-            default:
-                taskView
-            }
+            taskView
         }
+    }
+
+    // MARK: - Layouts
+
+    private var emptyStateView: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "star")
+                .font(.system(size: 32))
+                .foregroundColor(.gray)
+            Text(widgetLocalized("widget.noFavoriteTask"))
+                .font(.system(size: 13, weight: .medium))
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var accessoryRectangularView: some View {
@@ -73,63 +109,25 @@ struct ToDoAppWidgetEntryView: View {
                     .foregroundColor(.white)
             }
             if !entry.subTasks.isEmpty {
-                Text("\(completedSubTasks)/\(totalSubTasks)")
+                Text("\(completedSubTasksCount)/\(entry.subTasks.count)")
                     .font(.caption2)
                     .foregroundColor(.white.opacity(0.7))
             }
         }
         .padding(8)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            LinearGradient(
-                colors: entry.mainTask.status
-                    ? [Color.green.opacity(0.15), Color.green.opacity(0.05)]
-                    : [Color.orange.opacity(0.15), Color.orange.opacity(0.05)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        )
+        .background(accessoryBackground)
         .clipShape(RoundedRectangle(cornerRadius: 8))
-    }
-
-    private var completedSubTasks: Int {
-        entry.subTasks.filter(\.status).count
-    }
-
-    private var totalSubTasks: Int {
-        entry.subTasks.count
-    }
-
-    private var emptyStateView: some View {
-        VStack(spacing: 8) {
-            Image(systemName: "star")
-                .font(.system(size: 32))
-                .foregroundColor(.gray)
-            Text(widgetLocalizedString("widget.noFavoriteTask"))
-                .font(.system(size: 13, weight: .medium))
-                .foregroundColor(.gray)
-                .multilineTextAlignment(.center)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var taskView: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 8) {
-                if let docID = entry.documentID,
-                   let url = WidgetAction.buildURL(docID: docID) {
-                    Link(destination: url) {
-                        statusCircle(status: entry.mainTask.status, date: entry.mainTask.date)
-                    }
-                } else {
-                    statusCircle(status: entry.mainTask.status, date: entry.mainTask.date)
-                }
-
+                mainStatusCircle
                 VStack(alignment: .leading, spacing: 2) {
                     Text(entry.mainTask.title)
                         .font(.system(size: 14, weight: .bold))
                         .lineLimit(2)
-
                     if !entry.mainTask.date.isEmpty {
                         Text(entry.mainTask.date)
                             .font(.system(size: 11))
@@ -146,102 +144,101 @@ struct ToDoAppWidgetEntryView: View {
             }
 
             ForEach(Array(entry.subTasks.enumerated()), id: \.element.id) { index, subTask in
-                HStack(spacing: 8) {
-                    if let docID = entry.documentID,
-                       let url = WidgetAction.buildURL(docID: docID, subTaskIndex: index) {
-                        Link(destination: url) {
-                            subStatusCircle(status: subTask.status)
-                        }
-                    } else {
-                        subStatusCircle(status: subTask.status)
-                    }
-
-                    Text(subTask.title)
-                        .font(.system(size: 12))
-                        .lineLimit(1)
-                }
-                .padding(.leading, 16)
+                subTaskRow(index: index, subTask: subTask)
             }
         }
     }
 
-    private func statusCircle(status: Bool, date: String) -> some View {
-        Group {
-            if status {
-                Image(systemName: "checkmark.circle.fill")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.green)
-            } else {
-                Circle()
-                    .stroke(
-                        Color(hex: getWidgetBorderColor(date: date, status: status)),
-                        lineWidth: 2
-                    )
-                    .frame(width: 20, height: 20)
+    // MARK: - Components
+
+    @ViewBuilder
+    private var mainStatusCircle: some View {
+        if let docID = entry.documentID,
+           let url = WidgetAction.buildURL(docID: docID) {
+            Link(destination: url) {
+                statusCircle(isCompleted: entry.mainTask.status, dueDate: entry.mainTask.date)
             }
-        }
-    }
-
-    private func subStatusCircle(status: Bool) -> some View {
-        Group {
-            if status {
-                Image(systemName: "checkmark.circle.fill")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.green)
-            } else {
-                Circle()
-                    .stroke(
-                        Color(hex: status ? "#34C759" : "#FF9500"),
-                        lineWidth: 2
-                    )
-                    .frame(width: 20, height: 20)
-            }
-        }
-    }
-
-    private func widgetLocalizedString(_ key: String) -> String {
-        let shared = UserDefaults(suiteName: "group.com.abdulkareem.ToDoList.widget")
-        let langCode = shared?.string(forKey: "appLanguage") ?? Locale.current.language.languageCode?.identifier ?? "en"
-
-        if let bundlePath = Bundle.main.path(forResource: langCode, ofType: "lproj"),
-           let bundle = Bundle(path: bundlePath) {
-            return NSLocalizedString(key, bundle: bundle, comment: "")
-        }
-        if let bundlePath = Bundle.main.path(forResource: "en", ofType: "lproj"),
-           let bundle = Bundle(path: bundlePath) {
-            return NSLocalizedString(key, bundle: bundle, comment: "")
-        }
-        return key
-    }
-
-    private func getWidgetBorderColor(date: String, status: Bool) -> String {
-        guard !date.isEmpty else {
-            return status ? "#34C759" : "#FF9500"
-        }
-
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-
-        guard let endDate = formatter.date(from: date) else {
-            return status ? "#34C759" : "#FF9500"
-        }
-
-        let calendar = Calendar.current
-        let startDate = calendar.startOfDay(for: Date())
-        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
-        let days = components.day ?? 0
-
-        if days >= 0 && !status {
-            return "#FF9500"
-        } else if days < 0 && !status {
-            return "#FF3B30"
         } else {
-            return "#34C759"
+            statusCircle(isCompleted: entry.mainTask.status, dueDate: entry.mainTask.date)
         }
+    }
+
+    @ViewBuilder
+    private func subTaskRow(index: Int, subTask: SubTask) -> some View {
+        HStack(spacing: 8) {
+            if let docID = entry.documentID,
+               let url = WidgetAction.buildURL(docID: docID, subTaskIndex: index) {
+                Link(destination: url) {
+                    subStatusCircle(isCompleted: subTask.status)
+                }
+            } else {
+                subStatusCircle(isCompleted: subTask.status)
+            }
+            Text(subTask.title)
+                .font(.system(size: 12))
+                .lineLimit(1)
+        }
+        .padding(.leading, 16)
+    }
+
+    private func statusCircle(isCompleted: Bool, dueDate: String) -> some View {
+        Group {
+            if isCompleted {
+                Image(systemName: "checkmark.circle.fill")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(.green)
+            } else {
+                Circle()
+                    .stroke(
+                        Color(TaskStatusColor.borderColor(dueDate: dueDate, isCompleted: isCompleted)),
+                        lineWidth: 2
+                    )
+                    .frame(width: 20, height: 20)
+            }
+        }
+    }
+
+    private func subStatusCircle(isCompleted: Bool) -> some View {
+        Group {
+            if isCompleted {
+                Image(systemName: "checkmark.circle.fill")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(.green)
+            } else {
+                Circle()
+                    .stroke(Color(isCompleted ? .green : .orange), lineWidth: 2)
+                    .frame(width: 20, height: 20)
+            }
+        }
+    }
+
+    private var accessoryBackground: LinearGradient {
+        let tint: Color = entry.mainTask.status ? .green : .orange
+        return LinearGradient(
+            colors: [tint.opacity(0.15), tint.opacity(0.05)],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    // MARK: - Derived values
+
+    private var completedSubTasksCount: Int {
+        entry.subTasks.filter(\.status).count
+    }
+
+    private func widgetLocalized(_ key: String) -> String {
+        let shared = UserDefaults(suiteName: WidgetAction.suiteName)
+        let langCode = shared?.string(forKey: WidgetConstants.languageKey)
+            ?? Locale.current.language.languageCode?.identifier
+            ?? WidgetConstants.fallbackLanguage
+        return SharedLocalization.string(for: key, languageCode: langCode)
     }
 }
+
+// MARK: - Widget definition
 
 struct ToDoAppWidget: Widget {
     let kind: String = "ToDoAppWidget"
@@ -257,31 +254,5 @@ struct ToDoAppWidget: Widget {
             .systemSmall, .systemMedium, .systemLarge,
             .accessoryRectangular
         ])
-    }
-}
-
-extension Color {
-    init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3:
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6:
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8:
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (255, 0, 0, 0)
-        }
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue: Double(b) / 255,
-            opacity: Double(a) / 255
-        )
     }
 }

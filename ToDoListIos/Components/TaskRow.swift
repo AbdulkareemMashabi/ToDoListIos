@@ -10,129 +10,96 @@ import AVFoundation
 
 struct TaskRow: View {
     @Binding var task: ToDoTask
-    @EnvironmentObject var alertManager: AlertManager
+
+    @EnvironmentObject private var alertManager: AlertManager
     @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject private var lottieManager: LottieManager
+
     @State private var player: AVAudioPlayer?
-    @EnvironmentObject var lottieManager: LottieManager
-    
-    func playSound() throws {
-        guard let url = Bundle.main.url(forResource: "correct_sound", withExtension: "mp3") else {
-            fatalError("Audio file not found")
-        }
-        player = try AVAudioPlayer(contentsOf: url)
-        player?.play()
-    }
-    
-    struct StatusButton: View {
-        let status: Bool
-        let borderColor: Color
-        let action: () -> Void
 
-        var body: some View {
-            if status {
-                Image("check")
-            } else {
-                Button(action: action) {
-                    Circle()
-                        .stroke(borderColor, lineWidth: 2)
-                        .frame(width: 20, height: 20)
-                        .contentShape(Circle())
-                }
-                .buttonStyle(.plain)
-            }
-        }
-    }
-    
     var body: some View {
-        VStack (alignment: .leading){
+        VStack(alignment: .leading) {
             HStack {
-
                 StatusButton(
                     status: task.mainTask.status,
-                    borderColor: Color(
-                        hex: getBorderColor(
-                            date: task.mainTask.date,
-                            status: task.mainTask.status
-                        )
-                    )
-                ) {
-                    do {
-                        var updatedTask = task
-                        updatedTask.mainTask.status = true
+                    borderColor: Color(TaskStatusColor.borderColor(
+                        dueDate: task.mainTask.date,
+                        isCompleted: task.mainTask.status
+                    )),
+                    action: completeMainTask
+                )
 
-                        for index in updatedTask.subTasks.indices {
-                            updatedTask.subTasks[index].status = true
-                        }
-
-                        try updateTaskAPI(task: updatedTask)
-                        task = updatedTask
-                        try playSound()
-                        lottieManager.isDoneLottieEnabled.toggle()
-                    } catch {
-                        let message =
-                            (error as? LocalizedError)?.errorDescription ??
-                            error.localizedDescription
-
-                        alertManager.show(message: message)
-                    }
-                }
-                
                 VStack(alignment: .leading) {
                     Text(task.mainTask.title).bold()
-
                     if !task.mainTask.date.isEmpty {
                         Text(task.mainTask.date).foregroundColor(.gray)
                     }
-                       
                 }
             }
-            if (!task.subTasks.isEmpty)
-            {
+
+            if !task.subTasks.isEmpty {
                 Divider().padding(.trailing, 8)
             }
+
             ForEach(Array(task.subTasks.enumerated()), id: \.offset) { index, subTask in
                 HStack {
-
                     StatusButton(
                         status: subTask.status,
-                        borderColor: Color(
-                            hex: subTask.status
-                                ? ColorsToDo.green.color
-                                : ColorsToDo.orange.color
-                        )
+                        borderColor: Color(subTask.status ? .green : .orange)
                     ) {
-                        do {
-                            var updatedTask = task
-
-                            updatedTask.subTasks[index].status = true
-
-                            if updatedTask.subTasks.allSatisfy(\.status) {
-                                updatedTask.mainTask.status = true
-                            }
-
-                            try updateTaskAPI(task: updatedTask)
-                            task = updatedTask
-                            try playSound()
-                            if (updatedTask.mainTask.status) {
-                                lottieManager.isDoneLottieEnabled.toggle()
-                            }
-                        } catch {
-                            let message =
-                                (error as? LocalizedError)?.errorDescription ??
-                                error.localizedDescription
-
-                            alertManager.show(message: message)
-                        }
+                        completeSubTask(at: index)
                     }
-
                     Text(subTask.title)
                 }
-            }.padding(.leading, 16)
-        }.padding(.vertical, 8).onAppear {
-            if(task.favorite){
+            }
+            .padding(.leading, 16)
+        }
+        .padding(.vertical, 8)
+        .onAppear {
+            if task.favorite {
                 saveFavoriteTaskInStorage(task)
             }
         }
+    }
+
+    // MARK: - Actions
+
+    private func completeMainTask() {
+        var updated = task
+        updated.mainTask.status = true
+        for i in updated.subTasks.indices {
+            updated.subTasks[i].status = true
+        }
+        apply(updated: updated, triggerDoneAnimation: true)
+    }
+
+    private func completeSubTask(at index: Int) {
+        var updated = task
+        updated.subTasks[index].status = true
+        let allDone = updated.subTasks.allSatisfy(\.status)
+        if allDone { updated.mainTask.status = true }
+        apply(updated: updated, triggerDoneAnimation: allDone)
+    }
+
+    private func apply(updated: ToDoTask, triggerDoneAnimation: Bool) {
+        do {
+            try updateTaskAPI(task: updated)
+            task = updated
+            try playSound()
+            if triggerDoneAnimation {
+                lottieManager.isDoneLottieEnabled.toggle()
+            }
+        } catch {
+            alertManager.show(message: error.userFacingMessage)
+        }
+    }
+
+    private func playSound() throws {
+        guard let url = Bundle.main.url(forResource: "correct_sound", withExtension: "mp3") else {
+            return
+        }
+        player = try AVAudioPlayer(contentsOf: url)
+        player?.play()
     }
 }
 
@@ -144,12 +111,9 @@ struct TaskRow: View {
             date: "",
             description: "",
             status: false,
-            title: "Task",
+            title: "Task"
         ),
-        subTasks: [
-            SubTask(id: UUID() ,title: "To Do", status: false)
-        ]
+        subTasks: [SubTask(id: UUID(), title: "To Do", status: false)]
     )
-
     TaskRow(task: $task)
 }

@@ -21,12 +21,12 @@ final class AppLanguageManager: ObservableObject {
         }
     }
 
-    private static let storageKey = "appLanguage"
+    private static let storageKey = AppConstants.appLanguageDefaultsKey
 
     @Published private(set) var language: Language {
         didSet {
             UserDefaults.standard.set(language.rawValue, forKey: Self.storageKey)
-            let shared = UserDefaults(suiteName: "group.com.abdulkareem.ToDoList.widget")
+            let shared = UserDefaults(suiteName: AppConstants.appGroupIdentifier)
             shared?.set(language.rawValue, forKey: Self.storageKey)
             WidgetCenter.shared.reloadAllTimelines()
         }

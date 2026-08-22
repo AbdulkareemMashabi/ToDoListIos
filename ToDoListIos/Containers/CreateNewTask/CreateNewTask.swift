@@ -8,115 +8,114 @@
 import SwiftUI
 
 struct CreateNewTask: View {
-    @State private var title: String = ""
-    @State private var description: String = ""
-    @State private var isPresented: Bool = false
-    @State private var selectedDate: String = ""
-    @State private var selectedDateObject: Date = Calendar.current.date(
-        byAdding: .day,
-        value: 1,
-        to: Date()
-    )!
+    @State private var title = ""
+    @State private var description = ""
+    @State private var selectedDate = ""
+    @State private var selectedDateObject = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    @State private var shouldAddToCalendar = false
+    @State private var color: ColorsToDo = .red
+
     @EnvironmentObject private var appColors: AppColors
     @EnvironmentObject private var toastManager: ToastManager
     @EnvironmentObject private var alertManager: AlertManager
-    @EnvironmentObject var loadingManager: LoadingManager
+    @EnvironmentObject private var loadingManager: LoadingManager
     @EnvironmentObject private var navigationManager: NavigationManager
-    private var isButtonDisabled: Bool {
-        return title.isEmpty
-    }
-    @State private var color: ColorsToDo = ColorsToDo.red
-    
-    private func createCalendarEventIfNeeded(title: String, description: String, endDate: Date, shouldAddToCalendar: Bool) async -> String {
-        await withCheckedContinuation { continuation in
-            var resultEventId: String = ""
-            guard shouldAddToCalendar else {
-                continuation.resume(returning: resultEventId)
-                return
-            }
-            CalendarManager.shared.requestAccess { granted in
-                if granted {
-                    let (added, eventId) = CalendarManager.shared.addEvent(
-                        title: title,
-                        description: description,
-                        startDate: Date(),
-                        endDate: endDate
-                    )
-                    resultEventId = eventId ?? ""
-                    if added {
-                        toastManager.show(localized("task.addedToCalendar"))
-                    } else {
-                        alertManager.show(message: localized("task.failedToAddToCalendar"))
-                    }
-                    continuation.resume(returning: resultEventId)
-                } else {
-                    alertManager.show(message: localized("task.calendarAccessDenied"))
-                    continuation.resume(returning: resultEventId)
-                }
-            }
-        }
-    }
-    
+
+    private var isSubmitDisabled: Bool { title.isEmpty }
+
     var body: some View {
-        ZStack(alignment: .bottom){
-            Image(color.image).resizable()
-                .scaledToFill().ignoresSafeArea()
-        
-   
+        ZStack(alignment: .bottom) {
+            Image(color.assetName)
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+
             VStack {
-                TextInput(data: $title, placeholder: localized("task.title") ,error: title.isEmpty ? localized("task.titleRequired") : "")
-                DateInput(selectedDate: $selectedDate, onDateSelected: { date in
-                    selectedDateObject = date
-                }, dateIconColor: color.color, placeholder: localized("task.dateOptional"))
-                TextInput(data: $description, placeholder: localized("task.description"), isTextArea: true)
-                
+                TextInput(
+                    data: $title,
+                    placeholder: localized("task.title"),
+                    error: title.isEmpty ? localized("task.titleRequired") : ""
+                )
+                DateInput(
+                    selectedDate: $selectedDate,
+                    onDateSelected: { selectedDateObject = $0 },
+                    dateIconColor: color.hex,
+                    placeholder: localized("task.dateOptional")
+                )
+                TextInput(
+                    data: $description,
+                    placeholder: localized("task.description"),
+                    isTextArea: true
+                )
+
                 if !selectedDate.isEmpty {
-                        Toggle(isOn: $isPresented) {
-                            Text(localized("task.addToCalendar"))
-                        }.padding(.vertical, 8)
-                }
-                
-                ButtonComponent {
-                    Task {
-                        do {
-                            await MainActor.run {
-                                loadingManager.isLoadingButton.toggle()
-                            }
-                            let eventIdTask: String = await createCalendarEventIfNeeded(
-                                title: title,
-                                description: description,
-                                endDate: selectedDateObject,
-                                shouldAddToCalendar: isPresented
-                            )
-
-                            let documentID = try await addTaskAPI(task: ToDoTask(mainTask: MainTask(calendarId: eventIdTask, color: color.color, date: selectedDate, description: description, status: false, title: title), subTasks: []))
-                            await MainActor.run {
-                                loadingManager.isLoadingButton.toggle()
-                                toastManager.show(localized("task.addedSuccesfully"))
-                            }
-                            let task = ToDoTask(documentID: documentID, mainTask: MainTask(calendarId: eventIdTask, color: color.color, date: selectedDate, description: description, status: false, title: title), subTasks: [])
-                            navigationManager.path.removeAll()
-                            navigationManager.path.append(.taskDetails(task))
-                        }
-                        catch {
-                            await MainActor.run {
-                                loadingManager.isLoadingButton.toggle()
-                            }
-                            let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
-                            alertManager.show(message: message)
-                        }
-
+                    Toggle(isOn: $shouldAddToCalendar) {
+                        Text(localized("task.addToCalendar"))
                     }
-                } label: {
-                    Text(localized("common.submit"))
-                }.formButtonStyle().isButtonDisabled(isButtonDisabled)
-            }.padding(12).frame(width: UIScreen.main.bounds.width).background(    RoundedRectangle(cornerRadius: 20)
-                .fill(.white)
-                .shadow(radius: 6).ignoresSafeArea()).onAppear {
-                    color = appColors.getImage()
+                    .padding(.vertical, 8)
                 }
+
+                ButtonComponent(action: submit) {
+                    Text(localized("common.submit"))
+                }
+                .formButtonStyle()
+                .isButtonDisabled(isSubmitDisabled)
+            }
+            .padding(12)
+            .frame(width: UIScreen.main.bounds.width)
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.white)
+                    .shadow(radius: 6)
+                    .ignoresSafeArea()
+            )
+            .onAppear {
+                color = appColors.nextColor()
+            }
         }
-        
+    }
+
+    private func submit() {
+        Task { @MainActor in
+            loadingManager.isLoadingButton = true
+            defer { loadingManager.isLoadingButton = false }
+
+            do {
+                let calendarId = await TaskCalendarSync.sync(
+                    title: title,
+                    description: description,
+                    endDate: selectedDateObject,
+                    existingEventId: "",
+                    shouldSync: shouldAddToCalendar,
+                    toastManager: toastManager,
+                    alertManager: alertManager
+                )
+
+                let mainTask = MainTask(
+                    calendarId: calendarId,
+                    color: color.hex,
+                    date: selectedDate,
+                    description: description,
+                    status: false,
+                    title: title
+                )
+                let documentID = try await addTaskAPI(
+                    task: ToDoTask(mainTask: mainTask, subTasks: [])
+                )
+
+                toastManager.show(localized("task.addedSuccesfully"))
+
+                let createdTask = ToDoTask(
+                    documentID: documentID,
+                    mainTask: mainTask,
+                    subTasks: []
+                )
+                navigationManager.path.removeAll()
+                navigationManager.path.append(.taskDetails(createdTask))
+            } catch {
+                alertManager.show(message: error.userFacingMessage)
+            }
+        }
     }
 }
 

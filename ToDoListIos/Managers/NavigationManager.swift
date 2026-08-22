@@ -7,7 +7,8 @@
 
 import Foundation
 
-class NavigationManager: ObservableObject {
+/// Backs the app-wide `NavigationStack`. Push routes by appending to `path`.
+final class NavigationManager: ObservableObject {
     @Published var path: [Route] = []
 }
 

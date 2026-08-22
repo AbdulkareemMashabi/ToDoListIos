@@ -9,100 +9,81 @@ import SwiftUI
 import UIKit
 
 struct Login: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @State private var email = ""
+    @State private var password = ""
+
     @EnvironmentObject private var loadingManager: LoadingManager
     @EnvironmentObject private var appToken: AppToken
     @EnvironmentObject private var navigationManager: NavigationManager
-    @EnvironmentObject var toastManager: ToastManager
-    @EnvironmentObject var alertManager: AlertManager
-    private var isButtonDisabled: Bool {
-        return email.isEmpty || password.isEmpty ||  !isValidEmail(email)
+    @EnvironmentObject private var toastManager: ToastManager
+    @EnvironmentObject private var alertManager: AlertManager
+
+    private var isSubmitDisabled: Bool {
+        email.isEmpty || password.isEmpty || !Validators.isValidEmail(email)
     }
+
     var body: some View {
-        ZStack{
+        ZStack {
             Image("waves").resizable().ignoresSafeArea()
-            VStack(alignment:.leading) {
-                
-                
+
+            VStack(alignment: .leading) {
                 Text(localized("login.title")).fontWeight(.bold)
-                Text(localized("login.subtitle")).fontWeight(.bold).foregroundStyle(.gray)
-                TextInput(data: $email, placeholder: localized("common.email"), error: getEmailValidation(email: email))
-                TextInput(data: $password, placeholder: localized("common.password"), isSecureTextEntry: true, error: getEmptyErrorMessage(fieldName: localized("common.password"), fieldValue:password))
-                
+                Text(localized("login.subtitle"))
+                    .fontWeight(.bold)
+                    .foregroundStyle(.gray)
+
+                TextInput(
+                    data: $email,
+                    placeholder: localized("common.email"),
+                    error: Validators.email(email)
+                )
+                TextInput(
+                    data: $password,
+                    placeholder: localized("common.password"),
+                    isSecureTextEntry: true,
+                    error: Validators.required(fieldName: localized("common.password"), value: password)
+                )
+
                 Button {
-                    navigationManager.path.append(Route.forgetPassword)
+                    navigationManager.path.append(.forgetPassword)
                 } label: {
-                    Text(localized("login.forgetPassword")).fontWeight(.bold).foregroundColor(.cyan)
+                    Text(localized("login.forgetPassword"))
+                        .fontWeight(.bold)
+                        .foregroundColor(.cyan)
                 }
-                
-                ButtonComponent {
-                    Task {
-                        do {
-                            await MainActor.run {
-                                loadingManager.isLoadingButton.toggle()
-                            }
-                            let token = try await loginFireBase(email: email, password: password)
-                            Storage.save(key: "token", value: token)
-                            appToken.token = token
-                            await MainActor.run {
-                                loadingManager.isLoadingButton.toggle()
-                                toastManager.show(localized("login.success"))
-                                navigationManager.path.removeAll()
-                            }
-                            
-                        } catch {
-                            let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
-                            alertManager.show(message: message)
-                            await MainActor.run {
-                                loadingManager.isLoadingButton.toggle()
-                            }
-                        }
-                    }
-                } label: {
+
+                ButtonComponent(action: signIn) {
                     Text(localized("common.login"))
-                }.formButtonStyle().isButtonDisabled(isButtonDisabled)
-                
-                Button {
-                    navigationManager.path.append(Route.register)
-                } label: {
-                    Text(localized("common.register")).fontWeight(.bold).foregroundColor(.cyan).frame(maxWidth:.infinity, alignment: .center).padding(.top)
                 }
-                
+                .formButtonStyle()
+                .isButtonDisabled(isSubmitDisabled)
+
                 Button {
-                    Task {
-                        do {
-                            await MainActor.run {
-                                loadingManager.isLoading.toggle()
-                            }
-                            guard let deviceId = UIDevice.current.identifierForVendor?.uuidString else {
-                                throw APIError.missingDeviceID
-                            }
-                            Storage.save(key: "token", value: deviceId)
-                            appToken.token = deviceId
-                            await MainActor.run {
-                                loadingManager.isLoading.toggle()
-                                toastManager.show(localized("login.success"))
-                                navigationManager.path.removeAll()
-                            }
-                        }catch {
-                            let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
-                            alertManager.show(message: message)
-                            await MainActor.run {
-                                loadingManager.isLoading.toggle()
-                            }
-                        }
-                    }
+                    navigationManager.path.append(.register)
                 } label: {
-                    Image(systemName: "person").resizable().frame(width: 20, height: 20).foregroundColor(.cyan)
-                    Text(localized("login.guest")).foregroundColor(.cyan).fontWeight(.bold)
-                }.frame(maxWidth:.infinity, alignment: .center).padding(.top)
-                
-                
-                
-            }       .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top).padding()
-            
-        }.customToolbar(title: localized("common.login"), rightButtons: [
+                    Text(localized("common.register"))
+                        .fontWeight(.bold)
+                        .foregroundColor(.cyan)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.top)
+                }
+
+                Button(action: signInAsGuest) {
+                    Image(systemName: "person")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.cyan)
+                    Text(localized("login.guest"))
+                        .foregroundColor(.cyan)
+                        .fontWeight(.bold)
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .padding()
+        }
+        .customToolbar(title: localized("common.login"), rightButtons: [
             AnyView(
                 Button {
                     navigationManager.path.append(.accountDeletion)
@@ -111,8 +92,40 @@ struct Login: View {
                 }
             )
         ])
-        
-        
+    }
+
+    private func signIn() {
+        Task { @MainActor in
+            loadingManager.isLoadingButton = true
+            defer { loadingManager.isLoadingButton = false }
+            do {
+                let token = try await loginFireBase(email: email, password: password)
+                Storage.save(key: AppConstants.tokenKeychainKey, value: token)
+                appToken.token = token
+                toastManager.show(localized("login.success"))
+                navigationManager.path.removeAll()
+            } catch {
+                alertManager.show(message: error.userFacingMessage)
+            }
+        }
+    }
+
+    private func signInAsGuest() {
+        Task { @MainActor in
+            loadingManager.isLoading = true
+            defer { loadingManager.isLoading = false }
+            do {
+                guard let deviceId = UIDevice.current.identifierForVendor?.uuidString else {
+                    throw APIError.missingDeviceID
+                }
+                Storage.save(key: AppConstants.tokenKeychainKey, value: deviceId)
+                appToken.token = deviceId
+                toastManager.show(localized("login.success"))
+                navigationManager.path.removeAll()
+            } catch {
+                alertManager.show(message: error.userFacingMessage)
+            }
+        }
     }
 }
 

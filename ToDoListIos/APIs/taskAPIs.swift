@@ -1,18 +1,19 @@
 import FirebaseFirestore
 
+private func userCollection() -> CollectionReference {
+    let token = Storage.load(key: AppConstants.tokenKeychainKey) ?? ""
+    return Firestore.firestore().collection(token)
+}
+
 func addTaskAPI(task: ToDoTask) async throws -> String {
     do {
-        let db = Firestore.firestore()
-
         let encoder = Firestore.Encoder()
-
-        var data: [String: Any] = [:]
-        data["mainTask"] = try encoder.encode(task.mainTask)
-        data["subTasks"] = []
-        data["favorite"] = false
-
-        let documentRef = try await db.collection(Storage.load(key: "token")!).addDocument(data: data)
-
+        let data: [String: Any] = [
+            "mainTask": try encoder.encode(task.mainTask),
+            "subTasks": [],
+            "favorite": false
+        ]
+        let documentRef = try await userCollection().addDocument(data: data)
         return documentRef.documentID
     } catch {
         throw APIError.addTaskFailed
@@ -21,10 +22,7 @@ func addTaskAPI(task: ToDoTask) async throws -> String {
 
 func fetchAllTasksAPI() async throws -> [ToDoTask] {
     do {
-        let db = Firestore.firestore()
-
-        let snapshot = try await db.collection(Storage.load(key: "token")!).getDocuments()
-
+        let snapshot = try await userCollection().getDocuments()
         return try snapshot.documents.map { document in
             var task = try document.data(as: ToDoTask.self)
             task.documentID = document.documentID
@@ -38,10 +36,8 @@ func fetchAllTasksAPI() async throws -> [ToDoTask] {
 @MainActor
 func updateTaskAPI(task: ToDoTask) throws {
     do {
-        let db = Firestore.firestore()
-
         guard let documentID = task.documentID else { return }
-        try db.collection(Storage.load(key: "token")!)
+        try userCollection()
             .document(documentID)
             .setData(from: task)
 
@@ -55,16 +51,14 @@ func updateTaskAPI(task: ToDoTask) throws {
 
 func deleteTaskAPI(documentID: String) throws {
     do {
-        let db = Firestore.firestore()
         var deleteError: Error?
 
-        db.collection(Storage.load(key: "token")!)
+        userCollection()
             .document(documentID)
             .delete { error in
-                if let error = error {
-                    deleteError = error
-                }
+                deleteError = error
             }
+
         if let deleteError {
             throw deleteError
         }

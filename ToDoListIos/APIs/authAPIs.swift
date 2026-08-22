@@ -94,7 +94,7 @@ func deleteAccountFirebase(email: String, password: String) async throws {
             password: password
         )
 
-        Storage.save(key: "token", value: "")
+        Storage.save(key: AppConstants.tokenKeychainKey, value: "")
         if let validuser = user {
             try await validuser.reauthenticate(with: credential)
             try await validuser.delete()

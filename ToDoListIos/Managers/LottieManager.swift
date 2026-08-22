@@ -8,6 +8,6 @@
 import Foundation
 
 @MainActor
-class LottieManager: ObservableObject {
+final class LottieManager: ObservableObject {
     @Published var isDoneLottieEnabled = false
 }

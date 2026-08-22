@@ -1,13 +1,7 @@
-//
-//  Models.swift
-//  ToDoListIos
-//
-//  Created by Abdulkareem Mashabi on 09/06/1447 AH.
-//
-
 import Foundation
-import SharedModels
+@_exported import SharedModels
 
 typealias ToDoTask = SharedModels.ToDoTask
 typealias MainTask = SharedModels.MainTask
 typealias SubTask = SharedModels.SubTask
+typealias ColorsToDo = SharedModels.ColorsToDo

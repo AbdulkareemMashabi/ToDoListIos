@@ -3,7 +3,6 @@ import SwiftUI
 struct DateInput: View {
     @Binding var selectedDate: String
     var onDateSelected: ((Date) -> Void)?
-    @EnvironmentObject private var focusingManager: FocusingManager
     @State private var pickerDate = Calendar.current.date(
         byAdding: .day,
         value: 1,
@@ -94,11 +93,6 @@ struct DateInput: View {
                     .padding(.leading, 4)
                     .padding(.top, 4)
             }
-        }.onChange(of: focusingManager.blurTrigger ) {
-                hasFocusedBefore = false
-                showDatePicker = false
-
-            
         }
     }
 }
