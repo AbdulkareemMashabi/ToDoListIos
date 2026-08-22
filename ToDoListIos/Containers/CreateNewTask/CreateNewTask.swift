@@ -111,7 +111,7 @@ struct CreateNewTask: View {
                     mainTask: mainTask,
                     subTasks: []
                 )
-                taskStore.tasks.append(createdTask)
+                taskStore.tasks.insert(createdTask, at: 0)
                 navigationManager.path.removeAll()
                 navigationManager.path.append(.taskDetails(createdTask))
             } catch {
