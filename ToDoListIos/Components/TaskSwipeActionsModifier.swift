@@ -11,7 +11,7 @@ import SwiftUI
 /// small "swipe hint" animation the first time the list contains a single task.
 struct TaskSwipeActionsModifier: ViewModifier {
     @Binding var task: ToDoTask
-    @Binding var showSwipeHint: Bool
+    let showSwipeHint: Bool
     let deleteTask: (String) -> Void
     let makeTaskUnfavorite: (String) -> Void
 
@@ -125,7 +125,7 @@ struct TaskSwipeActionsModifier: ViewModifier {
 extension View {
     func taskSwipeActions(
         task: Binding<ToDoTask>,
-        showSwipeHint: Binding<Bool>,
+        showSwipeHint: Bool,
         deleteTask: @escaping (String) -> Void,
         makeTaskUnfavorite: @escaping (String) -> Void
     ) -> some View {

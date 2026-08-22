@@ -9,16 +9,10 @@ import SwiftUI
 
 struct TaskListComponent: View {
     @Binding var tasks: [ToDoTask]
-    @State private var showSwipeHint: Bool
 
     @EnvironmentObject private var appToken: AppToken
     @EnvironmentObject private var loadingManager: LoadingManager
     @EnvironmentObject private var alertManager: AlertManager
-
-    init(tasks: Binding<[ToDoTask]>) {
-        _tasks = tasks
-        showSwipeHint = tasks.count == 1
-    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -33,10 +27,9 @@ struct TaskListComponent: View {
                     .cornerRadius(16)
                     .shadow(radius: 2)
                     .overlay(alignment: .leading) { colorAccent(for: task) }
-                    .onChange(of: tasks.count) { showSwipeHint = tasks.count == 1 }
                     .taskSwipeActions(
                         task: $task,
-                        showSwipeHint: $showSwipeHint,
+                        showSwipeHint: tasks.count == 1,
                         deleteTask: deleteTask,
                         makeTaskUnfavorite: makeTaskUnfavorite
                     )
