@@ -86,6 +86,7 @@ struct Dashboard: View {
             } else {
                 appToken.token = ""
                 Storage.save(key: AppConstants.tokenKeychainKey, value: "")
+                taskStore.tasks.removeAll()
             }
         } label: {
             if appToken.token.isEmpty {
