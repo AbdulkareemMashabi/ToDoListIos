@@ -146,11 +146,13 @@ struct TaskDetails: View {
                 placeholder: localized("task.description"),
                 isTextArea: true
             )
-            Toggle(isOn: $draft.isInCalendar) {
-                Text(localized("task.addToCalendar"))
+            if !draft.date.isEmpty {
+                Toggle(isOn: $draft.isInCalendar) {
+                    Text(localized("task.addToCalendar"))
+                }
+                .padding(.vertical, 8)
+                .disabled(!task.mainTask.calendarId.isEmpty)
             }
-            .padding(.vertical, 8)
-            .disabled(!task.mainTask.calendarId.isEmpty)
 
             ButtonComponent(action: applyDraft) {
                 Text(localized("common.submit"))
@@ -160,7 +162,7 @@ struct TaskDetails: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding()
-        .presentationDetents([.height(400)])
+        .presentationDetents([.height(draft.date.isEmpty ? 340 : 400)])
     }
 
     // MARK: - Actions
