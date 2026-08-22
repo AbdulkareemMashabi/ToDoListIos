@@ -99,6 +99,7 @@ struct TaskListComponent: View {
         }
     }
 
+    /// Pull-to-refresh: the only opt-in re-fetch path after app launch.
     private func refreshTasks() async {
         let newTasks = await loadTasksShared(
             appToken: appToken,

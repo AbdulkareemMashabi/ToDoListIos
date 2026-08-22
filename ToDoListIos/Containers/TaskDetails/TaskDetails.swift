@@ -21,6 +21,7 @@ struct TaskDetails: View {
     @EnvironmentObject private var loadingManager: LoadingManager
     @EnvironmentObject private var toastManager: ToastManager
     @EnvironmentObject private var alertManager: AlertManager
+    @EnvironmentObject private var taskStore: TaskStore
 
     init(task: ToDoTask) {
         _task = State(initialValue: task)
@@ -208,11 +209,21 @@ struct TaskDetails: View {
                 task.subTasks = subTasks
 
                 try updateTaskAPI(task: task)
+                syncTaskStore()
                 navigationManager.path.removeAll()
             } catch {
                 alertManager.show(message: error.userFacingMessage)
             }
         }
+    }
+
+    /// Mirrors the just-saved local `task` back into the shared `TaskStore`
+    /// so Dashboard reflects the edit without needing a re-fetch.
+    private func syncTaskStore() {
+        guard let index = taskStore.tasks.firstIndex(where: {
+            $0.documentID == task.documentID
+        }) else { return }
+        taskStore.tasks[index] = task
     }
 
     /// Parses a task's stored date string into a `Date`. Tries the format

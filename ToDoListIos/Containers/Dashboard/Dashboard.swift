@@ -15,6 +15,8 @@ struct Dashboard: View {
     @EnvironmentObject private var alertManager: AlertManager
     @EnvironmentObject private var taskStore: TaskStore
 
+    @State private var hasLoadedInitialTasks = false
+
     private var isEmpty: Bool {
         appToken.token.isEmpty || taskStore.tasks.isEmpty
     }
@@ -112,7 +114,13 @@ struct Dashboard: View {
 
     // MARK: - Actions
 
+    /// Fetches tasks from the server exactly once per app launch. Subsequent
+    /// re-appearances of the dashboard (e.g. popping back from TaskDetails)
+    /// are no-ops.
     private func loadTasks() {
+        guard !hasLoadedInitialTasks else { return }
+        hasLoadedInitialTasks = true
+
         Task { @MainActor in
             let newTasks = await loadTasksShared(
                 appToken: appToken,

@@ -20,6 +20,7 @@ struct CreateNewTask: View {
     @EnvironmentObject private var alertManager: AlertManager
     @EnvironmentObject private var loadingManager: LoadingManager
     @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject private var taskStore: TaskStore
 
     private var isSubmitDisabled: Bool { title.isEmpty }
 
@@ -110,6 +111,7 @@ struct CreateNewTask: View {
                     mainTask: mainTask,
                     subTasks: []
                 )
+                taskStore.tasks.append(createdTask)
                 navigationManager.path.removeAll()
                 navigationManager.path.append(.taskDetails(createdTask))
             } catch {
