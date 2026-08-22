@@ -68,37 +68,31 @@ func resetPasswordFirebase(email: String) async throws {
 
 func deleteAccountFirebase(email: String, password: String) async throws {
     do {
-        let user = Auth.auth().currentUser
-        let userId: String
-
-        if let uid = user?.uid {
-            userId = uid
-        } else {
-            userId = try await loginFireBase(email: email, password: password)
+        // Ensure we have a signed-in Firebase user before touching anything.
+        if Auth.auth().currentUser == nil {
+            _ = try await loginFireBase(email: email, password: password)
+        }
+        guard let user = Auth.auth().currentUser else {
+            throw APIError.deleteAccountFailed
         }
 
         let db = Firestore.firestore()
-
-        let snapshot = try await db.collection(userId).getDocuments()
+        let snapshot = try await db.collection(user.uid).getDocuments()
 
         let batch = db.batch()
-
         for document in snapshot.documents {
             batch.deleteDocument(document.reference)
         }
-
         try await batch.commit()
 
         let credential = EmailAuthProvider.credential(
             withEmail: email,
             password: password
         )
+        try await user.reauthenticate(with: credential)
+        try await user.delete()
 
         Storage.save(key: AppConstants.tokenKeychainKey, value: "")
-        if let validuser = user {
-            try await validuser.reauthenticate(with: credential)
-            try await validuser.delete()
-        }
     } catch {
         throw APIError.deleteAccountFailed
     }
