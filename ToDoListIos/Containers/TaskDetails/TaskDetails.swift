@@ -184,8 +184,8 @@ struct TaskDetails: View {
 
     private func save() {
         Task { @MainActor in
-            loadingManager.isLoadingButton = true
-            defer { loadingManager.isLoadingButton = false }
+            loadingManager.isLoading = true
+            defer { loadingManager.isLoading = false }
 
             do {
                 let calendarId = await TaskCalendarSync.sync(
