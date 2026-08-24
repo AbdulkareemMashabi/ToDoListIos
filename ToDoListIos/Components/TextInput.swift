@@ -10,18 +10,20 @@ import SwiftUI
 struct TextInput: View {
     @Binding var data: String
     var placeholder: String = ""
-    @FocusState private var isTextFieldFocus: Bool
-    @State private var hasFocusedBefore: Bool = false
     var isSecureTextEntry: Bool = false
-    var forceToFocused: Bool {
-        return isTextFieldFocus || !data.isEmpty
-    }
     var keyboardType: UIKeyboardType = .default
-    @State private var isShowPassword: Bool = false
     var charsLimits: Int?
     var error: String = ""
     var isTextArea: Bool = false
     var onBlur: (() -> Void)?
+
+    @FocusState private var isTextFieldFocus: Bool
+    @State private var hasFocusedBefore: Bool = false
+    @State private var isShowPassword: Bool = false
+
+    private var forceToFocused: Bool {
+        isTextFieldFocus || !data.isEmpty
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -81,11 +83,8 @@ struct TextInput: View {
                         .onChange(of: isTextFieldFocus) {
                             if isTextFieldFocus {
                                 hasFocusedBefore = true
-                            }
-                            else {
-                                if let onBlurFunc = onBlur {
-                                    onBlurFunc()
-                                }
+                            } else if let onBlur {
+                                onBlur()
                             }
                         }
                         .onChange(of: data) {
@@ -96,13 +95,7 @@ struct TextInput: View {
                 }
 
                 Text(placeholder)
-                    .offset(y: {
-                        if forceToFocused {
-                            return isTextArea ? -47 : -13
-                        } else {
-                            return 0
-                        }
-                    }())
+                    .offset(y: forceToFocused ? (isTextArea ? -47 : -13) : 0)
                     .padding(.leading, 8)
                     .padding(.trailing, isSecureTextEntry ? 44 : 8)
                     .font(forceToFocused ? .caption : .body)
@@ -120,7 +113,8 @@ struct TextInput: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.trailing, 8)
                 }
-            }.frame(maxWidth: .infinity, maxHeight: isTextArea ? 112 : 40)
+            }
+            .frame(maxWidth: .infinity, maxHeight: isTextArea ? 112 : 40)
 
             if !error.isEmpty && hasFocusedBefore {
                 Text(error)

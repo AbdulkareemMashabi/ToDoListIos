@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 struct LeftRoundedRectangle: Shape {
     var radius: CGFloat = 12
 

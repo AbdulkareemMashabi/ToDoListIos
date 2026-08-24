@@ -3,6 +3,10 @@ import SwiftUI
 struct DateInput: View {
     @Binding var selectedDate: String
     var onDateSelected: ((Date) -> Void)?
+    var dateIconColor: String = "#808080"
+    var placeholder: String = ""
+    var error: String = ""
+
     @State private var pickerDate = Calendar.current.date(
         byAdding: .day,
         value: 1,
@@ -10,20 +14,16 @@ struct DateInput: View {
     )!
     @State private var hasFocusedBefore = false
     @State private var showDatePicker = false
-    var dateIconColor: String = "#808080"
 
-    var placeholder: String = ""
-    var error: String = ""
-
-    var forceToFocused: Bool {
-        showDatePicker || !selectedDate.isEmpty
-    }
-    
-    let tomorrow = Calendar.current.date(
+    private let tomorrow = Calendar.current.date(
         byAdding: .day,
         value: 1,
         to: Calendar.current.startOfDay(for: Date())
     )!
+
+    private var forceToFocused: Bool {
+        showDatePicker || !selectedDate.isEmpty
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -37,7 +37,8 @@ struct DateInput: View {
                 // Date value text
                 if !selectedDate.isEmpty {
                     Text(selectedDate)
-                        .padding(.horizontal, 8).offset(y:4)
+                        .padding(.horizontal, 8)
+                        .offset(y: 4)
                         .allowsHitTesting(false)
                 }
 
@@ -49,8 +50,12 @@ struct DateInput: View {
                     .foregroundColor(.gray)
                     .animation(.spring, value: forceToFocused)
                     .allowsHitTesting(false)
-                
-                Image("calendar").renderingMode(.template).foregroundStyle(Color(hex: dateIconColor)).frame(maxWidth: .infinity, alignment: .trailing).padding(8)
+
+                Image("calendar")
+                    .renderingMode(.template)
+                    .foregroundStyle(Color(hex: dateIconColor))
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(8)
 
                 // Transparent tap target covering the whole field
                 Color.clear
@@ -59,11 +64,8 @@ struct DateInput: View {
                         hasFocusedBefore = true
                         showDatePicker = true
                     }
-                
-
             }
             .frame(height: 40)
-            // Sheet with DatePicker
             .sheet(isPresented: $showDatePicker) {
                 VStack {
                     DatePicker(

@@ -9,18 +9,16 @@ import SwiftUI
 
 struct ToastView: View {
     let message: String
-    
+
     var body: some View {
         HStack {
             Image("checkMark")
-            Text(message)
-                .foregroundStyle(.white)
-        }.padding(.vertical, 12)
-            .padding(.horizontal, 16)
-            .background(.green)
-            .clipShape(
-                RoundedRectangle(cornerRadius: 16)
-            )
+            Text(message).foregroundStyle(.white)
+        }
+        .padding(.vertical, 12)
+        .padding(.horizontal, 16)
+        .background(.green)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 
