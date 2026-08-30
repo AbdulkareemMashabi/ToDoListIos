@@ -77,14 +77,14 @@ struct TaskDetails: View {
     }
 
     private var subTasksSection: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 4) {
             Divider().padding(.vertical, 8)
             Text(localized("taskDetails.subTasks"))
                 .font(.title3)
                 .bold()
                 .foregroundStyle(.gray)
 
-            List(Array(subTasks.enumerated()), id: \.element.id) { index, item in
+            ForEach(Array(subTasks.enumerated()), id: \.element.id) { index, item in
                 HStack {
                     if item.status {
                         Image("check").padding(.trailing, 8)
@@ -101,15 +101,7 @@ struct TaskDetails: View {
                     }
                     .buttonStyle(.plain)
                 }
-                .listRowSeparator(.hidden)
-                .listRowInsets(EdgeInsets(top: 4, leading: 5, bottom: 0, trailing: 5))
-                .listRowBackground(Color.clear)
             }
-            .frame(height: CGFloat(subTasks.count * 60))
-            .scrollIndicators(.hidden)
-            .listStyle(.plain)
-            .scrollContentBackground(.hidden)
-            .background(.white)
         }
     }
 
