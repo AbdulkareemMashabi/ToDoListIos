@@ -65,9 +65,9 @@ struct Login: View {
                     Text(localized("common.register"))
                         .fontWeight(.bold)
                         .foregroundColor(.cyan)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.top)
                 }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top)
 
                 Button(action: signInAsGuest) {
                     Image(systemName: "person")
