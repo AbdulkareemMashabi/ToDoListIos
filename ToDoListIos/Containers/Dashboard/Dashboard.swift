@@ -96,7 +96,7 @@ struct Dashboard: View {
     }
 
     private var addTaskButton: some View {
-        Button {
+        ButtonComponent {
             navigationManager.path.append(.createNewTask)
         } label: {
             Text(localized("dashboard.addNewTask"))
