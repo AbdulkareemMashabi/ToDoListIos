@@ -123,7 +123,6 @@ struct TextInput: View {
             if !error.isEmpty && hasFocusedBefore {
                 Text(error)
                     .foregroundColor(.red)
-                    .padding(.top, 8)
                     .padding(.horizontal, 4)
             }
         }
