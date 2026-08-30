@@ -46,6 +46,7 @@ struct TaskDetails: View {
         )
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding(.horizontal)
+        .padding(.top)
         .sheet(isPresented: $isEditSheetPresented, onDismiss: handleSheetDismiss) {
             editSheet
         }
