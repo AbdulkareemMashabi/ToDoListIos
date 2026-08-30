@@ -71,11 +71,7 @@ struct Dashboard: View {
 
     private var languageToggleButton: some View {
         Button {
-            if AppLanguageManager.selectedLanguage.rawValue == "ar" {
-                appLanguageManager.useEnglish()
-            } else {
-                appLanguageManager.useArabic()
-            }
+            appLanguageManager.toggle()
         } label: {
             Image(systemName: "globe").foregroundStyle(.blue)
         }

@@ -65,4 +65,16 @@ final class AppLanguageManager: ObservableObject {
     func useArabic() {
         language = .arabic
     }
+
+    /// Flips between English and Arabic based on the currently *displayed*
+    /// language (i.e. the resolved locale — not the enum case). Fixes the
+    /// first-install case where the enum is `.system` but the raw value is
+    /// `"system"` rather than `"ar"` / `"en"`.
+    func toggle() {
+        if language.localeIdentifier == Language.arabic.rawValue {
+            useEnglish()
+        } else {
+            useArabic()
+        }
+    }
 }
