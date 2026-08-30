@@ -17,6 +17,7 @@ struct Register: View {
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject private var toastManager: ToastManager
     @EnvironmentObject private var alertManager: AlertManager
+    @EnvironmentObject private var taskStore: TaskStore
 
     private var isSubmitDisabled: Bool {
         email.isEmpty
@@ -70,6 +71,7 @@ struct Register: View {
                 let token = try await signUpFireBase(email: email, password: password)
                 Storage.save(key: AppConstants.tokenKeychainKey, value: token)
                 appToken.token = token
+                await refreshTaskStore(taskStore: taskStore, alertManager: alertManager)
                 toastManager.show(localized("register.success"))
                 navigationManager.path.removeAll()
             } catch {

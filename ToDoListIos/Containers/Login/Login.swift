@@ -17,6 +17,7 @@ struct Login: View {
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject private var toastManager: ToastManager
     @EnvironmentObject private var alertManager: AlertManager
+    @EnvironmentObject private var taskStore: TaskStore
 
     private var isSubmitDisabled: Bool {
         email.isEmpty || password.isEmpty || !Validators.isValidEmail(email)
@@ -102,6 +103,7 @@ struct Login: View {
                 let token = try await loginFireBase(email: email, password: password)
                 Storage.save(key: AppConstants.tokenKeychainKey, value: token)
                 appToken.token = token
+                await refreshTaskStore(taskStore: taskStore, alertManager: alertManager)
                 toastManager.show(localized("login.success"))
                 navigationManager.path.removeAll()
             } catch {
@@ -120,6 +122,7 @@ struct Login: View {
                 }
                 Storage.save(key: AppConstants.tokenKeychainKey, value: deviceId)
                 appToken.token = deviceId
+                await refreshTaskStore(taskStore: taskStore, alertManager: alertManager)
                 toastManager.show(localized("login.success"))
                 navigationManager.path.removeAll()
             } catch {
