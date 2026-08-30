@@ -32,13 +32,13 @@ struct DateInput: View {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(.white)
                     .shadow(radius: 2)
-                    .frame(maxWidth: .infinity, maxHeight: 40)
+                    .frame(maxWidth: .infinity, maxHeight: 48)
 
                 // Date value text
                 if !selectedDate.isEmpty {
                     Text(selectedDate)
                         .padding(.horizontal, 8)
-                        .offset(y: 4)
+                        .offset(y: 6)
                         .allowsHitTesting(false)
                 }
 
@@ -56,6 +56,7 @@ struct DateInput: View {
                     .foregroundStyle(Color(hex: dateIconColor))
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(8)
+                    .allowsHitTesting(false)
 
                 // Transparent tap target covering the whole field
                 Color.clear
@@ -65,7 +66,7 @@ struct DateInput: View {
                         showDatePicker = true
                     }
             }
-            .frame(height: 40)
+            .frame(height: 48)
             .sheet(isPresented: $showDatePicker) {
                 VStack {
                     DatePicker(

@@ -53,8 +53,8 @@ struct TextInput: View {
                         .focused($isTextFieldFocus)
                         .padding(.leading, 8)
                         .padding(.trailing, 44)
-                        .padding(.top, 8)
-                        .frame(maxHeight: 40)
+                        .padding(.top, 12)
+                        .frame(maxHeight: 48)
                         .background(.white)
                         .cornerRadius(16)
                         .shadow(radius: 2)
@@ -74,8 +74,8 @@ struct TextInput: View {
                         .focused($isTextFieldFocus)
                         .padding(.leading, 8)
                         .padding(.trailing, isSecureTextEntry ? 44 : 8)
-                        .padding(.top, 8)
-                        .frame(maxHeight: 40)
+                        .padding(.top, 12)
+                        .frame(maxHeight: 48)
                         .background(.white)
                         .cornerRadius(16)
                         .shadow(radius: 2)
@@ -114,7 +114,11 @@ struct TextInput: View {
                     .padding(.trailing, 8)
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: isTextArea ? 112 : 40)
+            .frame(maxWidth: .infinity, maxHeight: isTextArea ? 112 : 48)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                isTextFieldFocus = true
+            }
 
             if !error.isEmpty && hasFocusedBefore {
                 Text(error)
