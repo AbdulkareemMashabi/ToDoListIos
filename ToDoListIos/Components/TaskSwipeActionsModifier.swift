@@ -82,6 +82,9 @@ struct TaskSwipeActionsModifier: ViewModifier {
         Task {
             do {
                 try deleteTaskAPI(documentID: task.documentID ?? "")
+                if task.favorite {
+                    saveFavoriteTaskInStorage(nil)
+                }
                 deleteTask(task.documentID ?? "")
             } catch {
                 alertManager.show(message: error.userFacingMessage)
