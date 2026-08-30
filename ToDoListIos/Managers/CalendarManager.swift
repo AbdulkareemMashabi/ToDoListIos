@@ -47,6 +47,20 @@ final class CalendarManager {
         }
     }
 
+    /// Removes the event with the given identifier. Returns `false` if the
+    /// event isn't found or removal fails.
+    func removeEvent(eventId: String) -> Bool {
+        guard let event = eventStore.event(withIdentifier: eventId) else {
+            return false
+        }
+        do {
+            try eventStore.remove(event, span: .thisEvent)
+            return true
+        } catch {
+            return false
+        }
+    }
+
     /// Updates an existing event's fields. Returns `false` if the event
     /// isn't found or the save fails.
     func updateEvent(

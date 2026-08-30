@@ -85,6 +85,7 @@ struct TaskSwipeActionsModifier: ViewModifier {
                 if task.favorite {
                     saveFavoriteTaskInStorage(nil)
                 }
+                await TaskCalendarSync.remove(eventId: task.mainTask.calendarId)
                 deleteTask(task.documentID ?? "")
             } catch {
                 alertManager.show(message: error.userFacingMessage)

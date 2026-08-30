@@ -1,10 +1,23 @@
 import Foundation
 
-/// Coordinates the "add task to calendar" side-effect used by both
-/// `CreateNewTask` and `TaskDetails`. Handles access requests, event
-/// creation, event updates and the associated toast / alert feedback.
+/// Coordinates calendar side-effects (add / update / remove) triggered by
+/// task mutations. Handles access requests and the associated toast / alert
+/// feedback where appropriate.
 @MainActor
 enum TaskCalendarSync {
+
+    /// Best-effort cleanup — removes the calendar event associated with a
+    /// deleted task. No-op if `eventId` is empty or calendar access is
+    /// declined. Deliberately silent on success and failure so it doesn't
+    /// clutter the delete flow.
+    static func remove(eventId: String) async {
+        guard !eventId.isEmpty else { return }
+
+        let granted = await CalendarManager.shared.requestAccess()
+        guard granted else { return }
+
+        _ = CalendarManager.shared.removeEvent(eventId: eventId)
+    }
 
     /// Syncs a task with the user's calendar. If `existingEventId` is empty,
     /// a new event is created; otherwise the existing event is updated.
