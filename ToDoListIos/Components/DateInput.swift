@@ -5,7 +5,6 @@ struct DateInput: View {
     var onDateSelected: ((Date) -> Void)?
     var dateIconColor: String = "#808080"
     var placeholder: String = ""
-    var error: String = ""
 
     @State private var pickerDate = Calendar.current.date(
         byAdding: .day,
@@ -89,18 +88,11 @@ struct DateInput: View {
                 .presentationDetents([.medium])
             }
 
-            if !error.isEmpty && hasFocusedBefore {
-                Text(error)
-                    .foregroundColor(.red)
-                    .font(.caption)
-                    .padding(.leading, 4)
-                    .padding(.top, 4)
-            }
         }
     }
 }
 
 #Preview {
     @Previewable @State var selectedDate: String = ""
-    DateInput(selectedDate: $selectedDate, placeholder: "Select date", error: "Required")
+    DateInput(selectedDate: $selectedDate, placeholder: "Select date")
 }
