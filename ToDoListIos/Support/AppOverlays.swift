@@ -37,7 +37,6 @@ private struct ToastOverlay: ViewModifier {
         content.overlay(alignment: .top) {
             if toastManager.isShowing {
                 ToastView(message: toastManager.message)
-                    .padding(.top, 60)
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .zIndex(2000)
             }
