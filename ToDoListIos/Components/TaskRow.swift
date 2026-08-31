@@ -27,7 +27,10 @@ struct TaskRow: View {
                 )
 
                 VStack(alignment: .leading) {
-                    Text(task.mainTask.title).bold()
+                    Text(task.mainTask.title)
+                        .font(.title3)
+                        .bold()
+                        .strikethrough(task.mainTask.status)
                     if !task.mainTask.date.isEmpty {
                         Text(task.mainTask.date).foregroundColor(.gray)
                     }
@@ -47,6 +50,8 @@ struct TaskRow: View {
                         completeSubTask(at: index)
                     }
                     Text(subTask.title)
+                        .font(.headline)
+                        .strikethrough(subTask.status)
                 }
             }
             .padding(.leading, 16)

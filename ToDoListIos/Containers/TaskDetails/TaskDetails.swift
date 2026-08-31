@@ -56,8 +56,8 @@ struct TaskDetails: View {
 
     private var summarySection: some View {
         HStack {
-            VStack {
-                Text(task.mainTask.title)
+            VStack (alignment: .leading) {
+                Text(task.mainTask.title).font(.title3).bold()
                 if !task.mainTask.description.isEmpty {
                     Text(task.mainTask.description)
                 }
