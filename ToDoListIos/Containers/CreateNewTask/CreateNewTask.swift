@@ -43,11 +43,13 @@ struct CreateNewTask: View {
                     dateIconColor: color.hex,
                     placeholder: localized("task.dateOptional")
                 )
+                .padding(.top, 12)
                 TextInput(
                     data: $description,
                     placeholder: localized("task.description"),
                     isTextArea: true
                 )
+                .padding(.top, 12)
 
                 if !selectedDate.isEmpty {
                     Toggle(isOn: $shouldAddToCalendar) {
@@ -61,6 +63,7 @@ struct CreateNewTask: View {
                 }
                 .formButtonStyle()
                 .isButtonDisabled(isSubmitDisabled)
+                .padding(.top, 12)
             }
             .padding(12)
             .frame(width: UIScreen.main.bounds.width)

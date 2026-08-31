@@ -44,18 +44,21 @@ struct Register: View {
                     isSecureTextEntry: true,
                     error: Validators.password(password)
                 )
+                .padding(.top, 12)
                 TextInput(
                     data: $confirmPassword,
                     placeholder: localized("common.confirmPassword"),
                     isSecureTextEntry: true,
                     error: Validators.confirmPassword(password, confirmPassword)
                 )
+                .padding(.top, 12)
 
                 ButtonComponent(action: register) {
                     Text(localized("common.submit"))
                 }
                 .formButtonStyle()
                 .isButtonDisabled(isSubmitDisabled)
+                .padding(.top, 12)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .padding()

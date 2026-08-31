@@ -41,12 +41,14 @@ struct AccountDeletion: View {
                     isSecureTextEntry: true,
                     error: Validators.required(fieldName: localized("common.password"), value: password)
                 )
+                .padding(.top, 12)
 
                 ButtonComponent(action: deleteAccount) {
                     Text(localized("accountDeletion.button"))
                 }
                 .formButtonStyle()
                 .isButtonDisabled(isSubmitDisabled)
+                .padding(.top, 12)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .padding()

@@ -136,11 +136,13 @@ struct TaskDetails: View {
                 onDateSelected: { selectedDateObject = $0 },
                 placeholder: localized("task.dateOptional")
             )
+            .padding(.top, 12)
             TextInput(
                 data: $draft.description,
                 placeholder: localized("task.description"),
                 isTextArea: true
             )
+            .padding(.top, 12)
             if !draft.date.isEmpty {
                 Toggle(isOn: $draft.isInCalendar) {
                     Text(localized("task.addToCalendar"))
@@ -154,6 +156,7 @@ struct TaskDetails: View {
             }
             .formButtonStyle()
             .disabled(draft.title.isEmpty)
+            .padding(.top, 12)
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding()

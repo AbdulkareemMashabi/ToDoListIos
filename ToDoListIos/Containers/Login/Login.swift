@@ -44,6 +44,7 @@ struct Login: View {
                     isSecureTextEntry: true,
                     error: Validators.required(fieldName: localized("common.password"), value: password)
                 )
+                .padding(.top, 12)
 
                 Button {
                     navigationManager.path.append(.forgetPassword)
@@ -52,6 +53,7 @@ struct Login: View {
                         .fontWeight(.bold)
                         .foregroundColor(.cyan)
                 }
+                .padding(.top, 12)
 
                 ButtonComponent(action: signIn) {
                     Text(localized("common.login"))

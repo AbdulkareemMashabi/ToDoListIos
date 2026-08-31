@@ -38,6 +38,7 @@ struct ForgetPassword: View {
                 }
                 .formButtonStyle()
                 .isButtonDisabled(isSubmitDisabled)
+                .padding(.top, 12)
             }
             .padding()
         }
