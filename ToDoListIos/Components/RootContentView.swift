@@ -26,6 +26,7 @@ struct RootContentView: View {
         .overlay {
             if lottieManager.isDoneLottieEnabled {
                 LottieView(animation: .filepath(LottieAsset.done.filepath))
+                    .animationSpeed(1.5)
                     .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
                     .animationDidFinish { _ in
                         lottieManager.isDoneLottieEnabled = false
