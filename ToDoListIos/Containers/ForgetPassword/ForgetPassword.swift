@@ -23,7 +23,7 @@ struct ForgetPassword: View {
         ZStack(alignment: .top) {
             Image("waves").resizable().ignoresSafeArea()
 
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 16) {
                 Text(localized("forgetPassword.title")).fontWeight(.bold)
                 Text(localized("forgetPassword.subtitle")).foregroundStyle(.gray)
 
@@ -38,7 +38,6 @@ struct ForgetPassword: View {
                 }
                 .formButtonStyle()
                 .isButtonDisabled(isSubmitDisabled)
-                .padding(.top, 12)
             }
             .padding()
         }

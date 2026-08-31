@@ -33,7 +33,7 @@ struct TaskDetails: View {
     // MARK: - Body
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 16) {
             summarySection
             if !subTasks.isEmpty {
                 subTasksSection
@@ -125,7 +125,7 @@ struct TaskDetails: View {
     }
 
     private var editSheet: some View {
-        VStack {
+        VStack(spacing: 16) {
             TextInput(
                 data: $draft.title,
                 placeholder: localized("task.title"),
@@ -136,18 +136,15 @@ struct TaskDetails: View {
                 onDateSelected: { selectedDateObject = $0 },
                 placeholder: localized("task.dateOptional")
             )
-            .padding(.top, 12)
             TextInput(
                 data: $draft.description,
                 placeholder: localized("task.description"),
                 isTextArea: true
             )
-            .padding(.top, 12)
             if !draft.date.isEmpty {
                 Toggle(isOn: $draft.isInCalendar) {
                     Text(localized("task.addToCalendar"))
                 }
-                .padding(.vertical, 8)
                 .disabled(!task.mainTask.calendarId.isEmpty)
             }
 
@@ -156,7 +153,6 @@ struct TaskDetails: View {
             }
             .formButtonStyle()
             .disabled(draft.title.isEmpty)
-            .padding(.top, 12)
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding()

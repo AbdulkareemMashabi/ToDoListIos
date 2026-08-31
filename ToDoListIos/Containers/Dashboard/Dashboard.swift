@@ -49,7 +49,7 @@ struct Dashboard: View {
     // MARK: - Subviews
 
     private var emptyState: some View {
-        VStack {
+        VStack(spacing: 16) {
             Image("emptyListPic").imageScale(.large)
             Text(localized("dashboard.emptyTitle")).fontWeight(.bold)
             Text(localized("dashboard.emptySubtitle"))
@@ -65,7 +65,7 @@ struct Dashboard: View {
             }
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top, 40)
+            .padding(.top, 16)
         }
     }
 

@@ -27,7 +27,7 @@ struct Login: View {
         ZStack {
             Image("waves").resizable().ignoresSafeArea()
 
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 16) {
                 Text(localized("login.title")).fontWeight(.bold)
                 Text(localized("login.subtitle"))
                     .fontWeight(.bold)
@@ -44,7 +44,6 @@ struct Login: View {
                     isSecureTextEntry: true,
                     error: Validators.required(fieldName: localized("common.password"), value: password)
                 )
-                .padding(.top, 12)
 
                 Button {
                     navigationManager.path.append(.forgetPassword)
@@ -53,7 +52,6 @@ struct Login: View {
                         .fontWeight(.bold)
                         .foregroundColor(.cyan)
                 }
-                .padding(.top, 12)
 
                 ButtonComponent(action: signIn) {
                     Text(localized("common.login"))
@@ -69,7 +67,6 @@ struct Login: View {
                         .foregroundColor(.cyan)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.top)
 
                 Button(action: signInAsGuest) {
                     Image(systemName: "person")
@@ -81,7 +78,6 @@ struct Login: View {
                         .fontWeight(.bold)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.top)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .padding()

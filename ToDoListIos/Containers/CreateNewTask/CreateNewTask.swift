@@ -31,7 +31,7 @@ struct CreateNewTask: View {
                 .scaledToFill()
                 .ignoresSafeArea()
 
-            VStack {
+            VStack(spacing: 16) {
                 TextInput(
                     data: $title,
                     placeholder: localized("task.title"),
@@ -43,19 +43,16 @@ struct CreateNewTask: View {
                     dateIconColor: color.hex,
                     placeholder: localized("task.dateOptional")
                 )
-                .padding(.top, 12)
                 TextInput(
                     data: $description,
                     placeholder: localized("task.description"),
                     isTextArea: true
                 )
-                .padding(.top, 12)
 
                 if !selectedDate.isEmpty {
                     Toggle(isOn: $shouldAddToCalendar) {
                         Text(localized("task.addToCalendar"))
                     }
-                    .padding(.vertical, 8)
                 }
 
                 ButtonComponent(action: submit) {
@@ -63,7 +60,6 @@ struct CreateNewTask: View {
                 }
                 .formButtonStyle()
                 .isButtonDisabled(isSubmitDisabled)
-                .padding(.top, 12)
             }
             .padding(12)
             .frame(width: UIScreen.main.bounds.width)
