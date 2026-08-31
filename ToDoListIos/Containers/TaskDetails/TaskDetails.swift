@@ -56,8 +56,13 @@ struct TaskDetails: View {
 
     private var summarySection: some View {
         HStack {
-            VStack (alignment: .leading) {
-                Text(task.mainTask.title).font(.title3).bold()
+            VStack(alignment: .leading) {
+                HStack {
+                    if task.mainTask.status {
+                        Image("check")
+                    }
+                    Text(task.mainTask.title).font(.title3).bold()
+                }
                 if !task.mainTask.description.isEmpty {
                     Text(task.mainTask.description)
                 }
