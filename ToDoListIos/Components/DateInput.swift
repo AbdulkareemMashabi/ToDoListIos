@@ -85,7 +85,7 @@ struct DateInput: View {
                     .buttonStyle(.borderedProminent)
                     .padding(.bottom)
                 }
-                .presentationDetents([.medium])
+                .presentationDetents(UIDevice.current.userInterfaceIdiom == .pad ? [.large] : [.medium])
             }
 
         }
