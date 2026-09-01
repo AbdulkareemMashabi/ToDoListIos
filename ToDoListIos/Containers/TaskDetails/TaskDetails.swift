@@ -33,20 +33,23 @@ struct TaskDetails: View {
     // MARK: - Body
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            summarySection
-            if !subTasks.isEmpty {
-                subTasksSection
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                summarySection
+                if !subTasks.isEmpty {
+                    subTasksSection
+                }
+                addSubTaskField
             }
-            addSubTaskField
+            .frame(maxWidth: .infinity, alignment: .top)
+            .padding(.horizontal)
+            .padding(.top)
         }
         .customToolbar(
             title: task.mainTask.title,
             rightButtons: isTaskChanged ? [AnyView(saveButton)] : []
         )
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .padding(.horizontal)
-        .padding(.top)
         .sheet(isPresented: $isEditSheetPresented, onDismiss: handleSheetDismiss) {
             editSheet
         }
