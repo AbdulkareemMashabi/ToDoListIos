@@ -14,19 +14,20 @@ struct RootContentView: View {
             if isSplashFinished {
                 Dashboard().transition(.opacity)
             } else {
-                LottieView(animation: .filepath(LottieAsset.splash.filepath))
-                    .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
-                    .animationDidFinish { _ in
-                        isSplashFinished = true
-                    }
-                    .transition(.opacity)
-                    .background(Color(white: 0.9))
+                ZStack {
+                    Color(white: 0.9).ignoresSafeArea()
+                    LottieView(animation: .filepath(LottieAsset.splash.filepath))
+                        .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
+                        .animationDidFinish { _ in
+                            isSplashFinished = true
+                        }
+                }
+                .transition(.opacity)
             }
         }
         .overlay {
             if lottieManager.isDoneLottieEnabled {
                 LottieView(animation: .filepath(LottieAsset.done.filepath))
-                    .animationSpeed(1.5)
                     .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
                     .animationDidFinish { _ in
                         lottieManager.isDoneLottieEnabled = false
