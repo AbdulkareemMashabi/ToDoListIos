@@ -17,7 +17,7 @@ struct ButtonComponent<LabelView: View>: View {
         Button(action: action) {
             if loadingManager.isLoadingButton {
                 LottieView(animation: .filepath(LottieAsset.loadingButton.filepath))
-                    .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
+                    .playbackMode(.playing(.fromProgress(0, toProgress: 1, loopMode: .loop)))
                     .scaleEffect(0.6)
             } else {
                 label().frame(maxWidth: .infinity, maxHeight: .infinity)
