@@ -76,6 +76,12 @@ func deleteAccountFirebase(email: String, password: String) async throws {
             throw APIError.deleteAccountFailed
         }
 
+        let credential = EmailAuthProvider.credential(
+            withEmail: email,
+            password: password
+        )
+        try await user.reauthenticate(with: credential)
+
         let db = Firestore.firestore()
         let snapshot = try await db.collection(user.uid).getDocuments()
 
@@ -85,11 +91,6 @@ func deleteAccountFirebase(email: String, password: String) async throws {
         }
         try await batch.commit()
 
-        let credential = EmailAuthProvider.credential(
-            withEmail: email,
-            password: password
-        )
-        try await user.reauthenticate(with: credential)
         try await user.delete()
 
         Storage.save(key: AppConstants.tokenKeychainKey, value: "")
