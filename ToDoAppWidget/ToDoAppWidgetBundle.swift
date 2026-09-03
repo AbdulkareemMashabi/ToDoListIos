@@ -12,7 +12,9 @@ import SwiftUI
 struct ToDoAppWidgetBundle: WidgetBundle {
     var body: some Widget {
         ToDoAppWidget()
-        ToDoAppWidgetControl()
         ToDoAppWidgetLiveActivity()
+        if #available(iOS 18.0, *) {
+            ToDoAppWidgetControl()
+        }
     }
 }
