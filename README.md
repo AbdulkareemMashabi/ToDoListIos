@@ -12,6 +12,10 @@ A native iOS to‑do app built with SwiftUI and Firebase. Tasks support due date
   <img src=".github/screenshots/task-details.png" width="180" alt="Task details with sub-tasks" />
 </p>
 
+<p align="center">
+  <img src=".github/screenshots/widget.png" width="360" alt="Home Screen widget showing the favorite task" />
+  <img src=".github/screenshots/calendar-sync.png" width="180" alt="Task synced to the system Calendar" />
+</p>
 
 ## Features
 
