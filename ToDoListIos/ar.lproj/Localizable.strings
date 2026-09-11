@@ -49,6 +49,8 @@
 "taskDetails.done" = "تم";
 "taskDetails.subTasks" = "مهام جانبية";
 "taskDetails.subTasksPlaceHolder" = "عنوان المهمة الفرعية الجديدة";
+"taskDetails.placeholderTitle" = "اختر مهمة";
+"taskDetails.placeholderSubtitle" = "اختر مهمة من القائمة لعرض تفاصيلها.";
 
 "validation.emailRequired" = "البريد الإلكتروني مطلوب";
 "validation.invalidEmail" = "صيغة البريد الإلكتروني غير صحيحة";

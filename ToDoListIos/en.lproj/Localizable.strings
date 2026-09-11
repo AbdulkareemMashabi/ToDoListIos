@@ -49,6 +49,8 @@
 "taskDetails.done" = "Done";
 "taskDetails.subTasks" = "Sub Tasks";
 "taskDetails.subTasksPlaceHolder" = "New Sub Task Title";
+"taskDetails.placeholderTitle" = "Select a Task";
+"taskDetails.placeholderSubtitle" = "Choose a task from the list to see its details.";
 
 "validation.emailRequired" = "Email is required";
 "validation.invalidEmail" = "Invalid email format";
