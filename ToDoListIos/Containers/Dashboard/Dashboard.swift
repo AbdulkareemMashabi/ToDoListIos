@@ -85,6 +85,8 @@ struct Dashboard: View {
                 appToken.token = ""
                 Storage.save(key: AppConstants.tokenKeychainKey, value: "")
                 taskStore.tasks.removeAll()
+                navigationManager.selectedTask = nil
+                navigationManager.columnVisibility = .detailOnly
             }
         } label: {
             if appToken.token.isEmpty {
