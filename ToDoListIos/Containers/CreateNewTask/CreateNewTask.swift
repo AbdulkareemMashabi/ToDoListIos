@@ -27,31 +27,19 @@ struct CreateNewTask: View {
     private var isSubmitDisabled: Bool { title.isEmpty }
 
     var body: some View {
-        Group {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                Color.clear
-                    .background {
-                        Image(color.assetName)
-                            .resizable()
-                            .scaledToFill()
-                            .ignoresSafeArea()
-                    }
-                    .overlay(alignment: .bottom) {
-                        iPadFormCard
-                    }
-            } else {
-                ZStack(alignment: .bottom) {
-                    Image(color.assetName)
-                        .resizable()
-                        .scaledToFill()
-                        .ignoresSafeArea()
-                    formCard
-                }
+        Color.clear
+            .background {
+                Image(color.assetName)
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
             }
-        }
-        .onAppear {
-            color = appColors.nextColor()
-        }
+            .overlay(alignment: .bottom) {
+                formCard
+            }
+            .onAppear {
+                color = appColors.nextColor()
+            }
     }
 
     private var formFields: some View {
@@ -95,13 +83,6 @@ struct CreateNewTask: View {
     }
 
     private var formCard: some View {
-        formFields
-            .padding(12)
-            .frame(width: UIScreen.main.bounds.width)
-            .background(cardBackground)
-    }
-
-    private var iPadFormCard: some View {
         formFields
             .padding(12)
             .frame(maxWidth: .infinity)
