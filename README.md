@@ -2,15 +2,16 @@
 
 A native iOS to‑do app built with SwiftUI and Firebase. Tasks support due dates, colors, sub‑tasks, and calendar sync, and your favorite task can be pinned to a Home Screen / Lock Screen widget that you can check off without opening the app.
 
-<!--
-  Add screenshots here once available, e.g.:
-  <p align="center">
-    <img src=".github/screenshots/dashboard.png" width="220" />
-    <img src=".github/screenshots/task-details.png" width="220" />
-    <img src=".github/screenshots/widget.png" width="220" />
-  </p>
-  Send the images over and they can be dropped straight into this section.
--->
+## Screenshots
+
+<p align="center">
+  <img src=".github/screenshots/login.png" width="180" alt="Login screen" />
+  <img src=".github/screenshots/empty-state.png" width="180" alt="Empty task list" />
+  <img src=".github/screenshots/create-task.png" width="180" alt="Create task screen" />
+  <img src=".github/screenshots/dashboard.png" width="180" alt="Dashboard with tasks" />
+  <img src=".github/screenshots/task-details.png" width="180" alt="Task details with sub-tasks" />
+</p>
+
 
 ## Features
 
