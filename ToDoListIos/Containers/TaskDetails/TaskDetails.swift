@@ -210,7 +210,16 @@ struct TaskDetails: View {
 
                 try updateTaskAPI(task: task)
                 syncTaskStore()
-                navigationManager.path.removeAll()
+                // Collapse the split-view sidebar (regular width) and pop
+                // the pushed .taskDetails route (compact width). Doing both
+                // unconditionally is safe: TaskDetails renders inside the
+                // sidebar column on iPad, where its own size class is
+                // compact, so we can't rely on `sizeClass` here.
+                navigationManager.selectedTask = nil
+                navigationManager.columnVisibility = .detailOnly
+                if case .taskDetails = navigationManager.path.last {
+                    navigationManager.path.removeLast()
+                }
             } catch {
                 alertManager.show(message: error.userFacingMessage)
             }

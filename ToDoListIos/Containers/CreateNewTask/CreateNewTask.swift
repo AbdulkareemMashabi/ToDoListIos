@@ -22,6 +22,8 @@ struct CreateNewTask: View {
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject private var taskStore: TaskStore
 
+    @Environment(\.horizontalSizeClass) private var sizeClass
+
     private var isSubmitDisabled: Bool { title.isEmpty }
 
     var body: some View {
@@ -142,8 +144,13 @@ struct CreateNewTask: View {
                     subTasks: []
                 )
                 taskStore.tasks.insert(createdTask, at: 0)
-                navigationManager.path.removeAll()
-                navigationManager.path.append(.taskDetails(createdTask))
+                if sizeClass == .regular {
+                    navigationManager.path.removeAll()
+                    navigationManager.selectedTask = createdTask
+                    navigationManager.columnVisibility = .doubleColumn
+                } else {
+                    navigationManager.path = [.taskDetails(createdTask)]
+                }
             } catch {
                 alertManager.show(message: error.userFacingMessage)
             }

@@ -18,6 +18,8 @@ struct TaskSwipeActionsModifier: ViewModifier {
     @EnvironmentObject private var alertManager: AlertManager
     @EnvironmentObject private var navigationManager: NavigationManager
 
+    @Environment(\.horizontalSizeClass) private var sizeClass
+
     @State private var hintOffset: CGFloat = 0
 
     private static let hintSpring: Animation = .interpolatingSpring(stiffness: 300, damping: 15)
@@ -37,7 +39,12 @@ struct TaskSwipeActionsModifier: ViewModifier {
 
     private var infoAction: some View {
         Button {
-            navigationManager.path.append(.taskDetails(task))
+            if sizeClass == .regular {
+                navigationManager.selectedTask = task
+                navigationManager.columnVisibility = .doubleColumn
+            } else {
+                navigationManager.path.append(.taskDetails(task))
+            }
         } label: {
             Image("info")
         }
