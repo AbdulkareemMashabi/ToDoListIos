@@ -71,12 +71,12 @@ private struct AppRoot: View {
     @ViewBuilder
     private func destination(for route: Route) -> some View {
         switch route {
-        case .login:            Login()
-        case .register:         Register()
-        case .createNewTask:    CreateNewTask()
-        case .forgetPassword:   ForgetPassword()
-        case .accountDeletion:  AccountDeletion()
-        case .taskDetails(let task): TaskDetails(task: task)
+        case .login: Login()
+        case .register: Register()
+        case .createNewTask: CreateNewTask()
+        case .forgetPassword: ForgetPassword()
+        case .accountDeletion: AccountDeletion()
+        case let .taskDetails(task): TaskDetails(task: task)
         }
     }
 

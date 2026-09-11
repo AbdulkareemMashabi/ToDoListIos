@@ -128,7 +128,7 @@ struct TaskDetails: View {
 
     private var saveButton: some View {
         ButtonComponent(action: save) {
-            Text(localized("taskDetails.done")).foregroundColor(.cyan)
+            Text(localized("taskDetails.done")).foregroundStyle(.cyan)
         }
     }
 
