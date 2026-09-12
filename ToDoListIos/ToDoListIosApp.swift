@@ -1,4 +1,5 @@
 import SwiftUI
+import Lottie
 
 @main
 struct ToDoListIosApp: App {
@@ -43,12 +44,34 @@ struct ToDoListIosApp: App {
 /// width, e.g. iPhone or Slide Over). On regular, Dashboard stays visible
 /// in the detail column while TaskDetails renders in the toggleable sidebar
 /// column. On compact, TaskDetails is pushed onto the stack so the system
-/// back button behaves normally.
+/// back button behaves normally. The splash Lottie is rendered above
+/// everything so the split-view sidebar stays hidden while it plays.
 private struct AppRoot: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
     @EnvironmentObject private var navigationManager: NavigationManager
+    @State private var isSplashFinished = false
 
     var body: some View {
+        ZStack {
+            if isSplashFinished {
+                content.transition(.opacity)
+            } else {
+                ZStack {
+                    Color(white: 0.9).ignoresSafeArea()
+                    LottieView(animation: .filepath(LottieAsset.splash.filepath))
+                        .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
+                        .animationDidFinish { _ in
+                            isSplashFinished = true
+                        }
+                }
+                .transition(.opacity)
+            }
+        }
+        .animation(.linear(duration: 0.3), value: isSplashFinished)
+    }
+
+    @ViewBuilder
+    private var content: some View {
         if sizeClass == .regular {
             NavigationSplitView(columnVisibility: $navigationManager.columnVisibility) {
                 NavigationStack {
@@ -56,13 +79,13 @@ private struct AppRoot: View {
                 }
             } detail: {
                 NavigationStack(path: $navigationManager.path) {
-                    RootContentView()
+                    Dashboard()
                         .navigationDestination(for: Route.self, destination: destination(for:))
                 }
             }
         } else {
             NavigationStack(path: $navigationManager.path) {
-                RootContentView()
+                Dashboard()
                     .navigationDestination(for: Route.self, destination: destination(for:))
             }
         }

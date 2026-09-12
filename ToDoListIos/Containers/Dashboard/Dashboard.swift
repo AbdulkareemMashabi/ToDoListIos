@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct Dashboard: View {
     @EnvironmentObject private var navigationManager: NavigationManager
@@ -14,6 +15,7 @@ struct Dashboard: View {
     @EnvironmentObject private var loadingManager: LoadingManager
     @EnvironmentObject private var alertManager: AlertManager
     @EnvironmentObject private var taskStore: TaskStore
+    @EnvironmentObject private var lottieManager: LottieManager
 
     @State private var hasLoadedInitialTasks = false
 
@@ -42,6 +44,15 @@ struct Dashboard: View {
         .safeAreaInset(edge: .bottom) {
             if !taskStore.tasks.isEmpty && !appToken.token.isEmpty {
                 addTaskButton
+            }
+        }
+        .overlay {
+            if lottieManager.isDoneLottieEnabled {
+                LottieView(animation: .filepath(LottieAsset.done.filepath))
+                    .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
+                    .animationDidFinish { _ in
+                        lottieManager.isDoneLottieEnabled = false
+                    }
             }
         }
     }
